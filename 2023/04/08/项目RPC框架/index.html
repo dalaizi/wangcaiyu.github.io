@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>项目RPC框架 | Hexo</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="项目RPC框架 | Hexo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="快慢指针141. Linked List Cycle Given head, the head of a linked list, determine if the linked list has a cycle in it. There is a cycle in a linked list if there is some node in the list that can be reache">
+<meta property="og:type" content="article">
+<meta property="og:title" content="力扣刷题">
+<meta property="og:url" content="http://example.com/2023/11/22/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="快慢指针141. Linked List Cycle Given head, the head of a linked list, determine if the linked list has a cycle in it. There is a cycle in a linked list if there is some node in the list that can be reache">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2023/11/22/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/circularlinkedlist.png">
+<meta property="og:image" content="http://example.com/2023/11/22/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/circularlinkedlist_test2.png">
+<meta property="og:image" content="http://example.com/2023/11/22/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/circularlinkedlist_test3.png">
+<meta property="og:image" content="http://example.com/2023/11/22/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/circularlinkedlist-1697081769507-7.png">
+<meta property="og:image" content="http://example.com/2023/11/22/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/circularlinkedlist_test2-1697081769507-9.png">
+<meta property="og:image" content="http://example.com/2023/11/22/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/circularlinkedlist_test3-1697081769507-11.png">
+<meta property="og:image" content="http://example.com/2023/11/22/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/merge_ex1.jpg">
+<meta property="og:image" content="http://example.com/2023/11/22/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/swap_ex1.jpg">
+<meta property="og:image" content="http://example.com/2023/11/22/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/e1.png">
+<meta property="og:image" content="http://example.com/2023/11/22/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/e2.png">
+<meta property="og:image" content="http://example.com/2023/11/22/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/e3.png">
+<meta property="article:published_time" content="2023-11-22T09:10:44.000Z">
+<meta property="article:modified_time" content="2023-11-22T09:15:40.438Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023/11/22/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/circularlinkedlist.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>John Doe</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="facebook"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-facebook"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+            <a title="instagram"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-instagram"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="reddit"
+               href="https://www.reddit.com/user/yelog/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-reddit"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="weibo"
+               href="http://weibo.com/u/2307534817"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="jianshu"
+               href="https://www.jianshu.com/u/ff56736de7cf"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-jianshu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com/people/jaytp/activities"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="oschina"
+               href="https://my.oschina.net/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-oschina"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:jaytp@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/#/user/home?id=88151013"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(9)</small>
+            
+        </div>
+    </li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">About</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">Friends</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="9">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2023/11/22/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="力扣刷题">力扣刷题</span>
+            <span class="post-date" title="2023-11-22 17:10:44">2023/11/22</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2023/10/08/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="动态代理">动态代理</span>
+            <span class="post-date" title="2023-10-08 22:49:01">2023/10/08</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2023/04/08/%E9%A1%B9%E7%9B%AERPC%E6%A1%86%E6%9E%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="项目RPC框架">项目RPC框架</span>
+            <span class="post-date" title="2023-04-08 19:49:23">2023/04/08</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2023/01/02/redis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="redis">redis</span>
+            <span class="post-date" title="2023-01-02 17:46:17">2023/01/02</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2022/12/24/MySQL/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MySQL">MySQL</span>
+            <span class="post-date" title="2022-12-24 11:40:50">2022/12/24</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2022/11/11/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java并发编程">Java并发编程</span>
+            <span class="post-date" title="2022-11-11 16:20:42">2022/11/11</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2022/10/30/JVM%E8%B0%83%E4%BC%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JVM调优">JVM调优</span>
+            <span class="post-date" title="2022-10-30 20:09:07">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2022/10/19/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="深入理解Java虚拟机">深入理解Java虚拟机</span>
+            <span class="post-date" title="2022-10-19 10:40:02">2022/10/19</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="计算机网络">计算机网络</span>
+            <span class="post-date" title="2022-02-06 18:11:21">2022/02/06</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-项目RPC框架" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">项目RPC框架</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2023-11-24 19:52:55'>2023-04-08 19:49</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8ENetty%E3%80%81Zookeeper%E3%80%81Spring%E7%9A%84%E8%BD%BB%E9%87%8F%E7%BA%A7RPC%E6%A1%86%E6%9E%B6"><span class="toc-text">基于Netty、Zookeeper、Spring的轻量级RPC框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Features"><span class="toc-text">Features</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98"><span class="toc-text">项目问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8-Netty-%E6%9E%84%E5%BB%BA-RPC"><span class="toc-text">1. 为什么使用 Netty 构建 RPC</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E9%95%BF%E8%BF%9E%E6%8E%A5"><span class="toc-text">2. 为什么使用长连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E7%94%A8%E5%BC%82%E6%AD%A5%E4%B8%8D%E7%94%A8%E5%90%8C%E6%AD%A5"><span class="toc-text">3. 为什么选用异步不用同步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%BF%83%E8%B7%B3%E6%9C%BA%E5%88%B6%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0"><span class="toc-text">4. 心跳机制如何实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%80%89%E7%94%A8-JSON-%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">5. 为什么选用 JSON 序列化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%A6%82%E4%BD%95%E5%9F%BA%E4%BA%8E%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E5%AF%B9%E8%AF%B7%E6%B1%82%E8%BF%9B%E8%A1%8C%E5%A4%84%E7%90%86"><span class="toc-text">6. 如何基于动态代理对请求进行处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%BF%9B%E7%A8%8B%E9%97%B4%E7%9A%84%E9%80%9A%E4%BF%A1%E9%97%AE%E9%A2%98"><span class="toc-text">7. 如何解决进程间的通信问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3-TCP-IP-%E7%B2%98%E5%8C%85%E9%97%AE%E9%A2%98"><span class="toc-text">8. 如何解决 TCP&#x2F;IP 粘包问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-BeanPostProcesser-%E6%9C%BA%E5%88%B6"><span class="toc-text">9. BeanPostProcesser 机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-ApplicationListener-%E6%9C%BA%E5%88%B6"><span class="toc-text">10 ApplicationListener 机制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RPC-%E7%9B%B8%E5%85%B3"><span class="toc-text">RPC 相关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#12-ZooKeeper-%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0"><span class="toc-text">12 ZooKeeper 服务发现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E8%AF%B4%E8%AF%B4%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%94%A8%E5%88%B0%E5%93%AA%E4%BA%9B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-text">13 说说项目中用到哪些设计模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-%E9%A1%B9%E7%9B%AE%E5%85%B6%E4%BB%96"><span class="toc-text">14 项目其他</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%85%AB%E8%82%A1"><span class="toc-text">相关八股</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86"><span class="toc-text">动态代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84"><span class="toc-text">反射</span></a></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="基于Netty、Zookeeper、Spring的轻量级RPC框架"><a href="#基于Netty、Zookeeper、Spring的轻量级RPC框架" class="headerlink" title="基于Netty、Zookeeper、Spring的轻量级RPC框架"></a>基于Netty、Zookeeper、Spring的轻量级RPC框架</h1><h2 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h2><p><img src="/2023/04/08/%E9%A1%B9%E7%9B%AERPC%E6%A1%86%E6%9E%B6/image-20230225003403275.png" alt="image-20230225003403275"></p>
+<ul>
+<li><strong>支持长连接</strong></li>
+<li><strong>支持异步调用</strong></li>
+<li><strong>支持心跳检测</strong></li>
+<li><strong>支持JSON序列化</strong></li>
+<li><strong>接近零配置，基于注解实现调用</strong></li>
+<li><strong>基于Zookeeper实现服务注册中心</strong></li>
+<li><strong>支持客户端连接动态管理</strong></li>
+<li><strong>支持客户端服务监听、发现功能</strong></li>
+<li><strong>支持服务端服务注册功能</strong></li>
+<li><strong>基于Netty4.X版本实现</strong></li>
+</ul>
+<p>RPC知识点：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/fangmeng1997/category_10396482.html">https://blog.csdn.net/fangmeng1997/category_10396482.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnkirito.moe/categories/RPC/page/3/">https://www.cnkirito.moe/categories/RPC/page/3/</a></p>
+<h2 id="项目问题"><a href="#项目问题" class="headerlink" title="项目问题"></a>项目问题</h2><h3 id="1-为什么使用-Netty-构建-RPC"><a href="#1-为什么使用-Netty-构建-RPC" class="headerlink" title="1. 为什么使用 Netty 构建 RPC"></a>1. 为什么使用 Netty 构建 RPC</h3><p>&#x3D;&#x3D;netty是什么&#x3D;&#x3D;</p>
+<p>Netty 是一个异步事件驱动，基于 NIO 的网络通信框架，用于快速开发可维护的高性能协议服务器和客户端。它极大地简化和简化了网络编程，	</p>
+<p>&#x3D;&#x3D;优势&#x3D;&#x3D;</p>
+<ul>
+<li><p>API简单，预置编解码功能、主流协议，成熟稳定，解决JDK NIO 空轮询BUG；社区活跃</p>
+</li>
+<li><p>采用异步非阻塞IO类库，基于 Reactor 模式实现，解决BIO无法平滑处理线性增长客户端的问题（展开Reactor模式 和 IO 模型）</p>
+</li>
+<li><p>零拷贝（展开）</p>
+</li>
+<li><p>TCP 接收和发送缓冲区使用<strong>直接内存</strong>代替堆内存，避免了内存复制，提升IO读取、写入功能</p>
+</li>
+<li><p>ByteBuf</p>
+</li>
+<li><p>&#x3D;&#x3D;可靠性&#x3D;&#x3D;</p>
+<ul>
+<li>链路有效性检测（心跳机制）</li>
+<li>内存保护机制</li>
+<li>优雅停机</li>
+</ul>
+<p><img src="/2023/04/08/%E9%A1%B9%E7%9B%AERPC%E6%A1%86%E6%9E%B6/image-20230225183910090.png" alt="image-20230225183910090"></p>
+</li>
+</ul>
+<h3 id="2-为什么使用长连接"><a href="#2-为什么使用长连接" class="headerlink" title="2. 为什么使用长连接"></a>2. 为什么使用长连接</h3><p>省去大量TCP连接建立过程</p>
+<h3 id="3-为什么选用异步不用同步"><a href="#3-为什么选用异步不用同步" class="headerlink" title="3. 为什么选用异步不用同步"></a>3. 为什么选用异步不用同步</h3><p>&#x3D;&#x3D;5 种 IO 模型&#x3D;&#x3D; （书上）</p>
+<p>阻塞 IO 模型</p>
+<p>非阻塞 IO 模型 （其实非阻塞 IO 也有阻塞的成分，可以理解成他不停的轮询检查的过程也是在阻塞）</p>
+<p>IO 复用模型</p>
+<p>信号驱动 IO 模型（类似非阻塞IO，只是有信号处理函数通知你什么时候数据准备好）</p>
+<p>异步 IO 模型</p>
+<p>&#x3D;&#x3D;同步异步的概念区别与性能差距&#x3D;&#x3D; </p>
+<ul>
+<li>同步：导致进程阻塞，直到 IO 操作完成</li>
+<li>异步：不阻塞</li>
+</ul>
+<p><img src="/2023/04/08/%E9%A1%B9%E7%9B%AERPC%E6%A1%86%E6%9E%B6/image-20230225185636426.png" alt="image-20230225185636426"></p>
+<p>&#x3D;&#x3D;select poll epoll 底层&#x3D;&#x3D;</p>
+<p><img src="/2023/04/08/%E9%A1%B9%E7%9B%AERPC%E6%A1%86%E6%9E%B6/image-20230225185733771.png" alt="image-20230225185733771"></p>
+<p><img src="/2023/04/08/%E9%A1%B9%E7%9B%AERPC%E6%A1%86%E6%9E%B6/image-20230225185750674.png" alt="image-20230225185750674"></p>
+<h3 id="4-心跳机制如何实现"><a href="#4-心跳机制如何实现" class="headerlink" title="4. 心跳机制如何实现"></a>4. 心跳机制如何实现</h3><p>&#x3D;&#x3D;项目&#x3D;&#x3D;</p>
+<ul>
+<li>pipeline 中添加 IdleStatehandler（）并设置读空闲、写空闲、读写空闲</li>
+<li>ServerHandler 中重写userEventTriggered（）方法进行检测，读空闲时关闭channel，读写空闲时时发送 ping</li>
+<li>ClientChannel 对ping 回复 pong</li>
+</ul>
+<p>&#x3D;&#x3D;Netty 心跳机制&#x3D;&#x3D;</p>
+<h3 id="5-为什么选用-JSON-序列化"><a href="#5-为什么选用-JSON-序列化" class="headerlink" title="5. 为什么选用 JSON 序列化"></a>5. 为什么选用 JSON 序列化</h3><p>&#x3D;&#x3D;Java 序列化的缺点：&#x3D;&#x3D;</p>
+<ul>
+<li>无法跨语言，是 Java 语言内部的私有协议，对于java序列化后的字节数组，别的语言无法进行反序列化，因此不适用远程过程调用。</li>
+<li>序列化后的码流太大，采用JDK序列化机制的二进制数组是二进制编码的5.29倍，影响网络传输效率</li>
+<li>序列化性能太低，只有二进制编码的6.17%</li>
+</ul>
+<p>&#x3D;&#x3D;JSON 序列化：&#x3D;&#x3D;</p>
+<p>这个项目中，服务提供者和服务调用者传输的数据量相对较小，适用于 JSON</p>
+<ul>
+<li>JSON 典型的 k-v 方式，没有数据类型，是文本化序列框架，应用广泛（基于HTTP的RPC框架通信、磁盘存储文本类型的数据等）</li>
+<li>空间开销大</li>
+<li>JSON没有类型，java这种强类型语言通过反射解决，影响性能</li>
+</ul>
+<p>&#x3D;&#x3D;Hession：&#x3D;&#x3D;</p>
+<ul>
+<li>比JDK 、JSON 更高效，生成字节数更小，稳定性、兼容性好，更适合RPC序列化协议</li>
+<li>对 Java 常见类型不支持（Linked类通过拓展CollectionDeserializer解决，Byte&#x2F;Short反序列化变成Integer）</li>
+</ul>
+<p>&#x3D;&#x3D;Protobuf：&#x3D;&#x3D;</p>
+<ul>
+<li>轻便高效的结构化数据存储格式，用于结构化数据序列化，数据结构用 .proto 描述</li>
+<li>编解码性能好，使用二进制编码，空间、时间上有优势</li>
+<li>语言无关、平台无关、拓展性高。文本话的数据描述文件实现语言、平台无关，自动生成代码，且文本方便维护。通过标识字段的顺序实现协议向前兼容</li>
+<li>官方支持 java c++ python</li>
+</ul>
+<h3 id="6-如何基于动态代理对请求进行处理"><a href="#6-如何基于动态代理对请求进行处理" class="headerlink" title="6. 如何基于动态代理对请求进行处理"></a>6. 如何基于动态代理对请求进行处理</h3><p>&#x3D;&#x3D;项目中&#x3D;&#x3D;</p>
+<p>我们创建代理类实现BeanPostProcessor，重写postProcessBeforeInitialization 和 postProcessBeforeInitialization 。在postProcessBeforeInitialization 中获取到 Bean 中标有 @RemoteInvoke 注解的 Field，进而创建 Enhancer，设置动态代理的接口和拦截方法，在我们本地调用方法中添加增强逻辑，即根据方法的名称和参数等信息构建请求报文，发送给远程服务器让他去调用方法，最后返回响应发送给本地客户端。</p>
+<p>总的来说，我们通过动态代理，为本地方法添加了调用远程服务器的逻辑，并且也实现像调用本地方法一样调用远程方法</p>
+<p>&#x3D;&#x3D;java动态代理&#x3D;&#x3D;</p>
+<p>使用代理模式，代理类与委托类有同样的接口，代理类负责为委托类预处理消息、过滤消息、把消息转发给委托类、以及时候处理消息等</p>
+<p>动态代理是代理类在程序运行时创建的代理方式。能方便的对代理类的方法进行统一处理</p>
+<p>&#x3D;&#x3D;Spring AOP&#x3D;&#x3D;</p>
+<p>通过ProxyFactory类，在类中对代理类进行创建，方法调用，以及执行Advice</p>
+<blockquote>
+<ol>
+<li>获取 classLoader 和所有接口类型</li>
+<li>创建invocationHandler并重写invoke方法</li>
+<li>在invoke方法中，在不同切点进行Advice，并执行目标对象的目标方法，返回结果</li>
+<li>通过 Proxy 类的newProxyInstance方法获取代理对象</li>
+</ol>
+</blockquote>
+<h3 id="7-如何解决进程间的通信问题"><a href="#7-如何解决进程间的通信问题" class="headerlink" title="7. 如何解决进程间的通信问题"></a>7. 如何解决进程间的通信问题</h3><p>&#x3D;&#x3D;wait&#x2F;notify机制&#x3D;&#x3D;，使用 ReentrantLock 和 Condition 控制</p>
+<ul>
+<li>创建 ReentrantLock 和 Condition</li>
+<li>线程获取数据结果，如果还没有要先在conditon等待</li>
+<li>获取结果的时候要上锁，以防多个线程同时获取结果</li>
+<li>线程添加消息的结果，要signal唤醒在condition等待的线程，让他们知道有新的结果出来了</li>
+</ul>
+<h3 id="8-如何解决-TCP-IP-粘包问题"><a href="#8-如何解决-TCP-IP-粘包问题" class="headerlink" title="8. 如何解决 TCP&#x2F;IP 粘包问题"></a>8. 如何解决 TCP&#x2F;IP 粘包问题</h3><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1804413">https://cloud.tencent.com/developer/article/1804413</a></p>
+<p>&#x3D;&#x3D;什么是粘包和拆包&#x3D;&#x3D;（自己用语言口头说一下）</p>
+<img src="/2023/04/08/%E9%A1%B9%E7%9B%AERPC%E6%A1%86%E6%9E%B6/image-20230225180458217.png" alt="image-20230225180458217" style="zoom:80%;">
+
+<p>&#x3D;&#x3D;产生原因是什么&#x3D;&#x3D;</p>
+<ul>
+<li>应用程序 write 的字节大小大于套接字发送缓冲区大小</li>
+<li>进行 MSS 大小的 TCP 分段</li>
+<li>因为太网帧的MTU限制进行IP分片</li>
+</ul>
+<p>&#x3D;&#x3D;通用解决方案&#x3D;&#x3D;</p>
+<ul>
+<li>消息定长</li>
+<li>包尾添加回车换行符分割（FTP协议）</li>
+<li>消息头指明长度</li>
+</ul>
+<p>&#x3D;&#x3D;项目解决方案&#x3D;&#x3D;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ByteBuf</span> <span class="variable">delimiter</span> <span class="operator">=</span> Unpooled.copiedBuffer(<span class="string">&quot;$_&quot;</span>.getBytes());</span><br><span class="line">ch.pipeline().addLast(<span class="keyword">new</span> <span class="title class_">DelimiterBasedFrameDecoder</span>(Integer.MAX_VALUE, delimiter));  <span class="comment">//c.二进制&amp;_-&gt;二进制</span></span><br><span class="line">ch.pipeline().addLast(<span class="keyword">new</span> <span class="title class_">StringDecoder</span>());  <span class="comment">//d.二进制-&gt;String</span></span><br></pre></td></tr></table></figure>
+
+<p>DelimiterBasedFrameDecoder遍历ButeBuf中的可读字节，看是否有指定分隔符，代表一条消息的结尾。消息如果超过设定的单行最大长度，会抛出异常</p>
+<h3 id="9-BeanPostProcesser-机制"><a href="#9-BeanPostProcesser-机制" class="headerlink" title="9. BeanPostProcesser 机制"></a>9. BeanPostProcesser 机制</h3><p>&#x3D;&#x3D;原理&#x3D;&#x3D;</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38526573/article/details/88086752">https://blog.csdn.net/qq_38526573/article/details/88086752</a></p>
+<p>&#x3D;&#x3D;项目中怎么用的&#x3D;&#x3D;</p>
+<p>又来完成bean对象的动态代理</p>
+<h3 id="10-ApplicationListener-机制"><a href="#10-ApplicationListener-机制" class="headerlink" title="10 ApplicationListener 机制"></a>10 ApplicationListener 机制</h3><p><img src="/2023/04/08/%E9%A1%B9%E7%9B%AERPC%E6%A1%86%E6%9E%B6/image-20231021164945844.png" alt="image-20231021164945844"></p>
+<p><img src="/2023/04/08/%E9%A1%B9%E7%9B%AERPC%E6%A1%86%E6%9E%B6/image-20231021164956450.png" alt="image-20231021164956450"></p>
+<p>通过 ApplicationListener 监听 spring 初始化完毕事件（ContextRefreshEvent），触发服务器启动</p>
+<blockquote>
+<p>因为服务器有继承ApplicationListener<ContextRefreshedEvent>，就相当于一个监听ContextRefreshedEvent 事件的监听器。配置类启动后会刷新容器，触发 ContextRefreshedEvent 事件，从而触发服务器的启动</ContextRefreshedEvent></p>
+</blockquote>
+<p>配置类启动 -&gt; 触发 ContextRefreshedEvent 容器刷新事件 -&gt; ApplicationListener 监听到事件 -&gt; 服务器启动 </p>
+<h2 id="RPC-相关"><a href="#RPC-相关" class="headerlink" title="RPC 相关"></a>RPC 相关</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/fangmeng1997/category_10396482.html">https://blog.csdn.net/fangmeng1997/category_10396482.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnkirito.moe/categories/RPC/page/3/">https://www.cnkirito.moe/categories/RPC/page/3/</a></p>
+<h3 id="12-ZooKeeper-服务发现"><a href="#12-ZooKeeper-服务发现" class="headerlink" title="12 ZooKeeper 服务发现"></a>12 ZooKeeper 服务发现</h3><p>搭建 Zookeeper 集群作为注册中心集群，服务注册只需要服务节点向 Zookeeper 节点写入注册信息即可，利用 Zookeeper 的 Watcher 机制完成服务订阅和服务下发功能</p>
+<p><img src="/2023/04/08/%E9%A1%B9%E7%9B%AERPC%E6%A1%86%E6%9E%B6/image-20230225190832350.png" alt="image-20230225190832350"></p>
+<p>ZooKeeper的一大特点就是<strong>强一致性</strong>，ZooKeeper集群的每个节点的数据每次发生更新操作，都会通知其它ZooKeeper节点同时执行更新。它要求保证每个节点的数据能够实时的完全一致，这也就直接导致了<strong>ZooKeeper集群性能上的下降</strong>。<br>RPC框架依赖的注册中心的服务数据的一致性其实并不需要满足CP，只要满足<strong>AP</strong>即可。我们就是采用“消息总线”的通知机制，来保证注册中心数据的最终一致性，来解决这些问题的。（弄清楚ACP）<br>消息总线机制，注册数据可以全量缓存在每个注册中心内存中，通过消息总线来同步数据。<strong>当有一个注册中心节点接收到服务节点注册时，会产生一个消息推送给消息总线，再通过消息总线通知给其它注册中心节点更新数据并进行服务下发，从而达到注册中心间数据最终一致性</strong></p>
+<h3 id="13-说说项目中用到哪些设计模式"><a href="#13-说说项目中用到哪些设计模式" class="headerlink" title="13 说说项目中用到哪些设计模式"></a>13 说说项目中用到哪些设计模式</h3><p>监听者模式、分发者模式、代理模式</p>
+<h3 id="14-项目其他"><a href="#14-项目其他" class="headerlink" title="14 项目其他"></a>14 项目其他</h3><p>&#x3D;&#x3D;性能&#x3D;&#x3D;</p>
+<p>rpc调用testUser方法</p>
+<p>1w次</p>
+<p><img src="/2023/04/08/%E9%A1%B9%E7%9B%AERPC%E6%A1%86%E6%9E%B6/image-20230225182650086.png" alt="image-20230225182650086"></p>
+<p>10w次</p>
+<p><img src="/2023/04/08/%E9%A1%B9%E7%9B%AERPC%E6%A1%86%E6%9E%B6/image-20230225191559698.png" alt="image-20230225191559698"></p>
+<p>100 w次</p>
+<h2 id="相关八股"><a href="#相关八股" class="headerlink" title="相关八股"></a>相关八股</h2><h3 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h3><p><img src="/2023/04/08/%E9%A1%B9%E7%9B%AERPC%E6%A1%86%E6%9E%B6/image-20231007105217188.png" alt="image-20231007105217188"></p>
+<p><img src="/2023/04/08/%E9%A1%B9%E7%9B%AERPC%E6%A1%86%E6%9E%B6/image-20231007105238110.png" alt="image-20231007105238110"></p>
+<p>关键：不改代码，直接加逻辑（AOP）</p>
+<p>有公共接口，原始类。然后根据原始类创建代理类！</p>
+<p>怎么创建代理类呢？用Proxy.newProxyInstance()，里面有三个参数，一个是类加载器，一个是原始类的实现接口，最后是一个实现了InvocationHandler接口的类！</p>
+<p>你看，创建代理类，我们要用到公共接口（得知规范），还用到一个实现了InvocationHandler接口的类，这个类很重要，因为我们在这个类里面自定义了增加的逻辑！</p>
+<p>这个实现了InvocationHandler接口的类，有一个invoke方法，同样三个参数：一个是代理类，一个是Method，一个是Method的参数。invoke里面又对原始类调用了invoke，可以理解成回调</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.reflect.InvocationHandler;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Proxy;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">MyInterface</span> &#123;  <span class="comment">//公共接口</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">myMethod</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> <span class="keyword">implements</span> <span class="title class_">MyInterface</span> &#123;  <span class="comment">//原始类</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">myMethod</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;MyClass: myMethod()&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyInvocationHandler</span> <span class="keyword">implements</span> <span class="title class_">InvocationHandler</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Object target;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MyInvocationHandler</span><span class="params">(Object target)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.target = target;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Before invoking myMethod()&quot;</span>);</span><br><span class="line">        <span class="type">Object</span> <span class="variable">result</span> <span class="operator">=</span> method.invoke(target, args);</span><br><span class="line">        System.out.println(<span class="string">&quot;After invoking myMethod()&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">MyClass</span> <span class="variable">myClass</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyClass</span>();</span><br><span class="line">        <span class="type">MyInvocationHandler</span> <span class="variable">handler</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MyInvocationHandler</span>(myClass);</span><br><span class="line"></span><br><span class="line">        <span class="type">MyInterface</span> <span class="variable">proxy</span> <span class="operator">=</span> (MyInterface) Proxy.newProxyInstance(</span><br><span class="line">                MyClass.class.getClassLoader(),</span><br><span class="line">                MyClass.class.getInterfaces(),</span><br><span class="line">                handler);</span><br><span class="line"></span><br><span class="line">        proxy.myMethod();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/04/08/%E9%A1%B9%E7%9B%AERPC%E6%A1%86%E6%9E%B6/image-20231007170822582.png" alt="image-20231007170822582"></p>
+<h3 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h3><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904025607897096">https://juejin.cn/post/6844904025607897096</a></p>
+<p>（回头看看JVM）</p>
+<img src="/2023/04/08/%E9%A1%B9%E7%9B%AERPC%E6%A1%86%E6%9E%B6/image-20231024200028352.png" alt="image-20231024200028352" style="zoom:67%;">
+
+<p><img src="/2023/04/08/%E9%A1%B9%E7%9B%AERPC%E6%A1%86%E6%9E%B6/image-20231021161533930.png" alt="image-20231021161533930"></p>
+<p><img src="/2023/04/08/%E9%A1%B9%E7%9B%AERPC%E6%A1%86%E6%9E%B6/image-20231021161631209.png" alt="image-20231021161631209"></p>
+<p><img src="/2023/04/08/%E9%A1%B9%E7%9B%AERPC%E6%A1%86%E6%9E%B6/image-20231021161642924.png" alt="image-20231021161642924"></p>
+<p><img src="/2023/04/08/%E9%A1%B9%E7%9B%AERPC%E6%A1%86%E6%9E%B6/image-20231021161653450.png" alt="image-20231021161653450"></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">💰</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 Yelog
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>Help us with donation</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">alipay</label></span><span><label><input type="radio" name="pay" value="weixin">weixin</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>计算机网络 | Hexo</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="计算机网络 | Hexo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="快慢指针141. Linked List Cycle Given head, the head of a linked list, determine if the linked list has a cycle in it. There is a cycle in a linked list if there is some node in the list that can be reache">
+<meta property="og:type" content="article">
+<meta property="og:title" content="力扣刷题">
+<meta property="og:url" content="http://example.com/2023/11/22/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="快慢指针141. Linked List Cycle Given head, the head of a linked list, determine if the linked list has a cycle in it. There is a cycle in a linked list if there is some node in the list that can be reache">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2023/11/22/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/circularlinkedlist.png">
+<meta property="og:image" content="http://example.com/2023/11/22/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/circularlinkedlist_test2.png">
+<meta property="og:image" content="http://example.com/2023/11/22/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/circularlinkedlist_test3.png">
+<meta property="og:image" content="http://example.com/2023/11/22/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/circularlinkedlist-1697081769507-7.png">
+<meta property="og:image" content="http://example.com/2023/11/22/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/circularlinkedlist_test2-1697081769507-9.png">
+<meta property="og:image" content="http://example.com/2023/11/22/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/circularlinkedlist_test3-1697081769507-11.png">
+<meta property="og:image" content="http://example.com/2023/11/22/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/merge_ex1.jpg">
+<meta property="og:image" content="http://example.com/2023/11/22/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/swap_ex1.jpg">
+<meta property="og:image" content="http://example.com/2023/11/22/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/e1.png">
+<meta property="og:image" content="http://example.com/2023/11/22/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/e2.png">
+<meta property="og:image" content="http://example.com/2023/11/22/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/e3.png">
+<meta property="article:published_time" content="2023-11-22T09:10:44.000Z">
+<meta property="article:modified_time" content="2023-11-22T09:15:40.438Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2023/11/22/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/circularlinkedlist.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>John Doe</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="facebook"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-facebook"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+            <a title="instagram"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-instagram"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="reddit"
+               href="https://www.reddit.com/user/yelog/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-reddit"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="weibo"
+               href="http://weibo.com/u/2307534817"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="jianshu"
+               href="https://www.jianshu.com/u/ff56736de7cf"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-jianshu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com/people/jaytp/activities"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="oschina"
+               href="https://my.oschina.net/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-oschina"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:jaytp@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/#/user/home?id=88151013"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(9)</small>
+            
+        </div>
+    </li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">About</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">Friends</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="9">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2023/11/22/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="力扣刷题">力扣刷题</span>
+            <span class="post-date" title="2023-11-22 17:10:44">2023/11/22</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2023/10/08/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="动态代理">动态代理</span>
+            <span class="post-date" title="2023-10-08 22:49:01">2023/10/08</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2023/04/08/%E9%A1%B9%E7%9B%AERPC%E6%A1%86%E6%9E%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="项目RPC框架">项目RPC框架</span>
+            <span class="post-date" title="2023-04-08 19:49:23">2023/04/08</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2023/01/02/redis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="redis">redis</span>
+            <span class="post-date" title="2023-01-02 17:46:17">2023/01/02</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2022/12/24/MySQL/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MySQL">MySQL</span>
+            <span class="post-date" title="2022-12-24 11:40:50">2022/12/24</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2022/11/11/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java并发编程">Java并发编程</span>
+            <span class="post-date" title="2022-11-11 16:20:42">2022/11/11</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2022/10/30/JVM%E8%B0%83%E4%BC%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JVM调优">JVM调优</span>
+            <span class="post-date" title="2022-10-30 20:09:07">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2022/10/19/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="深入理解Java虚拟机">深入理解Java虚拟机</span>
+            <span class="post-date" title="2022-10-19 10:40:02">2022/10/19</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="计算机网络">计算机网络</span>
+            <span class="post-date" title="2022-02-06 18:11:21">2022/02/06</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-计算机网络" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">计算机网络</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2023-11-24 19:48:25'>2022-02-06 18:11</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C"><span class="toc-text">计算机网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE%E5%85%A5%E9%97%A8"><span class="toc-text">互联网协议入门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IP%E5%8D%8F%E8%AE%AE%E3%80%81ARP%E5%8D%8F%E8%AE%AE%E3%80%81RARP%E5%8D%8F%E8%AE%AE"><span class="toc-text">IP协议、ARP协议、RARP协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP%E5%88%86%E6%AE%B5-%E5%92%8C-IP%E5%88%86%E7%89%87"><span class="toc-text">TCP分段 和 IP分片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UDP-%E5%8D%8F%E8%AE%AE"><span class="toc-text">UDP 协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-%E5%8D%8F%E8%AE%AE"><span class="toc-text">TCP 协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B"><span class="toc-text">三次握手</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6"><span class="toc-text">流量控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6"><span class="toc-text">拥塞控制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP"><span class="toc-text">HTTP</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="互联网协议入门"><a href="#互联网协议入门" class="headerlink" title="互联网协议入门"></a><strong>互联网协议入门</strong></h2><p><strong>一、概述</strong></p>
+<p><strong>1.1 五层模型</strong></p>
+<p>互联网的实现，分成好几层。每一层都靠下一层支持。用户接触到的，只是最上面的一层，根本没有感觉到下面的层。</p>
+ <img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221123203256042.png" alt="image-20221123203256042" style="zoom:50%;">
+
+<p><strong>1.2 层与协议</strong></p>
+<p>每一层都是为了完成一种功能。为了实现这些功能，就需要大家都遵守共同的规则。</p>
+<p>大家都遵守的规则，就叫做”协议”（protocol）。</p>
+<p>互联网的每一层，都定义了很多协议。这些协议的总称，就叫做”互联网协议”（Internet Protocol Suite）。它们是互联网的核心。</p>
+<p><strong>二、实体层</strong></p>
+<p>电脑要组网，首先把电脑连起来，可以用光缆、电缆、双绞线、无线电波等方式。</p>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221123203839341.png" alt="image-20221123203839341" style="zoom:50%;">
+
+<p><strong>这就叫做”实体层”，它就是把电脑连接起来的物理手段。它主要规定了网络的一些电气特性，作用是负责传送0和1的电信号。</strong></p>
+<p><strong>三、链接层</strong></p>
+<p><strong>3.1 定义</strong></p>
+<p>单纯的0和1没有任何意义，必须规定解读方式：多少个电信号算一组？每个信号位有何意义？</p>
+<p><strong>这就是”链接层”的功能，它在”实体层”的上方，&#x3D;&#x3D;确定了0和1的分组方式&#x3D;&#x3D;。</strong></p>
+<p><strong>3.2 以太网协议</strong></p>
+<p>早期每家公司都有自己的电信号分组方式。逐渐地，一种叫做”以太网”（Ethernet）的协议，占据了主导地位。</p>
+<p>以太网规定，一组电信号构成一个数据包，叫做”帧”（Frame）。每一帧分成两个部分：标头（Head）和数据（Data）。</p>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221123203633812.png" alt="image-20221123203633812" style="zoom:50%;">
+
+<p>“标头”包含数据包的一些说明项，比如发送者、接受者、数据类型等等；”数据”则是数据包的具体内容。</p>
+<p>数据链路层中的网络对数据帧的长度都有一个限制，不同网络的	最大传输单元MTU值不同，常用的以太网为1500个字节</p>
+<p>“标头”的长度，固定为18字节。”数据”的长度，最短为46字节，最长为1500字节。因此，整个”帧”最短为64字节，最长为1518字节。如果数据很长，就必须分割成多个帧进行发送。</p>
+<p>MTU主要是为了限制一次传输的最大IP数据报的值，如果IP层有一个数据报要传，而且数据长度比数据链路层的MTU大，则就需要将IP数据报进行分片，使每一片都小于MTU。</p>
+<blockquote>
+<p>路径MTU：<br> 当在同一网络上的两台主机互相进行通信时，该网络的MTU是非常重要的，但如果两台主机之间的通信要经过多个网络，而每个网络的链路层可能有不同的MTU，这时，要重点考虑的是两台通信主机路径中各网络的最小MTU，称它为路径MTU。<br> 两台主机之间的路径MTU把有一定是个常数，它取决于当时所选择的路由，而且选路不一定是对称的，即从A到B经过的路由和从B到A经过的路由不同，因此路径MTU在两个方向上不一定是一致的。</p>
+</blockquote>
+<p><strong>3.3 MAC地址</strong></p>
+<p>发送者和接受者是如何标识呢？</p>
+<p>以太网规定，连入网络的所有设备，都必须具有”网卡”接口。数据包必须是从一块网卡，传送到另一块网卡。网卡的地址，就是数据包的发送地址和接收地址，这叫做MAC地址。</p>
+<p>每块网卡出厂的时候，都有一个全世界独一无二的MAC地址，长度是48个二进制位，通常用12个十六进制数表示。</p>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221123203926135.png" alt="image-20221123203926135" style="zoom:50%;">
+
+<p>前6个十六进制数是厂商编号，后6个是该厂商的网卡流水号。有了MAC地址，就可以定位网卡和数据包的路径了。</p>
+<p><strong>3.4 广播</strong></p>
+<ul>
+<li>一块网卡怎么会知道另一块网卡的MAC地址？</li>
+</ul>
+<p>回答是 有一种<strong>ARP协议</strong>，可以解决这个问题。以太网数据包必须知道接收方的MAC地址，然后才能发送。</p>
+<ul>
+<li>有了MAC地址，系统怎样才能把数据包准确送到接收方？</li>
+</ul>
+<p>回答是 以太网采用了一种很”原始”的方式，它不是把数据包准确送到接收方，而是向本网络内所有计算机发送，让每台计算机自己判断，是否为接收方。</p>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221123204210595.png" alt="image-20221123204210595" style="zoom:50%;">
+
+<p>上图中，1号计算机向2号计算机发送一个数据包，同一个子网络的3号、4号、5号计算机都会收到这个包。它们读取这个包的”标头”，找到接收方的MAC地址，然后与自身的MAC地址相比较，如果两者相同，就接受这个包，做进一步处理，否则就丢弃这个包。这种发送方式就叫做”广播”（broadcasting）。</p>
+<p><strong>四、网络层</strong></p>
+<p><strong>4.1 网络层的由来</strong></p>
+<p>以太网协议，依靠MAC地址发送数据，这样做有一个重大的缺点：以太网采用<strong>广播方式</strong>发送数据包，所有成员人手一”包”，不仅效率低，而且局限在发送者所在的子网络。如果两台计算机不在同一个子网络，广播是传不过去的。这种设计是合理的，否则互联网上每一台计算机都会收到所有包，那会引起灾难。</p>
+<p>互联网是无数子网络共同组成的一个巨型网络<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221123204419739.png" alt="image-20221123204419739" style="zoom:33%;"></p>
+<p>因此，必须找到一种方法，能够区分哪些MAC地址属于同一个子网络，哪些不是。如果是同一个子网络，就采用广播方式发送，否则就采用”路由”方式发送。但是，MAC地址本身无法做到这一点。它只与厂商有关，与所处网络无关。</p>
+<p><strong>这就导致了”网络层”的诞生。它的作用是引进一套新的地址，使得我们能够&#x3D;&#x3D;区分不同的计算机是否属于同一个子网络&#x3D;&#x3D;。这套地址就叫做”网络地址”，简称”网址”。</strong></p>
+<p>“网络层”出现以后，每台计算机有了两种地址，一种是MAC地址，另一种是网络地址。两种地址之间没有任何联系，MAC地址是绑定在网卡上的，网络地址则是管理员分配的，它们只是随机组合在一起。</p>
+<p>网络地址帮助我们确定计算机所在的子网络，MAC地址则将数据包送到该子网络中的目标网卡。先处理网络地址，然后再处理MAC地址。</p>
+<p><strong>4.2 IP协议</strong></p>
+<p>规定网络地址的协议，叫做IP协议。它所定义的地址，就被称为IP地址。</p>
+<p>IPv4 规定，网络地址由32个二进制位组成。</p>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221123204754901.png" alt="image-20221123204754901" style="zoom:50%;">
+
+<p>互联网上的每一台计算机，都会分配到一个IP地址。这个地址分成两个部分，前一部分代表网络，后一部分代表主机。处于同一个子网络的电脑，它们IP地址的网络部分必定是相同的。</p>
+<p>**”子网掩码”**是表示子网络特征的一个参数。它在形式上等同于IP地址，也是一个32位二进制数字，它的网络部分全部为1，主机部分全部为0。</p>
+<p>知道”子网掩码”，我们能判断，任意两个IP地址是否处在同一个子网络。方法是将两个IP地址与子网掩码分别进行AND运算（两个数位都为1，运算结果为1，否则为0），然后比较结果是否相同，如果是的话，就表明它们在同一个子网络中，否则就不是。</p>
+<p>总结一下，IP协议的作用主要有两个，一个是为每一台计算机分配IP地址，另一个是确定哪些地址在同一个子网络。</p>
+<p><strong>4.3 IP数据报</strong></p>
+<p>根据IP协议发送的数据，就叫做IP数据报，其中包括IP地址信息。</p>
+<p>以太网数据包只包含MAC地址，并没有IP地址的栏位。把IP数据包直接放进以太网数据包的”数据”部分，不用修改以太网的规格。这就是互联网分层结构的好处：上层的变动完全不涉及下层的结构。</p>
+<p>IP数据包也分为”标头”和”数据”两个部分。</p>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221123205557377.png" alt="image-20221123205557377" style="zoom:50%;">
+
+<p>“标头”部分主要包括版本、长度、IP地址等信息，”数据”部分则是IP数据包的具体内容。它放进以太网数据包后，以太网数据包就变成了下面这样。</p>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221123205832086.png" alt="image-20221123205832086" style="zoom:50%;">
+
+<p>IP数据包的”标头”部分的长度为20到60字节，整个数据包的总长度最大为65,535字节。理论上，一个IP数据包的”数据”部分，最长为65,515字节。然而，以太网数据包的”数据”部分，最长只有1500字节。因此，如果IP数据包超过了1500字节，它就需要分割成几个以太网数据包，分开发送了。</p>
+<p><strong>4.4 &#x3D;&#x3D;ARP协议&#x3D;&#x3D;</strong></p>
+<p>因为IP数据包是放在以太网数据包里发送的，所以我们必须同时知道两个地址，一个是对方的MAC地址，另一个是对方的IP地址。通常，对方的IP地址是已知的，但是我们不知道它的MAC地址。</p>
+<p>ARP协议能够从IP地址得到MAC地址。</p>
+<ul>
+<li><p>第一种情况，如果两台主机不在同一个子网络，那么事实上没有办法得到对方的MAC地址，只能把数据包传送到两个子网络连接处的”网关”（gateway），让网关去处理。</p>
+</li>
+<li><p>第二种情况，如果两台主机在同一个子网络，可以用ARP协议，得到对方的MAC地址。ARP协议也是发出一个数据包（包含在以太网数据包中），其中包含它所要查询主机的IP地址，在对方的MAC地址这一栏，填的是FF:FF:FF:FF:FF:FF，表示这是一个”广播”地址。它所在子网络的每一台主机，都会收到这个数据包，从中取出IP地址，与自身的IP地址进行比较。如果两者相同，都做出回复，向对方报告自己的MAC地址，否则就丢弃这个包。</p>
+</li>
+</ul>
+<p>局域网中的ARP攻击是通过伪造IP地址和MAC地址实现ARP欺骗，能够在网络中产生大量的ARP通信量，使网络阻塞。</p>
+<p>总之，有了ARP协议之后，我们就可以得到同一个子网络内的主机MAC地址，可以把数据包发送到任意一台主机之上了。</p>
+<p><strong>五、传输层</strong></p>
+<p><strong>5.1 传输层的由来</strong></p>
+<p>有了MAC地址和IP地址，我们已经可以在互联网上任意两台主机上建立通信。</p>
+<p>我们还需要一个参数，表示这个数据包到底供哪个程序（进程）使用。这个参数就叫做”端口”（port），它是每一个使用网卡的程序的编号。每个数据包都发到主机的特定端口，所以不同的程序就能取到自己所需要的数据。</p>
+<p>“端口”是0到65535之间的一个整数，正好16个二进制位。0到1023的端口被系统占用，用户只能选用大于1023的端口。不管是浏览网页还是在线聊天，应用程序会随机选用一个端口，然后与服务器的相应端口联系。</p>
+<p><strong>“传输层”的功能，就是建立”端口到端口”的通信。相比之下，”网络层”的功能是建立”主机到主机”的通信。只要确定主机和端口，我们就能实现程序之间的交流。</strong>因此，Unix系统就把主机+端口，叫做”套接字”（socket）。有了它，就可以进行网络应用程序开发了。</p>
+<p><strong>5.2 UDP协议</strong></p>
+<p>现在，我们必须在数据包中加入端口信息，这就需要新的协议。最简单的实现叫做UDP协议，它的格式几乎就是在数据前面，加上端口号。</p>
+<p>UDP数据包，也是由”标头”和”数据”两部分组成。</p>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221123210732280.png" alt="image-20221123210732280" style="zoom:50%;">
+
+<p>“标头”部分主要定义了发出端口和接收端口，”数据”部分就是具体的内容。然后，把整个UDP数据包放入IP数据包的”数据”部分，IP数据包又是放在以太网数据包之中的，所以整个以太网数据包现在变成了下面这样：</p>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221123210809684.png" alt="image-20221123210809684" style="zoom:50%;">
+
+<p>UDP数据包非常简单，”标头”部分一共只有8个字节，总长度不超过65,535字节，正好放进一个IP数据包。</p>
+<p><strong>5.3 TCP协议</strong></p>
+<p>UDP协议的优点是比较简单，容易实现，缺点是可靠性较差，一旦数据包发出，无法知道对方是否收到。</p>
+<p>TCP协议就是有确认机制的UDP协议，能够确保数据不会遗失。它的缺点是过程复杂、实现困难、消耗较多的资源。</p>
+<p>TCP数据包和UDP数据包一样，都是内嵌在IP数据包的”数据”部分。TCP数据包没有长度限制，理论上可以无限长，但是为了保证网络的效率，通常TCP数据包的长度不会超过IP数据包的长度，以确保单个TCP数据包不必再分割。</p>
+<p><strong>六、应用层</strong></p>
+<p>应用程序收到”传输层”的数据，要进行解读。必须事先规定好格式，否则根本无法解读。</p>
+<p><strong>“应用层”的作用，就是&#x3D;&#x3D;规定应用程序的数据格式&#x3D;&#x3D;。</strong></p>
+<p>举例来说，TCP协议可以为各种各样的程序传递数据，比如Email、WWW、FTP等等。那么，必须有不同协议规定电子邮件、网页、FTP数据的格式，这些应用程序协议就构成了”应用层”。</p>
+<p>这是最高的一层，直接面对用户。它的数据就放在TCP数据包的”数据”部分。因此，现在的以太网的数据包就变成下面这样。</p>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221123211219393.png" alt="image-20221123211219393" style="zoom:50%;">
+
+<p><strong>七、小结</strong></p>
+<p>网络通信就是交换数据包。电脑A向电脑B发送一个数据包，后者收到了，回复一个数据包，从而实现两台电脑之间的通信</p>
+<p>发送这个包，需要知道两个地址：</p>
+<blockquote>
+<p>　　  * 对方的MAC地址</p>
+<p>　　  * 对方的IP地址</p>
+</blockquote>
+<p>有了这两个地址，数据包才能准确送到接收者手中。但是，MAC地址有局限性，如果两台电脑不在同一个子网络，就无法知道对方的MAC地址，必须通过网关（gateway）转发。</p>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221123211517903.png" alt="image-20221123211517903" style="zoom:50%;">
+
+<blockquote>
+<p>上图，1号电脑要向4号电脑发送一个数据包。它先判断4号电脑是否在同一个子网络，结果发现不是，于是就把这个数据包发到网关A。网关A通过路由协议，发现4号电脑位于子网络B，又把数据包发给网关B，网关B再转发到4号电脑。</p>
+</blockquote>
+<p>1号电脑把数据包发到网关A，必须知道网关A的MAC地址。所以，数据包的目标地址，分成两种情况：</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>数据包地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>同一个子网络</td>
+<td>对方的MAC地址，对方的IP地址</td>
+</tr>
+<tr>
+<td>非同一个子网络</td>
+<td>网关的MAC地址，对方的IP地址</td>
+</tr>
+</tbody></table>
+<p>发送数据包之前，电脑必须判断对方是否在同一个子网络，然后选择相应的MAC地址。</p>
+<p><strong>八、用户的上网设置</strong></p>
+<p><strong>8.1 静态IP地址</strong></p>
+<blockquote>
+<p>　　  * 本机的IP地址<br>　　  * 子网掩码<br>　　  * 网关的IP地址<br>　　  * DNS的IP地址</p>
+</blockquote>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221123212205194.png" alt="image-20221123212205194" style="zoom:50%;">
+
+<p>这四个参数缺一不可，由于它们是给定的，计算机每次开机，都会分到同样的IP地址，所以这种情况被称作”静态IP地址上网”。</p>
+<p><strong>8.2 动态IP地址</strong></p>
+<p>所谓”动态IP地址”，指计算机开机后，会自动分配到一个IP地址，不用人为设定。它使用的协议叫做 DHCP 协议。</p>
+<p>协议规定，每个子网络中，有一台计算机负责管理本网络的所有IP地址，它叫做”DHCP服务器”。新的计算机加入网络，必须向”DHCP服务器”发送一个”DHCP请求”数据包，申请IP地址和相关的网络参数。</p>
+<p>如果两台计算机在同一个子网络，必须知道对方的MAC地址和IP地址，才能发送数据包。但是，新加入的计算机不知道这两个地址，怎么发送数据包呢？</p>
+<p>DHCP协议做了一些巧妙的规定。</p>
+<p><strong>8.3 DHCP协议</strong></p>
+<p>它是一种应用层协议，建立在UDP协议之上，所以整个数据包是这样的：</p>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221123212643365.png" alt="image-20221123212643365" style="zoom:50%;">
+
+<blockquote>
+<p>（1）”以太网标头”，设置发出方（本机）的MAC地址和接收方（DHCP服务器）的MAC地址。前者就是本机网卡的MAC地址，后者这时不知道，就填入一个广播地址：FF-FF-FF-FF-FF-FF。</p>
+</blockquote>
+<blockquote>
+<p>（2）”IP标头”，设置发出方的IP地址和接收方的IP地址。这时，对于这两者，本机都不知道。于是，发出方的IP地址就设为0.0.0.0，接收方的IP地址设为255.255.255.255。</p>
+</blockquote>
+<blockquote>
+<p>（3）”UDP标头”，设置发出方的端口和接收方的端口。这一部分是DHCP协议规定好的，发出方是68端口，接收方是67端口。</p>
+</blockquote>
+<p>这个数据包构造完成后，以太网广播发送，同一个子网的每台计算机都收到了这个包。因为接收方的MAC地址是FF-FF-FF-FF-FF-FF，看不出是发给谁的，所以每台收到这个包的计算机，还必须分析这个包的IP地址，才能确定是不是发给自己的。当看到发出方IP地址是0.0.0.0，接收方是255.255.255.255，于是DHCP服务器知道”这个包是发给我的”，而其他计算机就可以丢弃这个包。</p>
+<p>接下来，DHCP服务器读出这个包的数据内容，分配好IP地址，发送回去一个”DHCP响应”数据包。响应包的以太网标头的MAC地址是双方的网卡地址，IP标头的IP地址是DHCP服务器的IP地址（发出方）和255.255.255.255（接收方），UDP标头的端口是67（发出方）和68（接收方），分配给请求端的IP地址和本网络的具体参数则包含在Data部分。</p>
+<p>新加入的计算机收到这个响应包，于是就知道了自己的IP地址、子网掩码、网关地址、DNS服务器等等参数。</p>
+<p><strong>九、实例：访问网页</strong></p>
+<p><strong>9.1 本机参数</strong></p>
+<blockquote>
+<p>　　  * 本机的IP地址：192.168.1.100<br>　　  * 子网掩码：255.255.255.0<br>　　  * 网关的IP地址：192.168.1.1<br>　　  * DNS的IP地址：8.8.8.8</p>
+</blockquote>
+<p>打开浏览器，访问Google，在地址栏输入了网址：<a target="_blank" rel="noopener" href="http://www.google.com./">www.google.com。</a></p>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221123213057542.png" alt="image-20221123213057542" style="zoom:50%;">
+
+<p>这意味着，浏览器要向Google发送一个网页请求的数据包。</p>
+<p><strong>9.2 DNS协议</strong></p>
+<p>发送数据包，必须要知道对方的IP地址。但是，现在，我们只知道网址<a target="_blank" rel="noopener" href="http://www.google.com,不知道它的ip地址./">www.google.com，不知道它的IP地址。</a></p>
+<p>DNS协议将这个网址转换成IP地址。已知DNS服务器为8.8.8.8，于是我们向这个地址发送一个DNS数据包（53端口）。</p>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221123213227293.png" alt="image-20221123213227293" style="zoom:50%;">
+
+<p>然后，DNS服务器做出响应，告诉我们Google的IP地址是172.194.72.105。于是，我们知道了对方的IP地址。</p>
+<p><strong>9.3 子网掩码</strong></p>
+<p>接下来，我们要判断，这个IP地址是不是在同一个子网络，这就要用到子网掩码。</p>
+<p>已知子网掩码是255.255.255.0，本机用它对自己的IP地址192.168.1.100，做一个二进制的AND运算，结果为192.168.1.0；然后对Google的IP地址172.194.72.105也做一个AND运算，计算结果为172.194.72.0。这两个结果不相等，所以结论是，Google与本机不在同一个子网络。</p>
+<p>因此，我们要向Google发送数据包，必须通过网关192.168.1.1转发，也就是说，接收方的MAC地址将是网关的MAC地址。</p>
+<p><strong>9.4 应用层协议</strong></p>
+<p>浏览网页用的是HTTP协议，它的整个数据包构造是这样的：</p>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221123213414717.png" alt="image-20221123213414717" style="zoom:50%;">
+
+<p>HTTP部分的内容，类似于下面这样：</p>
+<blockquote>
+<p>　　　　GET &#x2F; HTTP&#x2F;1.1<br>　　　　Host: <a target="_blank" rel="noopener" href="http://www.google.com/">www.google.com</a><br>　　　　Connection: keep-alive<br>　　　　User-Agent: Mozilla&#x2F;5.0 (Windows NT 6.1) ……<br>　　　　Accept: text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,<em>&#x2F;</em>;q&#x3D;0.8<br>　　　　Accept-Encoding: gzip,deflate,sdch<br>　　　　Accept-Language: zh-CN,zh;q&#x3D;0.8<br>　　　　Accept-Charset: GBK,utf-8;q&#x3D;0.7,*;q&#x3D;0.3<br>　　　　Cookie: … …</p>
+</blockquote>
+<p>我们假定这个部分的长度为4960字节，它会被嵌在TCP数据包之中。</p>
+<p><strong>9.5 TCP协议</strong></p>
+<p>TCP数据包需要设置端口，接收方（Google）的HTTP端口默认是80，发送方（本机）的端口是一个随机生成的1024-65535之间的整数，假定为51775。</p>
+<p>TCP数据包的标头长度为20字节，加上嵌入HTTP的数据包，总长度变为4980字节。</p>
+<p><strong>9.6 IP协议</strong></p>
+<p>然后，TCP数据包再嵌入IP数据包。IP数据包需要设置双方的IP地址，这是已知的，发送方是192.168.1.100（本机），接收方是172.194.72.105（Google）。</p>
+<p>IP数据包的标头长度为20字节，加上嵌入的TCP数据包，总长度变为5000字节。</p>
+<p><strong>9.7 以太网协议</strong></p>
+<p>最后，IP数据包嵌入以太网数据包。以太网数据包需要设置双方的MAC地址，发送方为本机的网卡MAC地址，接收方为网关192.168.1.1的MAC地址（通过ARP协议得到）。</p>
+<p>以太网数据包的数据部分，最大长度为1500字节，而现在的IP数据包长度为5000字节。因此，IP数据包必须分割成四个包。因为每个包都有自己的IP标头（20字节），所以四个包的IP数据包的长度分别为1500、1500、1500、560。</p>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221123213829894.png" alt="image-20221123213829894" style="zoom:50%;">
+
+<p><strong>9.8 服务器端响应</strong></p>
+<p>经过多个网关的转发，Google的服务器172.194.72.105，收到了这四个以太网数据包。</p>
+<p>根据IP标头的序号，Google将四个包拼起来，取出完整的TCP数据包，然后读出里面的”HTTP请求”，接着做出”HTTP响应”，再用TCP协议发回来。</p>
+<p>本机收到HTTP响应以后，就可以将网页显示出来，完成一次网络通信。</p>
+<h2 id="IP协议、ARP协议、RARP协议"><a href="#IP协议、ARP协议、RARP协议" class="headerlink" title="IP协议、ARP协议、RARP协议"></a>IP协议、ARP协议、RARP协议</h2><p>IP是TCP&#x2F;IP协议族中最核心的协议，所有的TCP、UDP、ICMP、IGMP数据都以IP数据报的格式传输。IP仅提供尽力而为的传输服务，如果发生某种错误，IP会丢失该数据，然后发送ICMP消息给信源端。另外，IP数据报可以不按发送顺序接受。</p>
+<p>IP数据报的格式如下：</p>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221123221008921.png" alt="image-20221123221008921" style="zoom:60%;">
+
+
+
+<p>前20字节和紧接其后的选项部分是IP数据报的首部，前20个字节是固定的，选项可有可无。首部的每一行是一个32位字的单位，最高位在左边，为0bit，最低位在右边，为31bit。4字节的32bit值按照以下次序传输：首先0-7bit，其次8-15比特，然后16-23bit，最后是24-31bit，这种传输次序称为big endian字节序。TCP&#x2F;IP首部中的所有二进制整数在网络中传输时都要求以这种次序，因此又称作网络字节序，其他形式存储的二进制数据，如little endian格式，必须在传输数据之前把首部转化成网络字节序。</p>
+<p>首部最长为60字节，也即是说选项部分的最大值为40字节，不够4的倍数，要用0填充，使数据部分的起始地址为4的倍数。</p>
+<p>​    </p>
+<p>IP路由选择    </p>
+<p>主机通过路由器和目的主机连接。主机通过IP数据报连接目的主机时，按照如下步骤搜索（同一网络中的搜索要经过ARP协议将目的主机的IP地址解析为MAC地址）：</p>
+<p>搜索路由表，优先搜索匹配主机，如果能找到和IP地址完全一致的目标主机，则将该包发向目标主机<br>搜索路由表，如果匹配主机失败，则匹配同子网的路由器，这需要子网掩码的协助。如果找到路由器，则将该包发向路由器。<br>搜索路由表，如果匹配同子网路由器失败，则匹配同网号路由器，如果找到路由器，则将该包发向路由器。<br>搜索路由表，如果以上都失败了，就搜索默认路由，如果默认路由存在，则发包<br>如果都失败了，就丢掉这个包。</p>
+<p>ARP协议和RARP协议<br>ARP协议只用在局域网中，它用来将IP地址解析为MAC地址。局域网中的每个主机都有一个ARP缓存，它保存了最近发起的IP地址到MAC地址的映射记录，当该主机要向局域网中的某一主机发送数据时，它会先从自己的缓存中查找，看是否存在目标IP地址，如果找到，就通过映射找到它的MAC地址，从而发送过去，如果没有找到该目的IP地址，它就向该局域网内发送一个广播，广播中包含自己的IP地址、MAC地址和目的主机的IP地址，局域网内的所有主机都会收到该广播，但只有目的IP地址的主机会做出回应，并把自己的MAC地址发送给源主机，源主机收到后，在自己的ARP缓存中增加上该映射，并根据发来的MAC地址将数据发送给目的主机。<br>ARP高速缓存中的表项一般都要设置超时值，如果一段时间内没有与某主机通信，就将该主机对应的IP与MAC之间的映射关系去掉，下次在需要通信时，依然发送广播。<br>如果ARP请求是从一个网络的主机到另一个网络的主机，那么连接这两个网络的路由器就可以回答该请求，这个过程成为ARP代理。<br>RARP协议则刚好相反，它将MAC地址解析成为对应的IP地址，通常在DHCP中有集成，现在已很少单独使用。</p>
+<p> ICMP协议</p>
+<p>ICMP经常被认为是IP层的一个组成部分，它是网络层的一个协议，它传递差错报文以及其他需要注意的信息，ICMP报文通常被IP层或更高层（TCP、UDP等）使用，它是在IP数据报内传输的。</p>
+<p>ICMP报文大致分为两类：查询报文和差错报文。</p>
+<p>差错报文：</p>
+<ul>
+<li>当传送IP数据报发生错误时（比如主机不可达、网络不可达等），ICMP协议将会发送一个ICMP差错报文给源主机，好让主机做出相应的处理，也因此IP层以上的一些协议有可能做到可靠传输。差错报文分成网络不可达、协议不可达、端口不可达等。这里说下端口不可达的意思：UDP的规则之一是，如果收到一份UDP数据报而目的端口与某个正在使用的进程不相符，那么UDP返回一个ICMP不可达报文，将报文中的类型和代码的组合设定为端口不可达。Traceroute程序就是利用端口不可达来产生ICMP差错报文的。</li>
+</ul>
+<p>在大多数情况下，传送IP数据报发生错误，会产生一个ICMP错误报文，但下面各种情况都不会导致产生ICMP差错报文：</p>
+<ul>
+<li><p>ICMP差错报文不会产生差错报文（ICMP查询报文可能会产生ICMP差错报文）</p>
+</li>
+<li><p>目的地址是广播地址和多播地址的IP数据报</p>
+</li>
+<li><p>作为链路层广播的数据报</p>
+</li>
+<li><p>不是IP分片的第一片</p>
+</li>
+<li><p>源地址不是单个主机的数据报   </p>
+<blockquote>
+<p>这些规则是为了防止过去允许ICMP差错报文对广播分组影响所带来的广播风暴</p>
+</blockquote>
+</li>
+</ul>
+<p>ICMP 查询报文的作用：</p>
+<ul>
+<li><p>子网掩码查询</p>
+</li>
+<li><p>时间戳查询</p>
+</li>
+<li><p>ping查询</p>
+<blockquote>
+<p>ping是ICMP的一个很著名的应用。ping程序时对两个TCP&#x2F;IP系统连通性进行测试的基本工具，它只利用ICMP回显请求和回显应答报文，而不用经过传输层，ping服务器一般在内核中试下ICMP的功能。当某一个网站访问不了时，我们就可以ping一下这个网站，看下连通情况。</p>
+</blockquote>
+<p>  Traceroute程序</p>
+<p>  Traceroute是ICMP协议的另一个重要应用，主要用来侦测源主机到目的主机之间所经过的路由的情况。Traceroute使用ICMP报文和IP首部中的TTL字段，其原理很简单，开始时发送一个TTL字段为1的UDP数据报，而后每次收到ICMP超时报文后，再发送一个TTL字段加1的UDP数据报，以确定路径中的每个路由器，而每个路由器在丢弃UDP数据报时都会返回一个ICMP超时报文，最终到达目的主机后，由于ICMP选择了一个不可能的值作为UDP端口（大于30000）。这样目的主机就会发送一个端口不可达的ICMP差错报文。</p>
+</li>
+</ul>
+<h2 id="TCP分段-和-IP分片"><a href="#TCP分段-和-IP分片" class="headerlink" title="TCP分段 和 IP分片"></a>TCP分段 和 IP分片</h2><p>TCP报文段如果很长的话，会在发送时发生【分段】，在接受时进行重组</p>
+<p>同样，IP数据报在长度超过一定值时也会发生【分片】(MTU)，在接收端再将分片重组。</p>
+<pre><code>MTU（最大传输单元）
+
+MTU是链路层中的网络对数据帧的一个限制，以以太网为例，MTU为1500个字节。一个IP数据报在以太网中传输，如果它的长度大于该MTU值，就要进行分片传输，使得每片数据报的长度小于MTU。分片传输的IP数据报不一定按序到达，但IP首部中的信息能让这些数据报片按序组装。IP数据报的分片与重组是在网络层进完成的。
+
+
+MSS（最大分段大小）
+
+MSS是TCP里的一个概念（首部的选项字段中）。MSS是TCP数据包每次能够传输的最大数据分段，TCP报文段的长度大于MSS时，要进行分段传输。TCP协议在建立连接的时候通常要协商双方的MSS值，每一方都有用于通告它期望接收的MSS选项（MSS选项只出现在SYN报文段中，即TCP三次握手的前两次）。MSS的值一般为MTU值减去两个首部大小（需要减去IP数据包包头的大小20Bytes和TCP数据段的包头20Bytes）所以如果用链路层以太网，MSS的值往往为1460。而Internet上标准的MTU（最小的MTU，链路层网络为x2.5时）为576，那么如果不设置，则MSS的默认值就为536个字节。很多时候，MSS的值最好取512的倍数。TCP报文段的分段与重组是在运输层完成的。
+</code></pre>
+<p>TCP分段的原因是MSS，IP分片的原因是MTU，分段后的每一段TCP报文段再加上IP首部后的长度不可能超过MTU，因此也就不需要在网络层进行IP分片了。因此TCP报文段很少会发生IP分片的情况。</p>
+<p>UDP数据报不会自己进行分段，因此当长度超过了MTU时，会在网络层进行IP分片。</p>
+<p>同样，ICMP（在网络层中）同样会出现IP分片情况。</p>
+<p>&#x3D;&#x3D;总结：UDP不会分段，就由IP来分片。TCP会分段，当然就不用IP来分片&#x3D;&#x3D;</p>
+<p>另外，IP数据报分片后，只有第一片带有UDP首部或ICMP首部，其余的分片只有IP头部，到了端点后根据IP头部中的信息再网络层进行重组。而TCP报文段的每个分段中都有TCP首部，到了端点后根据TCP首部的信息在传输层进行重组。IP数据报分片后，只有到达目的地后才进行重组，而不是在下一站就要进行重组。</p>
+<p>对IP分片的数据报，即使只丢失一片数据也要<strong>重新传整个数据报</strong>（既然有重传，说明运输层使用的是具有重传功能的协议，如TCP协议）。这是因为IP层本身没有超时重传机制——由更高层（比如TCP）来负责超时和重传。当来自TCP报文段的某一段（在IP数据报的某一片中）丢失后，TCP在超时后会重发<strong>整个TCP报文段</strong>，该报文段对应于一份IP数据报（可能有多个IP分片），没有办法只重传数据报中的一个数据分片。</p>
+<h2 id="UDP-协议"><a href="#UDP-协议" class="headerlink" title="UDP 协议"></a>UDP 协议</h2><p> UDP 是一个 &#x3D;&#x3D;面向数据报&#x3D;&#x3D;的&#x3D;&#x3D;运输层&#x3D;&#x3D;协议：进程的每个输出操作都会产生一个UDP数据报，并组装成一份待发送的IP数据报，这与面向字节流的协议不同（TCP），应用程序产生的全体数据与真正发送的单个IP数据报可能没有什么联系（主要是在传输层就进行分段了，因此不会受IP分片的影响）。</p>
+<pre><code>UDP的首部一共8个字节，很简单，可以参考书上，这里也不再详说。
+
+UDP的校验和
+
+至于UDP的校验和，这里注意下区别就好了，UDP对首部和数据部分都进行校验，而IP首部的校验和仅对IP的首部进行校验，顺带提下TCP，TCP的校验和也是对首部和数据部分都进行校验，另外，UDP的校验和是可选的，而TCP的是必选的。
+
+不可靠协议
+
+UDP是不可靠的协议，没有超时和重传功能，当UDP数据封装到IP数据报传输时，如果丢失，会发送一个ICMP差错报文给源主机，另外，如果UDP数据报的发送端没打开UDP校验和，而接收端计算校验和有差错，那么UDP数据报将会被丢掉，也不会发送ICMP差错报文。
+
+路径MTU发现
+
+可以修改Traceroute程序来确定路径MTU。要做的是发送分组，并设置将IP首部设置为不分片，发送的第一个分组的长度正好于出口MTU相等，每次收到ICMP不可分片的差错报文时，就减小分组长度，使新的ICMP不可分片差错报文中返回更小的MTU，每次用更小的MTU值来传送，这样能找到更小的MTU值。
+
+利用路径MTU发现机制，应用程序可以充分利用更大的MTU来发送报文。
+
+
+UDP最大长度
+
+理论上IP数据报的最大长度为65535字节，因此理论上的UDP数据报的最大长度为65507（65535-20-8）字节，但是，大多数实现所提供的长度比这个最大值小。一般有两个因素的限制：
+
+1、应用程序可能胡受到其程序接口的限制，一些API的实现中可能有限定UDP数据报的最大长度。另外，现在大部分系统都默认提供了可读写大于8192字节的UDP数据报。
+
+2、受限于TCP/IP内核的实现，可能存在一些实现特性，使IP数据报长度小于65535字节。
+
+数据报截断
+
+正是由于UDP最大数据报的限制（受限于上面的两个因素，一般都会小于65507），大于这个限制的数据报会被截断，从而发生数据丢失，且不会有任何数据丢失的通知，这也是UDP协议不可靠传输的另一个体现。而TCP则没有任何信息边界，TCP首部中没有对TCP最长报文段的限制，因此TCP以应用程序读操作时所要求的长度来传送数据（理论上一次可以发送很大的数据，但考虑到网络的传输性能，最好不要一次传输太大的数据），当然在超过MSS值时会产生分段，因此不会发生数据截断。
+
+ICMP源站抑制差错
+
+当一个系统中的某主机或路由器处理数据的速度赶不上接受数据的速度时，因为接收主机的IP缓存会被占满，可能会产生这个差错，从而发送一个ICMP源站抑制差错报文，这里要注意是“可能”。
+</code></pre>
+<h2 id="TCP-协议"><a href="#TCP-协议" class="headerlink" title="TCP 协议"></a>TCP 协议</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>TCP协议，即传输控制协议，与UDP协议同处于传输层，提供面向连接、可靠的数据传输服务</p>
+<ul>
+<li><p>TCP通过以下方式提供可靠性：</p>
+<ul>
+<li>TCP分片：应用程序被分割成TCP认为最合适发送的数据块。这与UDP完全不同，应用程序产生的UDP数据报长度将保持不变，而是在网络层进行IP分片</li>
+<li>确认机制：当TCP发出一个报文段后，它会启动一个定时器，等待目的端发确认收到这个报文段，如果没能及时收到该确认信息，则将重发这个报文段</li>
+<li>确认机制：当TCP接收端收到发送端发来的TCP报文段时，它将发送一个确认，这个确认不是立即发送的，通常会推迟几分之一秒</li>
+<li>错误检验：TCP将保持它首部和数据的校验和。这是一个端到端的校验和，如果收到的报文段的校验和有差错，TCP将丢弃该报文段，同时不发送确认收到的消息，从而使发送端超时重发</li>
+<li>流量控制：TCP连接的每一方都有固定大小的缓冲空间，TCP的接受端只允许另一端发送接收端缓冲区所能接纳的数据，这将防止较快主机致使较慢主机的缓冲区溢出</li>
+<li>失序重排：由于TCP报文段作为IP数据报来传输，IP数据报的到达可能会失序，因此TCP报文段的到达也可能失序，如果必要，TCP将对收到的数据进行重排序，将收到的数据以正确的顺序交给应用层</li>
+<li>重复丢弃：由于IP数据报有可能发生重复，TCP的接收端必须丢弃重复的数据</li>
+</ul>
+<blockquote>
+<p>总结：TCP协议保持可靠性的方式就是<strong>超时重传</strong>，虽然TCP也可以通过向源主机发送各种各样的ICMP报文（IP 层）或者来处理这些，但这也是不可靠的，如果ICMP报文在发送回来的过程中丢失了，很明显这种方式就不可靠了。<strong>最可靠的方式就是只要得不到确认，就重新发送数据，直到得到确认为止</strong></p>
+</blockquote>
+</li>
+</ul>
+<p><strong>TCP 报文结构</strong></p>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221124005410044.png" alt="image-20221124005410044" style="zoom:60%;">
+
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221124005551776.png" alt="image-20221124005551776" style="zoom:67%;">
+
+<p>TCP报文段首部的前20个字节是固定的，后面有4N字节是根据需要而增加的选项。因此TCP报文段的最小长度为20个字节</p>
+<ul>
+<li>源端口和目的端口：加上IP首部的源IP地址和目的IP地址，确定唯一的一个TCP连接。另外通过目的端口来决定TCP将数据报交付于那个应用程序，从而实现TCP的分用功能。</li>
+<li>序号：占4个字节，序号的范围为[0,4284967296]。由于TCP是面向字节流的，在一个TCP连接中传送的字节流中的每一个字节都按顺序编号，首部中的序号字段则是指本报文段所发送的数据的第一个字节的序号。另外，序号是循环使用的，当序号增加到最大值时，下一个序号就又回到了0。</li>
+<li>确认号：当ACK标志位为1时有效，表示期望收到的下一个报文段的第一个数据字节的序号。确认号为N，则表明到序号N-1为止的所有数据字节都已经被正确地接收到了</li>
+<li>数据偏移：TCP报文段的头部长度，它指出TCP报文段的数据部分的起始位置与TCP报文段的起始位置的距离。头部长度占4个字节，但它的单位是32位字，即以4字节为计算单位，因此头部长度的最大值为15*4&#x3D;60个字节，这就意味着选项的长度不超过40个字节。</li>
+<li>保留位：必须为0</li>
+<li>六个控制位说明报文段的性质：<ul>
+<li>URG：与首部中的紧急指针字段配合使用。URG为1时，表明紧急指针字段有效，发送应用进程告诉发送方的TCP有紧急数据要传送，于是发送方TCP就把紧急数据插入到本报文段数据的最前面，而其后面仍是普通数据</li>
+<li>ACK：仅当ACK&#x3D;1时确认号字段才有效，当ACK&#x3D;0时，确认号无效。TCP规定，在连接建立后所有的传送报文段都必须把ACK置1。</li>
+<li>PSH：如果发送的报文段中PSH为1，则接收方接受到该报文段后，直接将其交付给应用进程，而不再等待整个缓存都填满后再向上交付。</li>
+<li>RST：复位标志，RST&#x3D;1时，表明TCP连接中出现严重差错，必须释放连接，然后重新建立运输连接。</li>
+<li>SYN：同步序号，用来发起一个连接。当SYN&#x3D;1而ACK&#x3D;0时，表明这是一个连接请求报文段，若对方同意建立连接，则应在响应的报文段中使SYN&#x3D;1和ACK&#x3D;1</li>
+<li>FIN：用来释放一个连接。当FIN&#x3D;1时，表明此报文段的发送方的数据已发送完毕，并要求释放连接。</li>
+</ul>
+</li>
+<li>窗口：接收方让发送方下次发送报文段时设置的发送窗口的大小。</li>
+<li>校验和：校验的字段范围包括首部和数据这两部分。</li>
+<li>紧急指针：紧急指针当URG&#x3D;1时才有效，它指出本报文段中的紧急数据的字节数。值得注意的是，即使窗口为0时，也可发送紧急数据。</li>
+</ul>
+<h3 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h3><img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221124010451736.png" alt="image-20221124010451736" style="zoom:67%;">
+
+<blockquote>
+<p> 1、客户端的TCP进程首先创建传输控制模块TCB，然后向服务端发出连接请求报文段，该报文段首部中的SYN&#x3D;1，ACK&#x3D;0，同时选择一个初始序号seq&#x3D;i。TCP规定，SYN&#x3D;1的报文段不能携带数据，但要消耗掉一个序号。这时，TCP客户进程进入SYN—SENT（同步已发送）状态，这是TCP连接的第一次握手。</p>
+<p> 2、服务端收到客户端发来的请求报文后，如果同意建立连接，则向客户端发送确认。确认报文中的SYN&#x3D;1，ACK&#x3D;1，确认号ack&#x3D;i+1，同时为自己选择一个初始序号seq&#x3D;j。同样该报文段也是SYN&#x3D;1的报文段，不能携带数据，但同样要消耗掉一个序号。这时，TCP服务端进入SYN—RCVD（同步收到）状态，这是TCP连接的第二次握手。</p>
+<p> 3、TCP客户端进程收到服务端进程的确认后，还要向服务端给出确认。确认报文段的ACK&#x3D;1，确认号ack&#x3D;j+1，而自己的序号为seq&#x3D;i+1。TCP的标准规定，<strong>ACK报文段可以携带数据，但如果不携带数据则不消耗序号</strong>，因此，如果不携带数据，则下一个报文段的序号仍为seq&#x3D;i+1。这时，TCP连接已经建立，客户端进入ESTABLISHED（已建立连接）状态。这是TCP连接的第三次握手，可以看出第三次握手客户端已经可以发送携带数据的报文段了。</p>
+<p> 当服务端收到确认后，也进入ESTABLISHED（已建立连接）状态。</p>
+</blockquote>
+<p>&#x3D;&#x3D;使用三次握手而不是两次的原因：&#x3D;&#x3D;</p>
+<blockquote>
+<p>防止已经失效的连接请求报文段传到 TCP 服务器导致其错误打开，浪费资源</p>
+<p>第一次握手：第一次握手是客户端发送同步报文到服务端，这个时候客户端是知道自己具备发送数据的能力的，但是不知道服务端是否有接收和发送数据的能力；</p>
+<p>第二次握手：当服务端接收到同步报文后，回复确认同步报文，此时服务端是知道客户端具有发送报文的能力，并且知道自己具有接收和发送数据的能力，但是并不知道客户端是否有接收数据的能力；</p>
+<p>第三次握手：当客户端收到服务端的确认报文后，知道服务端具备接收和发送数据的能力，但是此时服务端并不知道自己具有接收的能力，所以还需要发送一个确认报文，告知服务端自己是具有接收能力的。</p>
+<p>当整个三次握手结束过后，客户端和服务端都知道自己和对方具备发送和接收数据的能力，随后整个连接建立就完成了，可以进行后续数据的传输了。</p>
+<p>看到这里，如果大家理解了就会知道很明显，两次握手是不行的，因为服务端并不知道客户端是具备接收数据的能力，所以就不能成为面向连接的可靠的传输协议。</p>
+</blockquote>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221124010847905.png" alt="image-20221124010847905" style="zoom:67%;">
+
+<blockquote>
+<p> 1、客户端的TCP进程先向服务端发出连接释放报文段，并停止发送数据，主动关闭TCP连接。释放连接报文段中FIN&#x3D;1，序号为seq&#x3D;u，该序号等于前面已经传送过去的数据的最后一个字节的序号加1。这时，客户端进入FIN—WAIT-1（终止等待1）状态，等待服务器的确认。TCP规定，FIN报文段即使不携带数据，也要消耗掉一个序号。这是TCP连接释放的第一次挥手。</p>
+<p> 2、服务器收到连接释放报文段后即发出确认释放连接的报文段，该报文段中，ACK&#x3D;1，确认号为ack&#x3D;u+1，其自己的序号为v，该序号等于服务器前面已经传送过的数据的最后一个字节的序号加1。然后服务器进入CLOSE—WAIT（关闭等待）状态，此时TCP服务器进程应该通知上层的应用进程，因而客户端到服务器这个方向的连接就释放了，这时TCP处于半关闭状态，即客户端已经没有数据要发了，但服务器若发送数据，客服端仍要接受，也就是说从服务器到客户端这个方向的连接并没有关闭，这个状态可能会持续一些时间。这是TCP连接释放的第二次挥手。</p>
+<p> 3、客户端收到服务器的确认后，就进入了FIN—WAIT（终止等待2）状态，等待服务器发出连接释放报文段，如果服务器已经没有要向A发送的数据了，其应用进程就通知TCP释放连接。这时服务器发出的链接释放报文段中，FIN&#x3D;1，确认号还必须重复上次已发送过的确认号，即ack&#x3D;u+1，序号seq&#x3D;w，因为在半关闭状态B可能又发送了一些数据，因此该序号为半关闭状态发送的数据的最后一个字节的序号加1。这时服务器进入LAST—ACK（最后确认）状态，等待A的确认，这是TCP连接的第三次挥手。</p>
+<p> 4、客户端收到服务器的连接释放请求后，必须对此发出确认。确认报文段中，ACK&#x3D;1，确认号ack&#x3D;w+1，而自己的序号seq&#x3D;u+1，而后进入TIME—WAIT（时间等待）状态。这时候，TCP连接还没有释放掉，必须经过时间等待计时器设置的时间2MSL后，A才进入CLOSED状态，时间MSL叫做最长报文寿命，RFC建议设为2分钟，因此从A进入TIME—WAIT状态后，要经过4分钟才能进入到CLOSED状态，而服务器只要收到了客户端的确认后，就进入了CLOSED状态。二者都进入CLOSED状态后，连接就完全释放了，这是TCP连接的第四次挥手。</p>
+</blockquote>
+<p>&#x3D;&#x3D;<strong>为什么是四次挥手?</strong>&#x3D;&#x3D;</p>
+<blockquote>
+<p>第一次挥手客户端发起关闭连接的请求给服务端；</p>
+<p>第二次挥手：服务端收到关闭请求的时候可能这个时候数据还没发送完，所以服务端会先回复一个确认报文，表示自己知道客户端想要关闭连接了，但是因为数据还没传输完，所以还需要等待；</p>
+<p>第三次挥手：当数据传输完了，服务端会主动发送一个 FIN 报文，告诉客户端，表示数据已经发送完了，服务端这边准备关闭连接了。</p>
+<p>第四次挥手：当客户端收到服务端的 FIN 报文过后，会回复一个 ACK 报文，告诉服务端自己知道了，再等待一会就关闭连接。</p>
+<p>为什么握手要三次，挥手却要四次呢？</p>
+<p>那是因为握手的时候并没有数据传输，所以服务端的 SYN 和 ACK 报文可以一起发送，但是挥手的时候有数据在传输，所以 ACK 和 FIN 报文不能同时发送，需要分两步，所以会比握手多一步。</p>
+</blockquote>
+<p> &#x3D;&#x3D;<strong>为什么A在TIME—WAIT状态必须等待2MSL时间呢?</strong>&#x3D;&#x3D;</p>
+<p>1、<strong>为了保证客户端发送的最后一个ACK报文段能够到达服务器</strong>。该ACK报文段很有可能丢失，因而使处于在LIST—ACK状态的服务器收不到对已发送的FIN+ACK报文段的确认，服务器可能会重传这个FIN+ACK报文段，而客户端就在这2MSL时间内收到这个重传的FIN+ACK报文段，接着客户端重传一次确认，重新启动2MSL计时器，最后客户端和服务器都进入CLOSED状态。如果客户端在TIME—WAIT状态不等待一段时间就直接释放连接，到CLOSED状态，那么久无法收到服务器重传的FIN+ACK报文段，也就不会再发送一次确认ACK报文段，服务器就无法正常进入CLOSED状态。<br>2、<strong>使本次连接内产生的所有报文段从网络中消失</strong>防止已失效的请求连接出现在本连接中。在连接处于2MSL等待时，任何迟到的报文段将被丢弃，因为处于2MSL等待的、由该插口（插口是IP和端口对的意思，socket）定义的连接在这段时间内将不能被再用，这样就可以使下一个新的连接中不会出现这种旧的连接之前延迟的报文段。</p>
+<h3 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h3><ul>
+<li>对于数据传输中，我们希望传输的越快越好，但是若<strong>传输过快会导致接收方不够时间接收数据</strong>，造成数据丢失。</li>
+<li><strong>流量控制</strong>就是为了让发送方速率不要太快，要让接收方来的及接收。</li>
+<li>利用<strong>滑动窗口机制</strong>可以很方便的在TCP连接数实现对发送方的流量控制</li>
+</ul>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221124072318406.png" alt="image-20221124072318406" style="zoom:67%;">
+
+<p>我们考虑一种特殊情况，如果B在向A发送了零窗口报文段后不久，B的接收缓存又有了一些存储空间，于是B向A发送了一个rwnd&#x3D;400的报文段，然而这个报文段在传送过程中丢失了，A就一直等待B发送非零窗口的报文通知，而B一直等待A发送数据，如果没有任何措施的话，这话死锁的局面会一直延续下去。</p>
+<pre><code>为了解决这个问题，TCP为每一个连接设有一个持续计时器(也叫坚持定时器)。只要TCP连接的一方收到对方的零窗口通知，就启动持续计时器。若持续计时器设置的时间到期，就发送一个零窗口控测报文段（携1字节的数据），对方在收到探测报文段后，在对该报文段的确认洪给出现在的窗口值，如果窗口值仍未零，则收到这个报文段的一方就重新设置持续计时器，如果窗口不为零，那么死锁的僵局就被打破了。
+</code></pre>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221124072516596.png" alt="image-20221124072516596" style="zoom:67%;">
+
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221124072535968.png" alt="image-20221124072535968" style="zoom:67%;">
+
+<h3 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h3><ul>
+<li><strong>拥塞</strong>指的是<strong>某段时间内</strong>，若对网络中的<strong>某一资源的需求超过了该资源所能提供的可用部分</strong>，网络性能就要变坏。</li>
+<li>在计算机网络种的资源包括链路容量（带宽）、交换节点种的缓存和处理机等。</li>
+<li>若出现<strong>拥塞而不进行控制</strong>，整个网络的<strong>吞吐量将随输入负荷的增大而下降</strong>。</li>
+</ul>
+<p>拥塞算法：</p>
+<ul>
+<li>慢开始算法</li>
+<li>拥塞避免算法</li>
+<li>快重传算法</li>
+<li>快恢复算法</li>
+</ul>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221124011335995.png" alt="image-20221124011335995" style="zoom:67%;">
+
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221124011352578.png" alt="image-20221124011352578" style="zoom:67%;">
+
+<h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><pre><code>1．HTTP规定在HTTP客户与HTTP服务器之间的每次交互，都由一个ASCII码串构成的请求和一个“类MIME（MIME—like）”的相应组成。HTTP报文通常都是用TCP连接
+
+2．从层次的角度看，HTTP是面向事务的应用层协议。所谓事务，就是指一系列的信息交换，而这一系列的信息交换是一个不可分割的整体，即要么所有信息交换都完成，要么一次交换都不进行。
+
+3．HTTP协议本身是无连接的，虽然HTTP使用了TCP连接，但通信的双方在交换HTTP报文前不需要建立HTTP连接。
+
+4．HTTP协议时无状态的，也就是说，同一个客户第二次访问同一个服务器上的页面时，服务器的响应与第一次被访问时的相同。
+
+5．万维网客户把HTTP请求报文作为TCP连接三次握手的第三个报文的数据发送给万维网服务器，服务器收到HTTP请求报文后，就把所请求的文档作为响应报文返回给客户。
+
+6．HTTP/1.0的主要缺点，是每请求一个文档就要有两倍RTT的开销。HTTP/1.1使用持续连接。所谓持续连接，就是万维网服务器在发送响应后仍然在一段时间内保持这条连接，使同一个客户（浏览器）和该服务器可以继续在这条连接上传送后续的HTTP请求报文和响应报文，这并不局限于传送同一个页面上链接的文档，而是只要这些文档都在同一个服务器上就行。
+
+7．HTTP/1.1协议的持续连接有两种方式，即非流水线方式和流水线方式。非流水线方式的特点是，客户在收到前一个响应后才能发出下一个请求；流水线方式的特点是，客户在收到HTTP的响应报文之前就能接着发送新的请求报文。
+
+8．HTTP请求报文和响应报文都由三个部分组成：开始行、首部行、实体主题。开始行用于区别报文时响应报文还是请求报文，在请求报文中，开始行叫做请求行，而在响应报文中，开始行叫做状态行。
+
+9．请求报文请求行只有三个内容：方法、请求资源的URL、HTTP的版本。响应报文的状态行也包括三项内容：HTTP的版本、状态码、解释状态码的简单短语。
+
+10．状态码都是三位数字的，分为5大类共33种，例如：
+
+1xx表示通知信息的，如请求收到了或正在进行处理
+
+2xx表示成功，如接受或知道了；
+
+3xx表示重定向，如果完成请求，还必须采取进一步的行动；
+
+4xx表示客户端错误，如请求中有错误的语法或不能完成；
+
+5xx表示服务端错误，如服务器失效无法完成请求。
+
+11．在浏览器地址栏键入URL，按下回车之后发生的几个事件：
+
+1）浏览器向DNS服务器请求解析该URL中的域名所对应的IP地址；
+
+2）解析出IP地址后，根据该IP地址和默认端口80，和服务器建立TCP连接；
+
+3）浏览器发出读取文件（URL中域名后面部分对应的文件）的HTTP请求，该请求报文作为TCP三次握手的第三个报文的数据发送给服务器；
+
+4）服务器给出相应，把对应的html文本发送给浏览器；
+
+5）释放TCP连接；
+
+6）浏览器将该文本显示出来。
+</code></pre>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221124073217122.png" alt="image-20221124073217122" style="zoom:50%;">
+
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221124073232065.png" alt="image-20221124073232065" style="zoom:50%;">
+
+<p>HTTP 是一种不保存状态，即无状态（stateless）协议。HTTP 协议自 身不对请求和响应之间的通信状态进行保存。也就是说在 HTTP 这个 级别，协议对于发送过的请求或响应都不做持久化处理。</p>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221124073333218.png" alt="image-20221124073333218" style="zoom:50%;">
+
+<p>HTTP+ 加密 + 认证 + 完整性保护 &#x3D;HTTPS</p>
+<p>HTTPS 是身披 SSL 外壳的 HTTP</p>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221124073548253.png" alt="image-20221124073548253" style="zoom:60%;">
+
+<p>加密方法：</p>
+<ul>
+<li>共享密钥加密</li>
+</ul>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221124073737002.png" alt="image-20221124073737002" style="zoom:50%;">
+
+<ul>
+<li>使用两把锁的公开密钥加密</li>
+</ul>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221124073757579.png" alt="image-20221124073757579" style="zoom:50%;">
+
+<p>HTTPS 采用共享密钥加密和公开密钥加密两者并用的混合加密 机制。若密钥能够实现安全交换，那么有可能会考虑仅使用公开 密钥加密来通信。但是公开密钥加密与共享密钥加密相比，其处 理速度要慢。 </p>
+<p>在交换密钥环节使用公开密钥加密方式，之后的建立通信交 换报文阶段则使用共享密钥加密方式。</p>
+<p>证明公开密钥正确性的证书：</p>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221124073905927.png" alt="image-20221124073905927" style="zoom:67%;">
+
+<p><strong>HTTPS 通信</strong></p>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221124074013952.png" alt="image-20221124074013952" style="zoom:67%;">
+
+<blockquote>
+<p>步骤 1： 客户端通过发送 Client Hello 报文开始 SSL通信。报文中包 含客户端支持的 SSL的指定版本、加密组件（Cipher Suite）列表（所 使用的加密算法及密钥长度等）。 </p>
+<p>步骤 2： 服务器可进行 SSL通信时，会以 Server Hello 报文作为应 154 答。和客户端一样，在报文中包含 SSL版本以及加密组件。服务器的 加密组件内容是从接收到的客户端加密组件内筛选出来的。 </p>
+<p>步骤 3： 之后服务器发送 Certificate 报文。报文中包含公开密钥证 书。 </p>
+<p>步骤 4： 最后服务器发送 Server Hello Done 报文通知客户端，最初阶 段的 SSL握手协商部分结束。 </p>
+<p>步骤 5： SSL第一次握手结束之后，客户端以 Client Key Exchange 报 文作为回应。报文中包含通信加密中使用的一种被称为 Pre-master secret 的随机密码串。该报文已用步骤 3 中的公开密钥进行加密。 </p>
+<p>步骤 6： 接着客户端继续发送 Change Cipher Spec 报文。该报文会提 示服务器，在此报文之后的通信会采用 Pre-master secret 密钥加密。 </p>
+<p>步骤 7： 客户端发送 Finished 报文。该报文包含连接至今全部报文的 整体校验值。这次握手协商是否能够成功，要以服务器是否能够正确 解密该报文作为判定标准。 </p>
+<p>步骤 8： 服务器同样发送 Change Cipher Spec 报文。</p>
+<p>步骤 9： 服务器同样发送 Finished 报文。 </p>
+<p>步骤 10： 服务器和客户端的 Finished 报文交换完毕之后，SSL连接 就算建立完成。当然，通信会受到 SSL的保护。从此处开始进行应用 层协议的通信，即发送 HTTP 请求。 </p>
+<p>步骤 11： 应用层协议通信，即发送 HTTP 响应。 </p>
+<p>步骤 12： 最后由客户端断开连接。断开连接时，发送 close_notify 报 文。这步之后再发送 TCP FIN 报文来关闭与 TCP 的通信。</p>
+</blockquote>
+<img src="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20221124074143910.png" alt="image-20221124074143910" style="zoom:67%;">
+
+<p>&#x3D;&#x3D;<strong>HTTP HTTPS 比较</strong>&#x3D;&#x3D;</p>
+<ul>
+<li>HTTPS 需要到 ca 申请证书，支付费用</li>
+<li>HTTP 是超文本传输协议，明文传输；HTTPS 是具有安全性的 SSL 加密传输协议</li>
+<li>使用完全不同的连接方式，端口也不同，HTTP 是 80，HTTPS 是 443</li>
+<li>HTTP 连接简单、无状态；HTTPS 是由 SSL+HTTP 构建的可进行加密传输、身份验证的网络协议，更安全</li>
+</ul>
+<p>&#x3D;&#x3D;<strong>HTTPS 缺点</strong>&#x3D;&#x3D;</p>
+<ul>
+<li>HTTPS协议握手阶段比较费时，会使页面的加载时间延长近50%，增加10%到20%的耗电</li>
+<li>HTTPS连接缓存不如HTTP高效，会增加数据开销和功耗，甚至已有的安全措施也会因此而受到影响</li>
+<li>SSL证书需要钱，功能越强大的证书费用越高，个人网站、小网站没有必要一般不会用</li>
+<li>SSL证书通常需要绑定IP，不能在同一IP上绑定多个域名，IPv4资源不可能支撑这个消耗</li>
+<li>HTTPS协议的加密范围也比较有限，在黑客攻击、拒绝服务攻击、服务器劫持等方面几乎起不到什么作用。最关键的，SSL证书的信用链体系并不安全，特别是在某些国家可以控制CA根证书的情况下，中间人攻击一样可行</li>
+</ul>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">💰</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 Yelog
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>Help us with donation</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">alipay</label></span><span><label><input type="radio" name="pay" value="weixin">weixin</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
