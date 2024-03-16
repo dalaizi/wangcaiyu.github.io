@@ -6,34 +6,32 @@
   <meta name="keywords" content="">
   <meta name="description" content="深入理解Java虚拟机 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="Linux参考资料：韩顺平-一周学会Linux    电子书《跟阿铭学Linux》 chatGPT 概述GNU&#x2F;Linux 是一种类 Unix 操作系统内核的开源操作系统。它最初由芬兰程序员 Linus Torvalds 在1991年创建。Linux 内核是一个用 C 语言编写的软件，它提供了操作系统的核心功能。 一些常见的 Linux 发行版包括 Ubuntu、Fedora、Debia">
+<meta name="description" content="Spring1. IOCIOC（控制反转&#x2F;依赖注入）并不是我们主动获取依赖的对象，而是让别人帮你实例化对象并注入。    被注入对象和被依赖对象由 IoC Server Provider 统一管理，被注入对象需要什么，直接和 Ioc Server Provider 说一声，他就会把对应的被依赖对象注入进去。  1.1 依赖注入方式仅介绍 Spring 通过 xml 进行 IOC 配置的方">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux">
-<meta property="og:url" content="http://example.com/2024/01/05/Linux/index.html">
+<meta property="og:title" content="Spring">
+<meta property="og:url" content="http://example.com/2024/03/17/Spring/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Linux参考资料：韩顺平-一周学会Linux    电子书《跟阿铭学Linux》 chatGPT 概述GNU&#x2F;Linux 是一种类 Unix 操作系统内核的开源操作系统。它最初由芬兰程序员 Linus Torvalds 在1991年创建。Linux 内核是一个用 C 语言编写的软件，它提供了操作系统的核心功能。 一些常见的 Linux 发行版包括 Ubuntu、Fedora、Debia">
+<meta property="og:description" content="Spring1. IOCIOC（控制反转&#x2F;依赖注入）并不是我们主动获取依赖的对象，而是让别人帮你实例化对象并注入。    被注入对象和被依赖对象由 IoC Server Provider 统一管理，被注入对象需要什么，直接和 Ioc Server Provider 说一声，他就会把对应的被依赖对象注入进去。  1.1 依赖注入方式仅介绍 Spring 通过 xml 进行 IOC 配置的方">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2024/01/05/Linux/up.gif">
-<meta property="og:image" content="http://example.com/2024/01/05/Linux/image-20231230174300620.png">
-<meta property="og:image" content="http://example.com/2024/01/05/Linux/image-20231222165518186.png">
-<meta property="og:image" content="http://example.com/2024/01/05/Linux/image-20231222165707309-1703755608191-2.png">
-<meta property="og:image" content="http://example.com/2024/01/05/Linux/image-20231228173233107.png">
-<meta property="og:image" content="http://example.com/2024/01/05/Linux/image-20231228174126285.png">
-<meta property="og:image" content="http://example.com/2024/01/05/Linux/image-20231228174342958.png">
-<meta property="og:image" content="http://example.com/2024/01/05/Linux/image-20231228174619191.png">
-<meta property="og:image" content="http://example.com/2024/01/05/Linux/image-20231228174659390.png">
-<meta property="og:image" content="http://example.com/2024/01/05/Linux/image-20231228174948292.png">
-<meta property="og:image" content="http://example.com/2024/01/05/Linux/image-20231228175116971.png">
-<meta property="og:image" content="http://example.com/2024/01/05/Linux/image-20231228180229052.png">
-<meta property="og:image" content="http://example.com/2024/01/05/Linux/image-20231228214820448.png">
-<meta property="og:image" content="http://example.com/2024/01/05/Linux/image-20231228215318583.png">
-<meta property="og:image" content="http://example.com/2024/01/05/Linux/image-20231228220621267.png">
-<meta property="og:image" content="http://example.com/2024/01/05/Linux/image-20240103131341600.png">
-<meta property="article:published_time" content="2024-01-05T05:29:00.000Z">
-<meta property="article:modified_time" content="2024-01-05T05:30:20.593Z">
+<meta property="og:image" content="http://example.com/2024/03/17/Spring/image-20240123095210474.png">
+<meta property="og:image" content="http://example.com/2024/Personal%20import%20knowledge/java%E5%90%8E%E7%AB%AF%E6%89%BE%E5%B7%A5%E4%BD%9C/%E4%B8%AA%E4%BA%BA%E7%AC%94%E8%AE%B0/Spring/image-20240123095512074.png">
+<meta property="og:image" content="http://example.com/2024/03/17/Spring/image-20240123113016508.png">
+<meta property="og:image" content="http://example.com/2024/03/17/Spring/image-20240123113854713.png">
+<meta property="og:image" content="http://example.com/2024/03/17/Spring/image-20240123161455155.png">
+<meta property="og:image" content="http://example.com/2024/03/17/Spring/image-20240127144825669.png">
+<meta property="og:image" content="http://example.com/2024/03/17/Spring/image-20240127144839912.png">
+<meta property="og:image" content="http://example.com/2024/03/17/Spring/image-20240127145005807.png">
+<meta property="og:image" content="http://example.com/2024/03/17/Spring/image-20240127145538417.png">
+<meta property="og:image" content="http://example.com/2024/03/17/Spring/image-20240127145934182.png">
+<meta property="og:image" content="http://example.com/2024/03/17/Spring/image-20240201002724654.png">
+<meta property="og:image" content="http://example.com/2024/03/17/Spring/image-20240201001759678.png">
+<meta property="og:image" content="http://example.com/2024/03/17/Spring/image-20240201002423991.png">
+<meta property="og:image" content="http://example.com/2024/03/17/Spring/image-20240127171034535.png">
+<meta property="article:published_time" content="2024-03-16T16:40:34.000Z">
+<meta property="article:modified_time" content="2024-03-16T16:41:45.926Z">
 <meta property="article:author" content="王才雨">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2024/01/05/Linux/up.gif">
+<meta name="twitter:image" content="http://example.com/2024/03/17/Spring/image-20240123095210474.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -132,7 +130,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(10)</small>
+                <small>(12)</small>
             
         </div>
     </li>
@@ -157,7 +155,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="10">
+<input type="hidden" id="yelog_site_posts_number" value="12">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -209,6 +207,24 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2024/03/17/Spring/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Spring">Spring</span>
+            <span class="post-date" title="2024-03-17 00:40:34">2024/03/17</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/02/25/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="后端开发面试题">后端开发面试题</span>
+            <span class="post-date" title="2024-02-25 15:47:51">2024/02/25</span>
+        </a>
         
         
         <a  class="All "
@@ -330,7 +346,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2023-11-24 20:11:10'>2022-10-19 10:40</time>
+            Created At : <time class="date" title='Updated At: 2024-02-20 00:48:33'>2022-10-19 10:40</time>
         
     </div>
     <div class="article-meta">
@@ -352,7 +368,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E5%BC%82%E5%B8%B8"><span class="toc-text">第二章 Java内存区域与内存溢出异常</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA%E5%9F%9F"><span class="toc-text">运行时数据区域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%AE%BF%E9%97%AE%E5%AE%9A%E4%BD%8D"><span class="toc-text">对象的访问定位</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-text">对象的创建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80"><span class="toc-text">对象的内存布局</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E4%B8%8E%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5"><span class="toc-text">第三章 垃圾收集器与内存分配策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%A4%E6%96%AD%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%90%A6%E6%AD%BB%E4%BA%A1"><span class="toc-text">1.判断对象是否死亡</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0%E6%B3%95"><span class="toc-text">引用计数法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E8%BE%BE%E6%80%A7%E5%88%86%E6%9E%90%E7%AE%97%E6%B3%95"><span class="toc-text">可达性分析算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E7%94%A8"><span class="toc-text">引用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95"><span class="toc-text">2.垃圾收集算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E4%BB%A3%E6%94%B6%E9%9B%86%E7%90%86%E8%AE%BA"><span class="toc-text">分代收集理论</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%87%E8%AE%B0-%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95"><span class="toc-text">标记-清除算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%87%E8%AE%B0-%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95"><span class="toc-text">标记-复制算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%87%E8%AE%B0-%E6%95%B4%E7%90%86%E7%AE%97%E6%B3%95"><span class="toc-text">标记-整理算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-HotSpot%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E7%BB%86%E8%8A%82"><span class="toc-text">3.HotSpot算法实现细节</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%85%B8%E5%9E%8B%E7%9A%84%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8"><span class="toc-text">4.典型的垃圾收集器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CMS"><span class="toc-text">CMS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#G1%E6%94%B6%E9%9B%86%E5%99%A8"><span class="toc-text">G1收集器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E7%9A%84%E6%9D%83%E8%A1%A1"><span class="toc-text">垃圾收集器的权衡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E4%B8%8E%E5%9B%9E%E6%94%B6%E7%AD%96%E7%95%A5"><span class="toc-text">内存分配与回收策略</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E3%80%81%E4%BA%94%E7%AB%A0-JVM%E7%9B%91%E6%8E%A7%E5%92%8C%E6%95%85%E9%9A%9C%E5%A4%84%E7%90%86%E5%8F%8A%E5%86%85%E5%AD%98%E8%B0%83%E4%BC%98"><span class="toc-text">第四、五章 JVM监控和故障处理及内存调优</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0-%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="toc-text">第六章 类文件结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E5%85%B3%E6%80%A7%E5%9F%BA%E7%9F%B3"><span class="toc-text">无关性基石</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Class%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="toc-text">Class文件结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E7%AB%A0-%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6"><span class="toc-text">第七章 虚拟机类加载机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%97%B6%E6%9C%BA"><span class="toc-text">类加载时机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B"><span class="toc-text">类加载过程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD"><span class="toc-text">加载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81"><span class="toc-text">验证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-text">准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90"><span class="toc-text">解析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">初始化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8"><span class="toc-text">类加载器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AD%97%E8%8A%82%E7%A0%81%E6%89%A7%E8%A1%8C%E5%BC%95%E6%93%8E"><span class="toc-text">虚拟机字节码执行引擎</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E6%A0%88%E5%B8%A7%E7%BB%93%E6%9E%84"><span class="toc-text">运行时栈帧结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8"><span class="toc-text">方法调用</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-Java%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E4%B8%8E%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E5%BC%82%E5%B8%B8"><span class="toc-text">第二章 Java内存区域与内存溢出异常</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA%E5%9F%9F"><span class="toc-text">1. 运行时数据区域</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E8%AE%A1%E6%95%B0%E5%99%A8%EF%BC%88%E7%BA%BF%E7%A8%8B%E7%A7%81%E6%9C%89%EF%BC%89"><span class="toc-text">程序计数器（线程私有）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88%EF%BC%88%E7%BA%BF%E7%A8%8B%E7%A7%81%E6%9C%89%EF%BC%89"><span class="toc-text">虚拟机栈（线程私有）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E6%96%B9%E6%B3%95%E6%A0%88"><span class="toc-text">本地方法栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A0%86%EF%BC%88%E7%BA%BF%E7%A8%8B%E5%85%B1%E4%BA%AB%EF%BC%89"><span class="toc-text">堆（线程共享）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%8C%BA%EF%BC%88%E7%BA%BF%E7%A8%8B%E5%85%B1%E4%BA%AB%EF%BC%89"><span class="toc-text">方法区（线程共享）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E5%86%85%E5%AD%98"><span class="toc-text">直接内存</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%AE%BF%E9%97%AE%E5%AE%9A%E4%BD%8D"><span class="toc-text">对象的访问定位</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-text">对象的创建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80"><span class="toc-text">对象的内存布局</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E4%B8%8E%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5"><span class="toc-text">第三章 垃圾收集器与内存分配策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%A4%E6%96%AD%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%90%A6%E6%AD%BB%E4%BA%A1"><span class="toc-text">1.判断对象是否死亡</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0%E6%B3%95"><span class="toc-text">引用计数法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E8%BE%BE%E6%80%A7%E5%88%86%E6%9E%90%E7%AE%97%E6%B3%95"><span class="toc-text">可达性分析算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E7%94%A8"><span class="toc-text">引用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95"><span class="toc-text">2.垃圾收集算法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E4%BB%A3%E6%94%B6%E9%9B%86%E7%90%86%E8%AE%BA"><span class="toc-text">分代收集理论</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%87%E8%AE%B0-%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95"><span class="toc-text">标记-清除算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%87%E8%AE%B0-%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95"><span class="toc-text">标记-复制算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%87%E8%AE%B0-%E6%95%B4%E7%90%86%E7%AE%97%E6%B3%95"><span class="toc-text">标记-整理算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-HotSpot%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E7%BB%86%E8%8A%82"><span class="toc-text">3.HotSpot算法实现细节</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%85%B8%E5%9E%8B%E7%9A%84%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8"><span class="toc-text">4.典型的垃圾收集器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CMS"><span class="toc-text">CMS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#G1%E6%94%B6%E9%9B%86%E5%99%A8"><span class="toc-text">G1收集器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E7%9A%84%E6%9D%83%E8%A1%A1"><span class="toc-text">垃圾收集器的权衡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E4%B8%8E%E5%9B%9E%E6%94%B6%E7%AD%96%E7%95%A5"><span class="toc-text">内存分配与回收策略</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E3%80%81%E4%BA%94%E7%AB%A0-JVM%E7%9B%91%E6%8E%A7%E5%92%8C%E6%95%85%E9%9A%9C%E5%A4%84%E7%90%86%E5%8F%8A%E5%86%85%E5%AD%98%E8%B0%83%E4%BC%98"><span class="toc-text">第四、五章 JVM监控和故障处理及内存调优</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0-%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="toc-text">第六章 类文件结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E5%85%B3%E6%80%A7%E5%9F%BA%E7%9F%B3"><span class="toc-text">无关性基石</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Class%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="toc-text">Class文件结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E7%AB%A0-%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6"><span class="toc-text">第七章 虚拟机类加载机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%97%B6%E6%9C%BA"><span class="toc-text">类加载时机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B"><span class="toc-text">类加载过程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD"><span class="toc-text">加载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81"><span class="toc-text">验证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%86%E5%A4%87"><span class="toc-text">准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90"><span class="toc-text">解析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">初始化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8"><span class="toc-text">类加载器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AD%97%E8%8A%82%E7%A0%81%E6%89%A7%E8%A1%8C%E5%BC%95%E6%93%8E"><span class="toc-text">虚拟机字节码执行引擎</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E6%A0%88%E5%B8%A7%E7%BB%93%E6%9E%84"><span class="toc-text">运行时栈帧结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8"><span class="toc-text">方法调用</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -368,12 +384,30 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="第二章-Java内存区域与内存溢出异常"><a href="#第二章-Java内存区域与内存溢出异常" class="headerlink" title="第二章 Java内存区域与内存溢出异常"></a>第二章 Java内存区域与内存溢出异常</h2><h3 id="运行时数据区域"><a href="#运行时数据区域" class="headerlink" title="运行时数据区域"></a>运行时数据区域</h3><p><strong>程序计数器</strong><br>是一块较小的内存空间，可以理解为当前线程所执行的<strong>字节码行号指示器</strong>，字节码解释器的工作就是通过改变这个计数器的值选取下一条要执行的字节码指令<br>虚拟机的多线程通过线程轮流切换、分配处理器执行时间来实现，任意时刻一个内核只会执行一条线程中的指令。因此，为了线程切换后能恢复正确的执行位置，每个线程需要各自享有一个独立的程序计数器，。<br>如果线程执行的是一个java方法，计数器记录的是正在执行的虚拟机字节码指令的地址；如果是本地方法，PC计数器为空。<br>不会出现OOM错误</p>
-<p> <strong>虚拟机栈</strong><br> 每个线程单独享有一个虚拟机栈，栈中的元素是栈帧，栈帧中包含局部变量表、操作栈、动态连接、方法出口等信息，一个方法从调用到结束对应着栈帧的入栈和出栈<br> 局部变量表存储了基本数据类型、引用类型、returnAddress类型，存储以Slot为单位。每个方法要用栈帧中局部变量表多大的空间编译时就确定了，运行时不会改变。但是注意，空间指的槽的数量，槽的大小由虚拟机自行决定。<br> 虚拟机栈可能出现两种异常情况：<br>如果线程申请的虚拟机栈的深度大于虚拟机允许的最大空间，会造成StackOverflowError；如果虚拟机栈容量是可拓展的，那么在栈拓展过程中遇到本机内存空间不够的情况，会OOM的错误（HotSpot默认栈不可拓展）</p>
-<p><strong>本地方法栈</strong><br>它的作用和虚拟机栈类似，只是为本地方法服务</p>
-<p><strong>java堆</strong><br>java堆是线程共享的，他是所有对象实例和数组创建的地方。堆中的内存可以不是物理连续，但一定要是逻辑连续的，但是在遇到大对象的创建时（例如大数组对象）HotSpot也会要求物理连续来节省内存访问与分配的开销<br>java堆虽然是线程共享的，但是为了节省分配新对象的开销，我们可能会在堆中划分出多个线程私有的分配缓冲区（TLAB），从而解决线程不安全的问题</p>
-<p><strong>方法区</strong><br>方法区是线程共享的一块内存区域，用来存储已经被虚拟机已加载的类型信息、静态变量以及常量、即时编译后的代码缓存等信息。<br>在JDK8以前，我们用永久代来实现方法区，实际上也是把垃圾收集器的分代设计拓展到方法区。之后我们利用元空间实现方法区。元空间来自本地内存，所以这样设计不容易内存溢出<br><strong>运行时常量池</strong>是方法区的一部分，Class文件中除了有类的版本、字段、方法、接口等描述信息外，还有的常量池表，用来存储编译生成的各种字面量和符号引用。这些内容会在类加载之后存放在运行时常量池中。除此保存Class文件中描述的符号引用外，它还把由符号引用翻译出来的直接引用也存在里面。<br>相较于常量池表，它有动态性，在程序运行过程中也可以向常量池表中添加新常量。例如String::intern()</p>
-<p><strong>直接内存</strong><br>直接内存并不是运⾏时数据区的⼀部分，但是这部分内存也被频繁地使⽤，⽽且也可能导致OutOfMemoryError异常出 现，本机直接内存的分配不会受到Java堆⼤⼩的限制，但是会受到本机总内存以及处理器寻址空间的 限制</p>
+        <h2 id="第二章-Java内存区域与内存溢出异常"><a href="#第二章-Java内存区域与内存溢出异常" class="headerlink" title="第二章 Java内存区域与内存溢出异常"></a>第二章 Java内存区域与内存溢出异常</h2><h3 id="1-运行时数据区域"><a href="#1-运行时数据区域" class="headerlink" title="1. 运行时数据区域"></a>1. 运行时数据区域</h3><img src="/2022/10/19/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA/image-20240220002259810.png" style="zoom:50%;">
+
+<h4 id="程序计数器（线程私有）"><a href="#程序计数器（线程私有）" class="headerlink" title="程序计数器（线程私有）"></a><strong>程序计数器</strong>（线程私有）</h4><p>是一块较小的内存空间，可以理解为当前线程所执行的<strong>字节码行号指示器</strong>，字节码解释器的工作就是通过改变这个计数器的值选取下一条要执行的字节码指令。</p>
+<p>虚拟机的多线程通过线程轮流切换、分配处理器执行时间来实现，任意时刻一个内核只会执行一条线程中的指令。因此，为了线程切换后能恢复正确的执行位置，每个线程需要各自享有一个独立的程序计数器。</p>
+<p>如果线程执行的是一个 java 方法，计数器记录的是正在执行的虚拟机字节码指令的地址；如果是本地方法，PC计数器为空。</p>
+<p>不会出现OOM错误</p>
+<h4 id="虚拟机栈（线程私有）"><a href="#虚拟机栈（线程私有）" class="headerlink" title="虚拟机栈（线程私有）"></a><strong>虚拟机栈（线程私有）</strong></h4><p> 每个线程单独享有一个虚拟机栈，栈中的元素是<strong>栈帧</strong>，栈帧中包含<strong>局部变量表、操作栈、动态连接、方法出口</strong>等信息，<strong>一个方法从调用到结束对应着栈帧的入栈和出栈</strong>。</p>
+<p><strong>局部变量表</strong>存储了基本数据类型、引用类型、returnAddress 类型，存储以Slot 为单位。<strong>每个方法要用栈帧中局部变量表多大的空间编译时就确定了</strong>，运行时不会改变。但是注意，空间指的槽的数量，槽的大小由虚拟机自行决定。</p>
+<p>虚拟机栈可能出现两种异常情况：</p>
+<ul>
+<li>如果<strong>线程申请的虚拟机栈的深度大于虚拟机允许的最大空间</strong>，会造成**<code>StackOverflowError</code>**；</li>
+<li>如果虚拟机栈容量是可拓展的，那么在栈拓展过程中遇到本机内存空间不够的情况，会 <strong>OOM</strong> 的错误（HotSpot 默认栈不可拓展）</li>
+</ul>
+<h4 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a><strong>本地方法栈</strong></h4><p>它的作用和虚拟机栈类似，只是为本地方法服务</p>
+<h4 id="堆（线程共享）"><a href="#堆（线程共享）" class="headerlink" title="堆（线程共享）"></a><strong>堆（线程共享）</strong></h4><p>java 堆是线程共享的，他是<strong>所有对象实例和数组创建的地方</strong>。</p>
+<p>堆中的内存可以不是物理连续，但一定要是逻辑连续的，但是在遇到大对象的创建时（例如大数组对象）HotSpot 也会要求物理连续来节省内存访问与分配的开销。</p>
+<p>java堆虽然是线程共享的，但是为了节省分配新对象的开销，我们可能会在堆中划分出<strong>多个线程私有的分配缓冲区（TLAB）</strong>，从而解决线程不安全的问题。</p>
+<p>堆既可以被实现成固定大小的，也可以是可扩展的，主流的 Java 虚拟机可扩展来（通过参数 -Xmx 和 -Xms 设定）。如果在堆中没有内存完成实例分配，并且堆也不能再扩展时，抛出 OOM 异常。</p>
+<h4 id="方法区（线程共享）"><a href="#方法区（线程共享）" class="headerlink" title="方法区（线程共享）"></a><strong>方法区</strong>（线程共享）</h4><p>方法区用来存储已经被虚拟机已加载的<strong>类型信息</strong>、<strong>静态变量</strong>以及<strong>常量</strong>、即时编译后的代码缓存等信息。</p>
+<p>在 JDK8 以前，我们用永久代来实现方法区，实际上也是把垃圾收集器的分代设计拓展到方法区。之后我们利用元空间实现方法区。元空间来自本地内存，所以这样设计不容易内存溢出。</p>
+<p><strong>运行时常量池（Runtime Constant Pool）</strong>是方法区的一部分，Class 文件中除了有类的版本、字段、方法、接口等描述信息外，还有的常量池表，用来存储编译生成的各种<strong>字面量</strong>和<strong>符号引用</strong>。这些内容会在类加载之后存放在运行时常量池中。除此保存Class文件中描述的符号引用外，它还把由符号引用翻译出来的<strong>直接引用</strong>也存在里面。</p>
+<p>相较于 Class 文件常量池表，运行时常量池有<strong>动态性</strong>，在程序运行过程中也可以向常量池表中添加新常量。例如<code>String::intern()</code></p>
+<h4 id="直接内存"><a href="#直接内存" class="headerlink" title="直接内存"></a><strong>直接内存</strong></h4><p>直接内存不是虚拟机运行时数据区的一部分，也不是《Java虚拟机规范》中定义的内存区域。但是这部分内存也被频繁地使用，而且也可能导致OutOfMemoryError异常出现。</p>
+<p>本机直接内存的分配不会受到 Java堆 大小的限制，但是会受到本机总内存（包括物理内存、SWAP分区或者分页文件）大小以及处理器寻址空间的限制，一般服务器管理员配置虚拟机参数时，会根据实际内存去设置 -Xmx 等参数信息，但经常忽略掉直接内存，使得各个内存区域总和大于物理内存限制(包括物理的和操作系统级的限制)，从而导致动态扩展时出现OutOfMemoryError异常。</p>
 <h3 id="对象的访问定位"><a href="#对象的访问定位" class="headerlink" title="对象的访问定位"></a>对象的访问定位</h3><h4 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h4><ul>
 <li>首先，虚拟机遇到一条字节码new指令时，会首先去检查<strong>这个指令的参数能否在常量池中定位到一个类的符号引用</strong>，并检查这个符号引用代表的类是否被加载解析初始化过了，要是没有就先执行类的加载过程</li>
 <li>然后，在类加载检查通过后，虚拟机为新对象在堆中分配内存（所需大小在类加载完成过后便可确定）。有两种分配方式：<br><strong>指针碰撞</strong>：<br>内存规整，用过的和没用过的内存各自分开，中间用指针作为分界点指示器，分配内存就是把指针往空闲空间方向移动一段与对象大小相等的距离。<br><strong>空闲列表</strong>：<br>记录那些内存可用<br>举个栗子1.Serial，ParNew自带压缩整理，内存分配算法用的是碰撞指针，简单高效<br>2.CMS基于清除算法，空间杂乱。为了对象分配更快，设计了叫Linear Allocation Buffer 的分配缓冲区，利用空闲列表得到一大块分配缓冲区后，在里面仍然可以用指针碰撞来分配。</li>

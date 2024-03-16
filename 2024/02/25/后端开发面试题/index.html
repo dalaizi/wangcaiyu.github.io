@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>后端开发面试题 | Hexo</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="后端开发面试题 | Hexo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="Spring1. IOCIOC（控制反转&#x2F;依赖注入）并不是我们主动获取依赖的对象，而是让别人帮你实例化对象并注入。    被注入对象和被依赖对象由 IoC Server Provider 统一管理，被注入对象需要什么，直接和 Ioc Server Provider 说一声，他就会把对应的被依赖对象注入进去。  1.1 依赖注入方式仅介绍 Spring 通过 xml 进行 IOC 配置的方">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring">
+<meta property="og:url" content="http://example.com/2024/03/17/Spring/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Spring1. IOCIOC（控制反转&#x2F;依赖注入）并不是我们主动获取依赖的对象，而是让别人帮你实例化对象并注入。    被注入对象和被依赖对象由 IoC Server Provider 统一管理，被注入对象需要什么，直接和 Ioc Server Provider 说一声，他就会把对应的被依赖对象注入进去。  1.1 依赖注入方式仅介绍 Spring 通过 xml 进行 IOC 配置的方">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2024/03/17/Spring/image-20240123095210474.png">
+<meta property="og:image" content="http://example.com/2024/Personal%20import%20knowledge/java%E5%90%8E%E7%AB%AF%E6%89%BE%E5%B7%A5%E4%BD%9C/%E4%B8%AA%E4%BA%BA%E7%AC%94%E8%AE%B0/Spring/image-20240123095512074.png">
+<meta property="og:image" content="http://example.com/2024/03/17/Spring/image-20240123113016508.png">
+<meta property="og:image" content="http://example.com/2024/03/17/Spring/image-20240123113854713.png">
+<meta property="og:image" content="http://example.com/2024/03/17/Spring/image-20240123161455155.png">
+<meta property="og:image" content="http://example.com/2024/03/17/Spring/image-20240127144825669.png">
+<meta property="og:image" content="http://example.com/2024/03/17/Spring/image-20240127144839912.png">
+<meta property="og:image" content="http://example.com/2024/03/17/Spring/image-20240127145005807.png">
+<meta property="og:image" content="http://example.com/2024/03/17/Spring/image-20240127145538417.png">
+<meta property="og:image" content="http://example.com/2024/03/17/Spring/image-20240127145934182.png">
+<meta property="og:image" content="http://example.com/2024/03/17/Spring/image-20240201002724654.png">
+<meta property="og:image" content="http://example.com/2024/03/17/Spring/image-20240201001759678.png">
+<meta property="og:image" content="http://example.com/2024/03/17/Spring/image-20240201002423991.png">
+<meta property="og:image" content="http://example.com/2024/03/17/Spring/image-20240127171034535.png">
+<meta property="article:published_time" content="2024-03-16T16:40:34.000Z">
+<meta property="article:modified_time" content="2024-03-16T16:41:45.926Z">
+<meta property="article:author" content="王才雨">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2024/03/17/Spring/image-20240123095210474.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>王才雨</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/dalaizi"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:1935863093@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=1935863093&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(12)</small>
+            
+        </div>
+    </li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">About</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">Friends</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="12">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2024/03/17/Spring/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Spring">Spring</span>
+            <span class="post-date" title="2024-03-17 00:40:34">2024/03/17</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/02/25/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="后端开发面试题">后端开发面试题</span>
+            <span class="post-date" title="2024-02-25 15:47:51">2024/02/25</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/01/05/Linux/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Linux">Linux</span>
+            <span class="post-date" title="2024-01-05 13:29:00">2024/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2023/11/22/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="力扣刷题">力扣刷题</span>
+            <span class="post-date" title="2023-11-22 17:10:44">2023/11/22</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2023/10/08/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="动态代理">动态代理</span>
+            <span class="post-date" title="2023-10-08 22:49:01">2023/10/08</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2023/04/08/%E9%A1%B9%E7%9B%AERPC%E6%A1%86%E6%9E%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="项目RPC框架">项目RPC框架</span>
+            <span class="post-date" title="2023-04-08 19:49:23">2023/04/08</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2023/01/02/redis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="redis">redis</span>
+            <span class="post-date" title="2023-01-02 17:46:17">2023/01/02</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2022/12/24/MySQL/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MySQL">MySQL</span>
+            <span class="post-date" title="2022-12-24 11:40:50">2022/12/24</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2022/11/11/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java并发编程">Java并发编程</span>
+            <span class="post-date" title="2022-11-11 16:20:42">2022/11/11</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2022/10/30/JVM%E8%B0%83%E4%BC%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JVM调优">JVM调优</span>
+            <span class="post-date" title="2022-10-30 20:09:07">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2022/10/19/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="深入理解Java虚拟机">深入理解Java虚拟机</span>
+            <span class="post-date" title="2022-10-19 10:40:02">2022/10/19</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="计算机网络">计算机网络</span>
+            <span class="post-date" title="2022-02-06 18:11:21">2022/02/06</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-后端开发面试题" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">后端开发面试题</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2024-03-17 00:49:21'>2024-02-25 15:47</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%A6%E8%A7%A3-HashMap"><span class="toc-text">详解 HashMap</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8-HashTable"><span class="toc-text">哈希表 HashTable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HashMap"><span class="toc-text">HashMap</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HashSet-TreeSet"><span class="toc-text">HashSet&#x2F;TreeSet</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LinkedHashMap"><span class="toc-text">LinkedHashMap</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HashTable"><span class="toc-text">HashTable</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Comparable%E5%92%8CComparator"><span class="toc-text">Comparable和Comparator</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#java-util-ArrayList-E-LinkedList"><span class="toc-text">java.util.ArrayList&lt; E&gt;  LinkedList</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Integer-%E5%AD%98%E5%82%A8"><span class="toc-text">Integer 存储</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#java-stack-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E6%8E%A8%E8%8D%90%E7%94%A8"><span class="toc-text">java stack 为什么不推荐用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A%E5%99%A8%E4%B8%8E%E7%BC%96%E8%AF%91%E5%99%A8"><span class="toc-text">解释器与编译器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ThreadLocal"><span class="toc-text">ThreadLocal</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84"><span class="toc-text">内部结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0"><span class="toc-text">底层实现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%AD%98%E6%94%BE"><span class="toc-text">数据类型存放</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#equals-%E5%92%8C-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">equals 和 &#x3D;&#x3D; 的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JDK-JRE"><span class="toc-text">JDK JRE</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E6%80%81"><span class="toc-text">多态</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#String-StringBuilder-StringBuffer"><span class="toc-text">String StringBuilder StringBuffer</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#string%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E8%A2%AB%E7%BB%A7%E6%89%BF"><span class="toc-text">string为什么不能被继承</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E9%81%8D%E5%8E%86"><span class="toc-text">迭代遍历</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IO-NIO"><span class="toc-text">IO NIO</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL-%E9%A2%98%E7%9B%AE%E9%9A%8F%E7%AC%94%E6%80%BB%E7%BB%93"><span class="toc-text">MySQL 题目随笔总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#b-b-%E5%8C%BA%E5%88%AB"><span class="toc-text">b b + 区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E4%B8%8B%E6%8E%A8"><span class="toc-text">索引下推</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="详解-HashMap"><a href="#详解-HashMap" class="headerlink" title="详解 HashMap"></a>详解 HashMap</h1><h2 id="哈希表-HashTable"><a href="#哈希表-HashTable" class="headerlink" title="哈希表 HashTable"></a>哈希表 HashTable</h2><img src="/2024/02/25/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221116225656777.png" alt="image-20221116225656777" style="zoom:50%;">
+
+<p><strong>哈希表的主干就是数组</strong>，比如我们要新增或查找某个元素，我们通过把当前元素的关键字 通过某个函数映射到数组中的某个位置，通过数组下标一次定位就可完成操作</p>
+<p><strong>存储位置 &#x3D; f(关键字)</strong></p>
+<p>这个函数f一般称为<strong>哈希函数</strong>，这个函数的设计好坏会直接影响到哈希表的优劣</p>
+<p>好的哈希函数会尽可能地保证 <strong>计算简单</strong>和<strong>散列地址分布均匀</strong></p>
+<p><strong>哈希冲突</strong></p>
+<p>对某个元素进行哈希运算，得到一个存储地址，然后要进行插入的时候，发现已经被其他元素占用了，这就是<strong>哈希冲突</strong></p>
+<p>数组是一块连续的固定长度的内存空间，再好的哈希函数也不能保证得到的存储地址绝对不发生冲突。</p>
+<p>哈希冲突的解决方案:</p>
+<p>​	开放定址法（发生冲突，继续寻找下一块未被占用的存储地址）</p>
+<p>​	再散列函数法</p>
+<p>​	链地址法（HashMap即是采用了链地址法，也就是<strong>数组+链表</strong>的方式）</p>
+<h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><p>&#x3D;&#x3D;什么时候会使用HashMap？他有什么特点？&#x3D;&#x3D;</p>
+<p>是基于Map接口的实现，存储键值对时，它可以接收null的键值，是非同步的，HashMap存储着Entry(hash, key, value, next)对象。</p>
+<p>&#x3D;&#x3D;HashMap的工作原理&#x3D;&#x3D;</p>
+<p>通过hash的方法，通过put和get存储和获取对象。存储对象时，我们将K&#x2F;V传给put方法时，它调用hashCode计算hash从而得到bucket位置，进一步存储，HashMap会根据当前bucket的占用情况自动调整容量(超过Load Facotr则resize为原来的2倍)。获取对象时，我们将K传给get，它调用hashCode计算hash从而得到bucket位置，并进一步调用equals()方法确定键值对。如果发生碰撞的时候，Hashmap通过链表将产生碰撞冲突的元素组织起来，在<a target="_blank" rel="noopener" href="http://lib.csdn.net/base/java">Java </a>8中，如果一个bucket中碰撞冲突的元素超过某个限制(默认是8)，则使用红黑树来替换链表，从而提高速度。</p>
+<p>&#x3D;&#x3D;你知道get和put的原理吗？equals()和hashCode()的都有什么作用&#x3D;&#x3D;</p>
+<blockquote>
+<p>通过对key的hashCode()进行hashing，并计算下标( n-1 &amp; hash)，从而获得buckets的位置。如果产生碰撞，则利用key.equals()方法去链表或树中去查找对应的节点</p>
+</blockquote>
+<p>&#x3D;&#x3D;你知道hash的实现吗？为什么要这样实现&#x3D;&#x3D;</p>
+<blockquote>
+<p>在Java 1.8的实现中，是通过hashCode()的高16位异或低16位实现的：(h &#x3D; k.hashCode()) ^ (h &gt;&gt;&gt; 16)，主要是从速度、功效、质量来考虑的，这么做可以在bucket的n比较小的时候，也能保证考虑到高低bit都参与到hash的计算中，同时不会有太大的开销。</p>
+</blockquote>
+<p>&#x3D;&#x3D;如果HashMap的大小超过了负载因子(load factor)定义的容量，怎么办？&#x3D;&#x3D;</p>
+<blockquote>
+<p>如果超过了负载因子(默认0.75)，则会重新resize一个原来长度两倍的HashMap，并且重新调用hash方法。<br>关于Java集合的小抄中是这样描述的：<br>以Entry[]数组实现的哈希桶数组，用Key的哈希值取模桶数组的大小可得到数组下标。<br>插入元素时，如果两条Key落在同一个桶(比如哈希值1和17取模16后都属于第一个哈希桶)，Entry用一个next属性实现多个Entry以单向链表存放，后入桶的Entry将next指向桶当前的Entry。<br>查找哈希值为17的key时，先定位到第一个哈希桶，然后以链表遍历桶里所有元素，逐个比较其key值。<br>当Entry数量达到桶数量的75%时(很多文章说使用的桶数量达到了75%，但看代码不是)，会成倍扩容桶数组，并重新分配所有原来的Entry，所以这里也最好有个预估值。<br>取模用位运算(hash &amp; (arrayLength-1))会比较快，所以数组的大小永远是2的N次方， 你随便给一个初始值比如17会转为32。默认第一次放入元素时的初始值是16。<br>iterator()时顺着哈希桶数组来遍历，看起来是个乱序。</p>
+</blockquote>
+<p>&#x3D;&#x3D;当两个对象的hashcode相同会发生什么？&#x3D;&#x3D;</p>
+<blockquote>
+<p>因为hashcode相同，所以它们的bucket位置相同，‘碰撞’会发生。因为HashMap使用链表存储对象，这个Entry(包含有键值对的Map.Entry对象)会存储在链表中。</p>
+</blockquote>
+<p>&#x3D;&#x3D;如果两个键的hashcode相同，你如何获取值对象？&#x3D;&#x3D;</p>
+<blockquote>
+<p>找到bucket位置之后，会调用keys.equals()方法去找到链表中正确的节点，最终找到要找的值对象。因此，设计HashMap的key类型时，如果使用不可变的、声明作final的对象，并且采用合适的equals()和hashCode()方法的话，将会减少碰撞的发生，提高效率。不可变性能够缓存不同键的hashcode，这将提高整个获取对象的速度，使用String，Interger这样的wrapper类作为键是非常好的选择</p>
+</blockquote>
+<p>&#x3D;&#x3D;如果HashMap的大小超过了负载因子(load factor)定义的容量，怎么办？&#x3D;&#x3D;</p>
+<blockquote>
+<p>默认的负载因子大小为0.75，也就是说，当一个map填满了75%的bucket时候，和其它集合类(如ArrayList等)一样，将会创建原来HashMap大小的两倍的bucket数组，来重新调整map的大小，并将原来的对象放入新的bucket数组中。这个过程叫作rehashing，因为它调用hash方法找到新的bucket位置</p>
+</blockquote>
+<p>&#x3D;&#x3D;你了解重新调整HashMap大小存在什么问题吗？&#x3D;&#x3D;</p>
+<p>当重新调整HashMap大小的时候，确实存在条件竞争，因为如果两个线程都发现HashMap需要重新调整大小了，它们会同时试着调整大小。在调整大小的过程中，存储在链表中的元素的次序会反过来，因为移动到新的bucket位置的时候，HashMap并不会将元素放在链表的尾部，而是放在头部，这是为了避免尾部遍历(tail traversing)。如果条件竞争发生了，那么就死循环了。因此在并发环境下，我们使用CurrentHashMap来替代HashMap</p>
+<p>&#x3D;&#x3D;为什么String, Interger这样的wrapper类适合作为键？&#x3D;&#x3D;</p>
+<p>因为String是不可变的，也是final的，而且已经重写了equals()和hashCode()方法了。其他的wrapper类也有这个特点。不可变性是必要的，因为为了要计算hashCode()，就要防止键值改变，如果键值在放入时和获取时返回不同的hashcode的话，那么就不能从HashMap中找到你想要的对象。不可变性还有其他的优点如线程安全。如果你可以仅仅通过将某个field声明成final就能保证hashCode是不变的，那么请这么做吧。因为获取对象的时候要用到equals()和hashCode()方法，那么键对象正确的重写这两个方法是非常重要的。如果两个不相等的对象返回不同的hashcode的话，那么碰撞的几率就会小些，这样就能提高HashMap的性能</p>
+<p>hashcode补充</p>
+<blockquote>
+<p>使用hash种子的目的就是：用hashseed决定获取hash值的方式，如果一旦数组容量超过了我们自己配置的值，就会生成新的hash种子，不再通过异或方式获取hash值，而是通过调用sun.misc.Hashing.stringHash32()方法，获取hash值，从而提高hash值的散列性，减小hash碰撞的产生，缩短了链表的长度，提高了效率。</p>
+<p>传入的key对象重写了equals方法却没有重写hashCode，而恰巧此对象定位到这个数组位置，如果仅仅用equals判断可能是相等的，但其hashCode和当前对象不一致，这种情况，根据Object的hashCode的约定，不能返回当前对象，而应该返回null</p>
+</blockquote>
+<p>当length总是2的n次方时，h&amp; (length-1)运算等价于对length取模，也就是h%length，但是&amp;比%具有更高的效率。</p>
+<p>在JDK1.8的实现中，优化了高位运算的算法，通过hashCode()的高16位异或低16位实现的：(h &#x3D; k.hashCode()) ^ (h &gt;&gt;&gt; 16)，主要是从速度、功效、质量来考虑的，这么做可以在数组table的length比较小的时候，也能保证考虑到高低Bit都参与到Hash的计算中，同时不会有太大的开销。</p>
+<h1 id="HashSet-TreeSet"><a href="#HashSet-TreeSet" class="headerlink" title="HashSet&#x2F;TreeSet"></a>HashSet&#x2F;TreeSet</h1><ul>
+<li><p><code>HashSet</code>内部有一个<code>HashMap</code>，只使用了 map 的 key，value 都是同一个 object</p>
+</li>
+<li><p><code>TreeSet</code>内部是一个<code>TreeMap</code>，只使用了 key，value 也是同样的 object</p>
+<p><code>private static final Object PRESENT = new Object();</code></p>
+</li>
+</ul>
+<h1 id="LinkedHashMap"><a href="#LinkedHashMap" class="headerlink" title="LinkedHashMap"></a>LinkedHashMap</h1><p><code>LinkedHashMap</code>是<code>HashMap</code>的子类，与<code>HashMap</code>有着同样的存储结构，但它加入了一个双向链表的头结点（有<code>head</code>和<code>tail</code>指针），将所有<code>put</code>到<code>LinkedHashmap</code>的节点一一串成了一个双向循环链表，因此它保留了节点插入的顺序，可以使节点的输出顺序与输入顺序相同。</p>
+<p><code>LinkedHashMap</code> 非线程安全的，只在单线程环境下使用</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a><strong>原理</strong></h2><ul>
+<li>Entry 元素<ul>
+<li>采用的 hash 算法和 HashMap 相同</li>
+<li>重新定义了数组中保存的元素 Entry，Entry 除了保存当前对象的引用外，还保存了其上一个元素 before 和下一个元素 after 的引用，从而在哈希表的基础上又构成了双向链接列表。</li>
+</ul>
+</li>
+<li>初始化<ul>
+<li>构造方法调用了父类 HashMap 相关构造方法，构造底层存放的 table 数组</li>
+</ul>
+</li>
+<li>存储<ul>
+<li>未重写父类HashMap的put方法，而是重写了父类HashMap的put方法调用的子方法void addEntry() 和void createEntry(i)，提供了自己特有的双向链接列表的实现。</li>
+</ul>
+</li>
+<li>读取<ul>
+<li>重写了父类HashMap的get方法，实际在调用父类getEntry()方法取得查找的元素后，再判断当排序模式accessOrder为true时，记录访问顺序，将最新访问的元素添加到双向链表的表头，并从原来的位置删除。由于的链表的增加、删除操作是常量级的，故并不会带来性能的损失。</li>
+</ul>
+</li>
+<li>排序模式 <code> accessOrder</code><ul>
+<li>插入顺序（默认）：<code>false</code></li>
+<li>访问顺序：<code>true</code>，按照近期访问最少到近期访问最多的顺序来保存元素，可以实现 LRU （最近最少使用页面置换算法）</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="title function_">LinkedHashMap</span><span class="params">(<span class="type">int</span> initialCapacity,</span></span><br><span class="line"><span class="params">                     <span class="type">float</span> loadFactor,</span></span><br><span class="line"><span class="params">                     <span class="type">boolean</span> accessOrder)</span>;</span><br></pre></td></tr></table></figure>
+
+<h1 id="HashTable"><a href="#HashTable" class="headerlink" title="HashTable"></a>HashTable</h1><p>类似于 HashMap，在 put get remove 等 方法上加了同步</p>
+<p>synchronized 使用 this 锁，粒度大</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//计算哈希值</span></span><br><span class="line"><span class="type">int</span> <span class="variable">hash</span> <span class="operator">=</span> key.hashCode();</span><br><span class="line"><span class="comment">//0x7FFFFFFF转换为二进制是1个0,31个1，返回一个符号位为0的数，即丢弃最高位，以免函数外产生影响</span></span><br><span class="line"><span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> (hash &amp; <span class="number">0x7FFFFFFF</span>) % tab.lebgth;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//volatile 保证可见性</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">transient</span> <span class="keyword">volatile</span> Set&lt;K&gt; keySet;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">transient</span> <span class="keyword">volatile</span> Set&lt;Map.Entry&lt;K,V&gt;&gt; entrySet;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">transient</span> <span class="keyword">volatile</span> Collection&lt;V&gt; values;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Hashtable 的 key 和 value 都不允许为 null，Hashtable遇到 null，直接返回 NullPointerException。</p>
+</blockquote>
+<h1 id="Comparable和Comparator"><a href="#Comparable和Comparator" class="headerlink" title="Comparable和Comparator"></a>Comparable和Comparator</h1><p>作用：实现集合中元素的比较、排序</p>
+<ul>
+<li><p>Comparable</p>
+<ul>
+<li>在集合内部定义的方法实现的排序，位于 java.lang</li>
+<li>是一个对象本身就已经支持自比较所需要实现的接口，如String、Integer自己就实现了Comparable接口，可完成比较大小操作。自定义类要在加入list容器中后能够排序，也可以实现Comparable接口，在用Collections类的sort方法排序时若不指定Comparator，那就以自然顺序排序。所谓自然顺序就是实现Comparable接口设定的排序方式。</li>
+</ul>
+</li>
+<li><p>Comparator</p>
+<ul>
+<li>在集合外部实现的排序，位于 java.util</li>
+<li>一个专用的比较器，当这个对象不支持自比较或者自比较函数不能满足要求时，可写一个比较器来完成两个对象之间大小的比较</li>
+<li>体现了一种策略模式<code>strategy design pattern</code>，就是不改变对象自身，而用一个策略对象<code>strategy object</code>来改变它的行为。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>总结：</p>
+<p>Comparable 是自己完成比较</p>
+<p>Comparator 是外部程序实现比较</p>
+</blockquote>
+<h1 id="java-util-ArrayList-E-LinkedList"><a href="#java-util-ArrayList-E-LinkedList" class="headerlink" title="java.util.ArrayList&lt; E&gt;  LinkedList"></a>java.util.ArrayList&lt; E&gt;  LinkedList</h1><ul>
+<li><p>ArrayList</p>
+<ul>
+<li><p>底层基于 Object 类的数组实现，初始大小为 10，使用 modCount 实现快速失败，非同步</p>
+</li>
+<li><p>构造方法如果不传入初始大小，则 Object 类型数组先赋值为一个空数组，在 add 方法时才真正构造（使用 Arrays.copyOf 方法）。</p>
+<p>如果传入初始大小，直接 new 初始大小的数组</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">add</span><span class="params">(E e)</span> &#123;</span><br><span class="line">    ensureCapacity(size + <span class="number">1</span>);</span><br><span class="line">    elementData[size++] = e;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>ArrayList删除，使用system.arraycopy，把原数组index+1往后的数据，复制到原数组从开始index的位置，并把最后一个元素赋为null</p>
+</li>
+</ul>
+</li>
+<li><p>LinkedList</p>
+<ul>
+<li>双向链表，有 First Last 两个节点</li>
+<li>用 add 方法，直接在Last节点后面添加，并把Last赋为新加的结点</li>
+</ul>
+</li>
+</ul>
+<h1 id="Integer-存储"><a href="#Integer-存储" class="headerlink" title="Integer 存储"></a>Integer 存储</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Integer</span> <span class="variable">i1</span> <span class="operator">=</span> <span class="number">1</span>;  <span class="comment">//自动装箱</span></span><br><span class="line"><span class="type">Integer</span> <span class="variable">i2</span> <span class="operator">=</span> <span class="number">1</span>;  <span class="comment">//JVM 先检查是否存在值为 1 的 Integer 对象并直接引用</span></span><br><span class="line">System.out.println(i1 == i2);  <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//超出存储范围</span></span><br><span class="line"><span class="type">Integer</span> <span class="variable">i3</span> <span class="operator">=</span> <span class="number">129</span>;</span><br><span class="line"><span class="type">Integer</span> <span class="variable">i4</span> <span class="operator">=</span> <span class="number">129</span>;</span><br><span class="line">System.out.println(i5 == i6); <span class="comment">//false	</span></span><br></pre></td></tr></table></figure>
+
+<p>一般来说，基础变量赋值给包装类变量，对象自动装箱，为 Integer 对象分配对空间。因此，即使基础变量值一样，封装类对象指向不同地址，返回 false</p>
+<p>事实上，&#x3D;&#x3D;Integer已经默认创建了数值 [-128~127] 的 Integer 缓存数据。所以使用 <code>Integer i1 = 2 </code>时，JVM会直接在该在对象池找到该值的引用&#x3D;&#x3D;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Integer</span> <span class="variable">i1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">1</span>);  <span class="comment">//显式的 new，JVM 直接分配新空间</span></span><br><span class="line"><span class="type">Integer</span> <span class="variable">i2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">1</span>);</span><br><span class="line">System.out.println(i1 == i2);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Integer 对象是不可变类，方法传递参数时，在方法内部修改，不会影响到外部</p>
+</blockquote>
+<p><strong>自动装箱的弊端</strong></p>
+<p>循环中自动装箱，会创建多余对象，影响性能</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Integer</span> <span class="variable">sun</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1000</span>; i &lt; <span class="number">5000</span>; i++) &#123;</span><br><span class="line">    sum = sum + i;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    1. sum 自动拆箱，并进行数值相加</span></span><br><span class="line"><span class="comment">       int result = sum.intValue() + i;</span></span><br><span class="line"><span class="comment">    2. 相加的数值结果自动装箱为 Integer 类</span></span><br><span class="line"><span class="comment">       Integer sum = new Integer(result);</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述循环会创建约 4000 个无用的对象，加重垃圾回收负担 </p>
+<h1 id="java-stack-为什么不推荐用"><a href="#java-stack-为什么不推荐用" class="headerlink" title="java stack 为什么不推荐用"></a>java stack 为什么不推荐用</h1><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/410438349">https://zhuanlan.zhihu.com/p/410438349</a></p>
+<h1 id="解释器与编译器"><a href="#解释器与编译器" class="headerlink" title="解释器与编译器"></a>解释器与编译器</h1><ul>
+<li>解释器对字节码逐条解释执行，执行速度慢，特别是某代码块运行频繁是，要反复解释，效率低</li>
+<li>热点代码会利用 JIT 编译器编译成本地平台相关的机器码，并进行各层优化。这提高了热点代码的执行效率</li>
+<li>HotSpot 同时含有解释器和编译器。当程序需要快速启动，解释器省去编译时间，立即执行。程序运行后，编译器发挥作用，把越来越多的代码编译成本地代码，提高执行效率</li>
+<li>运行环境中内存限制较大（嵌入式），可用解释执行</li>
+</ul>
+<h1 id="ThreadLocal"><a href="#ThreadLocal" class="headerlink" title="ThreadLocal"></a>ThreadLocal</h1><p><code>ThreadLocal</code>在多线程并发的场景下，提供线程内的局部变量，不同的线程之间不会互相干扰。这种变量在线程的生命周期内起作用，减少同一个线程内多个方法或组件之间传递公共变量的复杂度</p>
+<p><strong>synchronized 和 ThreadLocal 区别</strong></p>
+<p>虽然二者都处理多线程并发访问变量的问题，但是处理思路不同</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>synchronized</th>
+<th>ThreadLocal</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>原理</td>
+<td>同步机制，“时间换空间”，只提供一份变量，不同线程排队访问</td>
+<td>“空间换时间”，为内各线程提供变量副本，实现同时访问而不会互相干扰，并发性更高</td>
+</tr>
+<tr>
+<td>侧重点</td>
+<td>多线程访问资源的同步</td>
+<td>线程间数据隔离</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>ThreadLocal 不能替代同步机制：</p>
+<ul>
+<li>同步机制是为了同步多个线程对相同资源的并发访问，是为了多个线程之间进行通信的有效方式</li>
+<li>ThreadLocal 隔离多个线程的数据共享，从根本上不在多个线程之间共享变量，当然不需要对多个线程进行同步（每个线程有单独的数据，在线程内共享，线程外独立）</li>
+</ul>
+</blockquote>
+<p><strong>应用场景</strong>：解决数据库连接、Session 管理等</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ThreadLocal实例通常来说都是private static类型</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> ThreadLocal&lt;Connection&gt; connectionHolder = </span><br><span class="line">    	<span class="keyword">new</span> <span class="title class_">ThleadLocal</span>&lt;Connection&gt;() &#123;</span><br><span class="line">    <span class="keyword">protected</span> Connection <span class="title function_">initialValue</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> DriverManager.getConnection(DB_URL);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title function_">getConnection</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> connectionHolder.get();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="内部结构"><a href="#内部结构" class="headerlink" title="内部结构"></a><strong>内部结构</strong></h2><p><strong>早期版本</strong></p>
+<p>每个 ThreadLocal 类创建一个Map，然后用线程的ID作为Map的key，实例对象作为Map的value，这样就能达到各个线程的值隔离的效果</p>
+<img src="/2024/02/25/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221117182421616.png" alt="image-20221117182421616" style="zoom:50%;">
+
+<p><strong>JDK 8</strong></p>
+<ul>
+<li>每个线程内部有一个 Map（ThreadLocalMap）</li>
+<li>Map 内存储 ThreadLocal 对象<code>key</code>和变量副本<code>value</code></li>
+<li>Thread 内的 Map 由 TheadLocal 维护，由 TheadLocal 负责向 Map 设置和获取线程的变量值</li>
+<li>对于不同线程，每次获取副本值，别的线程不能获取当前线程副本值，形成副本的隔离</li>
+</ul>
+<img src="/2024/02/25/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221117183029253.png" alt="image-20221117183029253" style="zoom:50%;">
+
+<p><strong>好处</strong></p>
+<blockquote>
+<ol>
+<li>每个 Map 存储的 Entry 变少，不易产生哈希冲突：开发中线程数一般多于 ThreadLocal 数,显著提高性能</li>
+<li>Thread 销毁时，ThreadLocalMap随之销毁，节省空间</li>
+</ol>
+</blockquote>
+<h2 id="底层实现"><a href="#底层实现" class="headerlink" title="底层实现"></a><strong>底层实现</strong></h2><p><code>ThreadLocal</code>类中有一个静态内部类 <code>ThreadLocalMap</code>，相当于实现了一个哈希表，用<code>private Entry[] table;</code> 存储数据，而<code>Entry</code>是一个实现了弱引用的内部类，它的<code>key</code>为弱引用</p>
+<blockquote>
+<p>注: <code>ThreadLocalMap</code>没有实现 Map 接口，用独立的方式实现 Map 功能，其内部的 Entry 也是独立实现的</p>
+</blockquote>
+<img src="/2024/02/25/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221117195938577.png" alt="image-20221117195938577" style="zoom:50%;">
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Entry</span> <span class="keyword">extends</span> <span class="title class_">WeakReference</span>&lt;ThreadLocal&lt;?&gt;&gt; &#123;</span><br><span class="line">    Object value;</span><br><span class="line">    </span><br><span class="line">    Entry(ThreadLocal&lt;?&gt; k, Object v) &#123;</span><br><span class="line">        <span class="built_in">super</span>(k);</span><br><span class="line">        value = v;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>ThreadLocal</code>初始大小 16，负载因子 2&#x2F;3 ，每次扩容为原来的 2 倍（保证大小2^N）</p>
+<p><code>ThreadLocal</code>解决哈希冲突的方法不同于 <code>HashMap</code>，如果下标 i 处冲突，往后移动一个位置，以此类推，直到有空的位置。另外，最后需要判断存储对象个数是否超过阈值，超出后需要扩容并将所有对象重新计算位置（<code>rehash</code>函数实现）</p>
+<blockquote>
+<p><code>rehash</code>中先调用<code>expungStaleEntries</code>函数，然后再判断当前存储对象数是否超出阈值 3&#x2F;4，如果超出了，再扩容</p>
+<p>因为 <code>ThreadLocalMap</code>存储的对象本质是对 <code>ThreadLocal</code>对象的弱引用，<code>key</code>随时可能为<code>null</code>，<code>expungStaleEntries</code>的工作是清理掉这样的 <code>Entry</code>，清理完之后，如果对象还是过多，再扩容<code>resize</code></p>
+</blockquote>
+<img src="/2024/02/25/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E9%A2%98/image-20221117201647305.png" alt="image-20221117201647305" style="zoom:50%;">
+
+<h1 id="数据类型存放"><a href="#数据类型存放" class="headerlink" title="数据类型存放"></a>数据类型存放</h1><p>Java的8种基本类型(Byte, Short, Integer, Long, Character, Boolean, Float, Double), 除Float和Double以外, 其它六种都实现了常量池, 但是它们只在大于等于-128并且小于等于127时才使用常量池。（2的7次方，即一个字节）</p>
+<h1 id="equals-和-的区别"><a href="#equals-和-的区别" class="headerlink" title="equals 和 &#x3D;&#x3D; 的区别"></a>equals 和 &#x3D;&#x3D; 的区别</h1><ul>
+<li>equals<ul>
+<li>没有重写，则比较对象的引用&#x2F;地址（等同于 &#x3D;&#x3D; ）</li>
+<li>如果重写，一般是比较对象的内容</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>&#x3D;&#x3D;重写 equals 一定要重写 hashcode！！&#x3D;&#x3D;</p>
+<p>equals()和hashCode()方法是用来在同一类中做比较用的，尤其是在容器里如set存放同一类对象时用来判断放入的对象是否重复。</p>
+<p>equals()相等的两个对象，hashcode()一定相等</p>
+<p>equals()方法不相等的两个对象，hashCode()有可能相等</p>
+<p>当我们重写一个对象的equals方法，就必须重写他的hashCode方法，不过不重写他的hashCode方法的话，Object对象中的hashCode方法始终返回的是一个对象的hash地址，而这个地址是永远不相等的。所以这时候即使是重写了equals方法，也不会有特定的效果的，因为hashCode方法如果都不相等的话，就不会调用equals方法进行比较了，所以没有意义了。</p>
+<p>如果一个类的hashCode()方法没有遵循上述要求，那么，当这个类的两个实例对象用equals()方法比较的结果相等时，他们本来应该无法被同时存储进set集合中，但是，如果将他们存储进HashSet集合中时，由于他们的hashCode()方法的返回值不同(Object中的hashCode方法返回值是永远不同的)，第二个对象首先按照哈希码计算可能被放进与第一个对象不同的区域中，这样，它就不可能与第一个对象进行equals方法比较了，也就可能被存储进HashSet集合中了，Object类中的hashCode()方法不能满足对象被存入到HashSet中的要求，因为它的返回值是通过对象的内存地址推算出来的，同一个对象在程序运行期间的任何时候返回的哈希值都是始终不变的，所以，只要是两个不同的实例对象，即使他们的equals方法比较结果相等，他们默认的hashCode方法的返回值是不同的</p>
+</blockquote>
+<ul>
+<li><p>&#x3D;&#x3D;</p>
+<ul>
+<li>直接比较数值或引用</li>
+</ul>
+</li>
+<li><p>应用：</p>
+<ul>
+<li>string类等重写了 equals（还要重写hashcode（）），如果地址相同直接返回true，如果地址不同，每一位比较char是否相同</li>
+</ul>
+</li>
+</ul>
+<h1 id="JDK-JRE"><a href="#JDK-JRE" class="headerlink" title="JDK JRE"></a>JDK JRE</h1><ul>
+<li>JRE <code>java runtime environment</code><ul>
+<li>Java 程序的运行环境，包括 JVM 和 java 类库的 class 文件（包括 java.lang java.util 包等），都在 lib 目录下打包成 jar</li>
+<li>java 命令属于 JRE</li>
+</ul>
+</li>
+<li>JDK <code>java development kit</code><ul>
+<li>JVM</li>
+<li>基础类库</li>
+<li>开发工具 <code>javac jmap jconsole jstack jvisualvm</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h1><p>条件：</p>
+<ul>
+<li>继承</li>
+<li>重写</li>
+<li>父类引用指向子类对象</li>
+</ul>
+<p>作用:</p>
+<ul>
+<li>屏蔽子类对象间的差异，提高代码拓展性</li>
+</ul>
+<h1 id="String-StringBuilder-StringBuffer"><a href="#String-StringBuilder-StringBuffer" class="headerlink" title="String StringBuilder StringBuffer"></a>String StringBuilder StringBuffer</h1><p>底层都是使用一个char类型的数组保存元素（叫value）</p>
+<p>StringBuffer是线程安全的，因为它的许多方法如 append 都是使用synchronized 修饰的。</p>
+<p>String是 final 类型的，不可变类，所以也是安全的</p>
+<p>速度  StringBuilder  &gt;  StringBuffer  &gt;  String</p>
+<p>区别： </p>
+<ul>
+<li><p>String 是不可变的对象, 因此在每次对 String 类型进行改变的时候其实都等同于生成了一个新的 String 对象，然后将指针指向新的 String 对象，不适合经常改变内容的字符串 ，因为每次生成对象都会对系统性能产生影响，当内存中无引用对象多了以后， GC 工作影响性能。</p>
+</li>
+<li><p>StringBuffer 每次结果都会对 StringBuffer 对象本身进行操作（对char数组操作），而不是生成新的对象，再改变对象引用。</p>
+<p>一般情况下推荐使用 StringBuffer ，特别是字符串对象经常改变的情况下。</p>
+<p>特别情况下， String 对象的字符串拼接其实是被 JVM 解释成了 StringBuffer 对象的拼接，所以这些时候 String 对象的速度并不会比 StringBuffer 对象慢，而特别是以下的字符串对象生成中， String 效率是远要比 StringBuffer 快的：</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="string">&quot;a&quot;</span> + <span class="string">&quot;b&quot;</span> + <span class="string">&quot;c&quot;</span>;</span><br><span class="line"><span class="comment">//编译优化为 s1 = &quot;abc&quot;</span></span><br><span class="line"><span class="type">StringBuffer</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuffer</span>(<span class="string">&quot;a&quot;</span>).append(<span class="string">&quot;b&quot;</span>).append(<span class="string">&quot;c&quot;</span>);</span><br><span class="line"><span class="comment">// s1 speed higher than s2</span></span><br></pre></td></tr></table></figure>
+
+<p>StringBuffer 扩容：</p>
+<ul>
+<li>利用 arrays.copyof 重新复制数组，arrays.copyof底层先新建一个长度的数组，再用system.arraycopy复制过来。</li>
+</ul>
+<p>StringBuilder和StringBuffer的父类都是AbstractStringBuilder，两者的append方法都是使用父类的append方法，append方法中有扩容，所以两者的扩容机制也一样。append也是使用system.arraycopy(native方法)复制数组</p>
+<h1 id="string为什么不能被继承"><a href="#string为什么不能被继承" class="headerlink" title="string为什么不能被继承"></a>string为什么不能被继承</h1><ul>
+<li><p>被 final 修饰的类，不能被继承。string类的实现和行为是高度优化和高度特化的，因此继承可能会破坏其内部结构或行为。</p>
+</li>
+<li><p>string类通常具有复制和引用计数等复杂的内存管理机制，这些机制可能会对派生类的行为产生意外影响，从而使得继承不可行。</p>
+<img src="/2024/02/25/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E9%A2%98/image-20240315154014514.png" alt="image-20240315154014514" style="zoom:50%;"> 
+
+
+</li>
+<li><p>如果需要使用自己的字符串类来扩展String的功能，可以使用组合而不是继承。例如，在您的自定义类中包含一个string对象，然后添加自己的成员函数来扩展其功能。</p>
+</li>
+</ul>
+<h1 id="迭代遍历"><a href="#迭代遍历" class="headerlink" title="迭代遍历"></a>迭代遍历</h1><ul>
+<li><p>使用 lambda 表达式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">//sum 为成员变量且为 static</span></span><br><span class="line">    <span class="keyword">static</span> <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        list.forEach(i -&gt; &#123;</span><br><span class="line">            sum += i;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>for 循环</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">    sum += list.get(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>speed  ++i &gt; i++</p>
+<p>++i : 自增后直接返回引用</p>
+<p>i++ : 先定义临时变量，把值赋给临时变量，自增，返回临时变量</p>
+</blockquote>
+<p>实际上，只有在对特定位置元素操作时，循环变量才有意义</p>
+</li>
+<li><p>增强 for 循环（舍弃循环变量，速度快）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> num ：list) &#123;</span><br><span class="line">    sum += num;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="IO-NIO"><a href="#IO-NIO" class="headerlink" title="IO NIO"></a>IO NIO</h1><ul>
+<li><p>IO 面向流，而 NIO 面向缓冲区</p>
+<ul>
+<li>面向流意味着，每次从流中读一个或多个字节，直至读取所有字节，它们没有被缓存在任何地方。此外，它不能前后移动流中的数据。如果需要前后移动从流中读取的数据，需要先将它缓存到一个缓冲区</li>
+<li>NIO 的缓冲导向方法略有不同。数据读取到一个它稍后处理的缓冲区，需要时可在缓冲区中前后移动。增加了处理过程中的灵活性。但是，还需要检查是否该缓冲区中包含所有需要处理的数据。而且，需确保当更多的数据读入缓冲区时，不要覆盖缓冲区里尚未处理的数据</li>
+</ul>
+</li>
+<li><p>IO 的各种流是阻塞的，NIO 非阻塞</p>
+<ul>
+<li>当一个线程调用read() 或 write()时，该线程被阻塞，直到有一些数据被读取，或数据完全写入。该线程在此期间不能再干任何事情了</li>
+<li>NIO 的非阻塞模式，使一个线程从某通道发送请求读取数据，但是它仅能得到目前可用的数据，如果目前没有数据可用时，就什么都不会获取。而不是保持线程阻塞，所以直至数据变的可以读取之前，该线程可以继续做其他的事情。 非阻塞写也是如此。一个线程请求写入一些数据到某通道，但不需要等待它完全写入，这个线程同时可以去做别的事情。 线程通常将非阻塞IO的空闲时间用于在其它通道上执行IO操作，所以一个单独的线程现在可以管理多个输入和输出通道</li>
+</ul>
+</li>
+<li><p>选择器</p>
+<ul>
+<li>NIO 的选择器允许一个单独的线程来监视多个输入通道，可注册多个通道使用一个选择器，使用一个单独的线程来“选择”通道：这些通道里已经有可以处理的输入，或者选择已准备写入的通道。这种选择机制，使得一个单独的线程很容易来管理多个通道。</li>
+</ul>
+</li>
+</ul>
+<h2 id="MySQL-题目随笔总结"><a href="#MySQL-题目随笔总结" class="headerlink" title="MySQL 题目随笔总结"></a>MySQL 题目随笔总结</h2><p><img src="/2024/02/25/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E9%A2%98/image-20231016200059329.png" alt="image-20231016200059329"></p>
+<p><img src="/2024/02/25/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E9%A2%98/image-20231019002830362.png" alt="image-20231019002830362"></p>
+<h3 id="b-b-区别"><a href="#b-b-区别" class="headerlink" title="b b + 区别"></a>b b + 区别</h3><p>叶子存储信息 -&gt; </p>
+<h2 id="索引下推"><a href="#索引下推" class="headerlink" title="索引下推"></a>索引下推</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/three-fighter/p/15246577.html">https://www.cnblogs.com/three-fighter/p/15246577.html</a></p>
+<p><img src="/2024/02/25/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E9%A2%98/image-20231101092216942.png" alt="image-20231101092216942"></p>
+<p>分库分表</p>
+<p><a target="_blank" rel="noopener" href="https://www.51cto.com/article/709614.html">https://www.51cto.com/article/709614.html</a></p>
+<p>缓存击穿 缓存雪崩什么意思，怎样预防。</p>
+<p><a target="_blank" rel="noopener" href="https://xiaolincoding.com/redis/cluster/cache_problem.html#%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F">https://xiaolincoding.com/redis/cluster/cache_problem.html#%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F</a></p>
+<p>![图片](MySQL 题目随笔总结&#x2F;061e2c04e0ebca3425dd75dd035b6b7b.png)</p>
+
+      
+       
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2017 王才雨
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
