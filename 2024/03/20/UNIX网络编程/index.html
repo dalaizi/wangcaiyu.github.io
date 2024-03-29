@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>UNIX网络编程 | Hexo</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="UNIX网络编程 | Hexo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="设计模式设计原则（1）封装变化把会变化的部分取出并封装起来，好让其他部分不会受到影响，这样可以导致代码的变化所引起的后果变少，代码更加可控并且不容易出问题。 大多数的模式都着眼于软件变化的主题，允许系统局部改变独立于其他部分。 （2）针对接口编程，而不是针对实现编程这里的接口不一定指的interface关键字，而是说针对超类型编程，即利用多态，动态绑定对应的执行方法。 （3）多用组合，少用继承“有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式">
+<meta property="og:url" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="设计模式设计原则（1）封装变化把会变化的部分取出并封装起来，好让其他部分不会受到影响，这样可以导致代码的变化所引起的后果变少，代码更加可控并且不容易出问题。 大多数的模式都着眼于软件变化的主题，允许系统局部改变独立于其他部分。 （2）针对接口编程，而不是针对实现编程这里的接口不一定指的interface关键字，而是说针对超类型编程，即利用多态，动态绑定对应的执行方法。 （3）多用组合，少用继承“有">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104248465-63944401.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104317270-396665969.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104346692-775629068.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104418901-669910264.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104448461-445720531.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104623355-395020836.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104734741-460291300.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104804100-330974965.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104906200-389642996.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828105013587-1221184350.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828105112948-636045824.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828105217637-747315886.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828105302840-760912427.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828105452228-722350841.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/state.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828105608720-1043309143.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/mediator_pattern_uml_diagram.jpg">
+<meta property="article:published_time" content="2024-03-29T13:02:25.000Z">
+<meta property="article:modified_time" content="2024-03-29T13:03:08.723Z">
+<meta property="article:author" content="王才雨">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104248465-63944401.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>王才雨</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/dalaizi"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:1935863093@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=1935863093&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(14)</small>
+            
+        </div>
+    </li>
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">About</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">Friends</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="14">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="设计模式">设计模式</span>
+            <span class="post-date" title="2024-03-29 21:02:25">2024/03/29</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="UNIX网络编程">UNIX网络编程</span>
+            <span class="post-date" title="2024-03-20 15:03:46">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/03/17/Spring/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Spring">Spring</span>
+            <span class="post-date" title="2024-03-17 00:40:34">2024/03/17</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/02/25/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E9%9D%A2%E8%AF%95%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="后端开发面试题">后端开发面试题</span>
+            <span class="post-date" title="2024-02-25 15:47:51">2024/02/25</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/01/05/Linux/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Linux">Linux</span>
+            <span class="post-date" title="2024-01-05 13:29:00">2024/01/05</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2023/11/22/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="力扣刷题">力扣刷题</span>
+            <span class="post-date" title="2023-11-22 17:10:44">2023/11/22</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2023/10/08/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="动态代理">动态代理</span>
+            <span class="post-date" title="2023-10-08 22:49:01">2023/10/08</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2023/04/08/%E9%A1%B9%E7%9B%AERPC%E6%A1%86%E6%9E%B6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="项目RPC框架">项目RPC框架</span>
+            <span class="post-date" title="2023-04-08 19:49:23">2023/04/08</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2023/01/02/redis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="redis">redis</span>
+            <span class="post-date" title="2023-01-02 17:46:17">2023/01/02</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2022/12/24/MySQL/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MySQL">MySQL</span>
+            <span class="post-date" title="2022-12-24 11:40:50">2022/12/24</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2022/11/11/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java并发编程">Java并发编程</span>
+            <span class="post-date" title="2022-11-11 16:20:42">2022/11/11</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2022/10/30/JVM%E8%B0%83%E4%BC%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="JVM调优">JVM调优</span>
+            <span class="post-date" title="2022-10-30 20:09:07">2022/10/30</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2022/10/19/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="深入理解Java虚拟机">深入理解Java虚拟机</span>
+            <span class="post-date" title="2022-10-19 10:40:02">2022/10/19</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="计算机网络">计算机网络</span>
+            <span class="post-date" title="2022-02-06 18:11:21">2022/02/06</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-UNIX网络编程" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">UNIX网络编程</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2024-03-29 21:04:34'>2024-03-20 15:03</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#UNIX-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B-%E4%B8%8E-Netty-%E7%AC%94%E8%AE%B0"><span class="toc-text">UNIX 网络编程 与 Netty 笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B-TCP-%E8%BF%9E%E6%8E%A5%E5%BB%BA%E7%AB%8B-%E7%BB%88%E6%AD%A2-%E7%AB%AF%E5%8F%A3%E5%8F%B7-%E7%BC%93%E5%86%B2%E5%8C%BA%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-text">1. 网络模型 + TCP 连接建立&#x2F;终止 + 端口号&#x2F;缓冲区相关概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#OSI-%E6%A8%A1%E5%9E%8B"><span class="toc-text">OSI 模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82%EF%BC%9ATCP%E8%BF%9E%E6%8E%A5%E5%BB%BA%E7%AB%8B%E4%B8%8E%E7%BB%88%E6%AD%A2"><span class="toc-text">传输层：TCP连接建立与终止</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%8F%B7-%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-text">端口号 缓冲区</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-TCP-%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%EF%BC%8C%E9%85%8D%E5%90%88-TCP-IP-%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3-%E5%AF%B9%E5%BA%95%E5%B1%82%E6%B7%B1%E5%BA%A6%E7%90%86%E8%A7%A3"><span class="toc-text">2. TCP 相关参数，配合 TCP&#x2F;IP 协议理解 对底层深度理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-IO%E6%A8%A1%E5%9E%8B-%E4%B8%8E-select-poll-%E5%87%BD%E6%95%B0"><span class="toc-text">3. IO模型 与 select&#x2F;poll 函数</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="UNIX-网络编程-与-Netty-笔记"><a href="#UNIX-网络编程-与-Netty-笔记" class="headerlink" title="UNIX 网络编程 与 Netty 笔记"></a>UNIX 网络编程 与 Netty 笔记</h1><blockquote>
+<p>该笔记以模块为单位，记录重点知识。学习详情可参考《UNIX 网络编程》《Netty 权威指南》图书</p>
+</blockquote>
+<h2 id="1-网络模型-TCP-连接建立-终止-端口号-缓冲区相关概念"><a href="#1-网络模型-TCP-连接建立-终止-端口号-缓冲区相关概念" class="headerlink" title="1. 网络模型 + TCP 连接建立&#x2F;终止 + 端口号&#x2F;缓冲区相关概念"></a>1. 网络模型 + TCP 连接建立&#x2F;终止 + 端口号&#x2F;缓冲区相关概念</h2><h3 id="OSI-模型"><a href="#OSI-模型" class="headerlink" title="OSI 模型"></a>OSI 模型</h3><p>国际标准化组织（ISO）制定的开放互联（OSI）模型，是七层模型，概念模型。</p>
+<img src="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/image-20231129194826170.png" alt="image-20231129194826170" style="zoom:67%;">
+
+<p>我们关注的套接字编程接口是顶上三层（网际协议的应用层）进入传输层的接口，为什么接口选在这个地方呢？原因有两个：</p>
+<ol>
+<li><p>应用层处理具体<strong>网络应用</strong>（如FTP、Telnet或HTTP）的细节，却对通信细节了解很少;底下四层对具体网络应用了解不多，却处理所有的<strong>通信细节</strong>（发送数据，等待确认，给无序到达的数据排序，计算并验证校验和）</p>
+</li>
+<li><p>应用层通常构成所谓的<strong>用户进程</strong>(user process)，底下四层却通常作为<strong>操作系统内核</strong>的一部分提供。Unix与其他现代操作系统都提供分隔用户进程与内核的机制。</p>
+<p>由此可见，第4层和第5层之间的接口是构建API的自然位置。</p>
+</li>
+</ol>
+<h3 id="传输层：TCP连接建立与终止"><a href="#传输层：TCP连接建立与终止" class="headerlink" title="传输层：TCP连接建立与终止"></a>传输层：TCP连接建立与终止</h3><p>UDP是一个简单的、<strong>不可靠</strong>的<strong>数据报</strong>协议，而TCP是一个复杂、<strong>可靠</strong>的<strong>字节流</strong>协议。</p>
+<img src="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/image-20231129195835785.png" alt="image-20231129195835785" style="zoom:80%;">
+
+<img src="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/image-20231129195852497.png" alt="image-20231129195852497" style="zoom: 50%;">
+
+<img src="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/image-20231129195917970.png" alt="image-20231129195917970" style="zoom:50%;">
+
+<h3 id="端口号-缓冲区"><a href="#端口号-缓冲区" class="headerlink" title="端口号 缓冲区"></a>端口号 缓冲区</h3><h2 id="2-TCP-相关参数，配合-TCP-IP-协议理解-对底层深度理解"><a href="#2-TCP-相关参数，配合-TCP-IP-协议理解-对底层深度理解" class="headerlink" title="2. TCP 相关参数，配合 TCP&#x2F;IP 协议理解 对底层深度理解"></a>2. TCP 相关参数，配合 TCP&#x2F;IP 协议理解 对底层深度理解</h2><h2 id="3-IO模型-与-select-poll-函数"><a href="#3-IO模型-与-select-poll-函数" class="headerlink" title="3. IO模型 与 select&#x2F;poll 函数"></a>3. IO模型 与 select&#x2F;poll 函数</h2><p>重要！！五种IO模型</p>
+<p>搭配<a target="_blank" rel="noopener" href="https://chat.openai.com/share/30ca95a2-dfea-43bf-8592-593f30fc545a%E9%93%BE%E6%8E%A5%E5%AD%A6%E4%B9%A0">https://chat.openai.com/share/30ca95a2-dfea-43bf-8592-593f30fc545a链接学习</a></p>
+<p>（技巧：其他模型都和BIO对比）</p>
+<hr>
+<p><strong>BIO</strong></p>
+<img src="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/image-20231129205423452.png" alt="image-20231129205423452" style="zoom: 67%;">
+
+<p>在进程空间中调用 recvfrom ，其系统调用直到 数据报到达 且被复制到应用进程缓冲区 或 发生错误时才返回。</p>
+<hr>
+<p><strong>NIO &#x3D; BIO + 轮询</strong></p>
+<img src="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/image-20231129210148822.png" alt="image-20231129210148822" style="zoom: 50%;">
+
+<p>和BIO区别就是应用进程<strong>反复调用recvfrom，轮询内核</strong>，问“数据准备好了吗？？”，没准备好就返回EWOULDBLOCK错误，准备好就正常数据复制内核-&gt;用户，返回成功！</p>
+<p>说白了，就是 用户进程 不是在<strong>等</strong>（阻塞），而是在<strong>问</strong>（非阻塞）</p>
+<p>之前一直不理解非阻塞IO的优势（轮询等待不也是等待吗，而且还占用cpu，不像BIO，虽然进程阻塞，但是能挂起乖乖交出cpu），后来看到这句话：</p>
+<img src="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/image-20231129211632148.png" alt="image-20231129211632148" style="zoom:50%;">
+
+<hr>
+<p><strong>IO复用 &#x3D; BIO + BIO + BIO …….(阻塞在多个socket)</strong></p>
+<img src="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/image-20231129211910184.png" alt="image-20231129211910184" style="zoom:50%;">
+
+<p><strong>IO复用模型，本质是从阻塞在一个套接字上，变成阻塞在多个套接字上</strong>（阻塞在select调用上，select关联多个socket，只要有一个socket可读，就返回可读条件，这时候再去执行recvfrom调用，无需进行数据等待，直接复制数据到用户空间并成功返回！）</p>
+<p>Linux 提供 select&#x2F;poll，进程通过一个或多个 fd 传递给 select 或 poll 系统调用，阻塞在 select 操作上，这样 select&#x2F;poll 可以帮我们侦测多个 fd 是否处于就绪状态。</p>
+<p>select&#x2F;poll 是顺序扫描 fd 是否就绪，而且支持的 fd 数量有限，因此它的使用受到一些制约。</p>
+<p>Linux 还提供一个 epoll 系统调用，epoll 基于事件驱动方式代替顺序扫描，性能更高。当有 fd 就绪时，立即回调函数 rollback。</p>
+<hr>
+<img src="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/image-20231129213905307.png" alt="image-20231129213905307" style="zoom:67%;">
+
+<p>”等数据准备好的时候告诉我，我先忙我自己的事情“</p>
+<hr>
+<img src="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/image-20231129214051315.png" alt="image-20231129214051315" style="zoom:67%;">
+
+<p>异步IO就是，告诉内核执行某个操作，并让内核在整个操作（包括将数据从内核复制到用户缓冲区）完成后通知我们。</p>
+<p>与信号驱动模型的区别：信号驱动式IO是由内核通知我们<strong>何时可以启动一个IO操作（数据复制）</strong>，而异步IO模型是由内核通知我们<strong>I&#x2F;O操作何时完成</strong>。</p>
+<p>与前面模型的<strong>根本区别</strong>：数据复制（内核-&gt;用户）都省的做了！</p>
+<blockquote>
+<p>我们调用 aio_read 函数(POSIX异步IO函数以aio_或lio_开头)，给内核传递描述符、缓冲区指针、缓冲区大小(与read相同的三个参数）和文件偏移（与lseek类似)，并告诉内核当整个操作完成时如何通知我们。该系统调用立即返回，而且在等待IO完成期间，我们的进程不被阻塞。本例子中我们假设要求内核在操作完成时产生某个信号。该信号直到数据已复制到应用进程缓冲区才产生，这一点不同于信号驱动式I&#x2F;O模型。</p>
+</blockquote>
+<hr>
+<img src="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/image-20231129214647388.png" alt="image-20231129214647388" style="zoom: 67%;">
+
+
+
+<hr>
+<p><strong>select poll epoll解析</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.xiaolincoding.com/os/8_network_system/selete_poll_epoll.html#select-poll">https://www.xiaolincoding.com/os/8_network_system/selete_poll_epoll.html#select-poll</a></p>
+<p><strong>epoll克服了select的缺点：</strong></p>
+<ul>
+<li><p><strong>一个进程打开的 FD &#x2F; socket 描述符 不受限制（仅受限于操作系统的最大句柄数）</strong></p>
+<p>select 最大的缺陷是单个进程所打开的FD有限制，由<code>FD_SETSIZE</code>设置，默认值1024。对于那些需要支持上万个 TCP 连接的大型服务器来说显然太少。</p>
+<p>选择多进程的方案（传统的Apache方案）虽然在 Linux 上创建进程的代价较小，但仍不可忽视。另外，进程间的数据交换非常麻烦，对于Java来说，由于没有共享内存，需要通过Socket通信或者其他方式进行数据同步，这带来了额外的性能损耗。</p>
+<p>epoll 并没有这个限制，它所支持的FD上限是操作系统的最大文件句柄数，这个数字远远大于1024。例如，在1GB 内存的机器上大约是10万个句柄左右，具体的值可以通过 cat&#x2F;proc&#x2F;sys&#x2F;fs&#x2F;file- max察看，通常情况下这个值跟系统的内存关系比较大。</p>
+</li>
+<li><p><strong>IO效率不会随着FD数目的增加而线性下降。</strong></p>
+<p>select&#x2F;poll 另一致命弱点，是当有一个很大的 socket 集合时，由于网络延时或者链路空闲，任一时刻只有少部分的 socket 是“活跃”的，但是 <strong>select&#x2F;poll 每次调用都会线性扫描全部的集合，导致效率呈现线性下降</strong>。</p>
+<p>epoll 只会对“活跃”的 socket进行操作——这是因为在内核实现中, epoll  是根据每个fd上面的 <strong>callback 函数</strong>实现的。那么，只有“活跃”的socket才会去主动调用callback函数，其他idle状态的socket则不会。</p>
+<p>在这点上，epoll 实现了一个伪 AIO。针对epoll和 select性能对比：如果所有的socket都处于活跃态——例如一个高速LAN环境，epoll并不比 select&#x2F;poll效率高太多;相反，如果过多使用epoll_ctl，效率相比还有稍微地降低。但是一旦使用idle connections模拟WAN环境，epoll的效率就远在 select&#x2F;poll之上了。</p>
+</li>
+<li><p><strong>使用 mmap 加速内核与用户空间的消息传递。</strong></p>
+<p>无论是select、poll还是epoll 都需要内核把FD消息通知给用户空间，如何避免不必要的内存复制就显得非常重要，epoll是通过内核和用户空间mmap 同一块内存来实现的。</p>
+</li>
+<li><p>epoll 的 API 更简单</p>
+</li>
+</ul>
+<hr>
+<p><strong>Java IO 发展历程</strong></p>
+<blockquote>
+<p>注：这部分涉及<strong>传统的java io 编程</strong>，具体代码可以看《Netty 权威指南》，以下是基于此的笔记</p>
+</blockquote>
+<p><strong>（一）BIO</strong></p>
+<p><img src="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/image-20231202214844287.png" alt="image-20231202214844287"></p>
+<p>采用 BIO 通信模型的服务端，通常由一个独立的 Acceptor 线程负责监听客户端的连接，它接收到客户端连接请求之后为每个客户端创建一个新的线程进行链路处理，处理完成之后，通过输出流返回应答给客户端，线程销毁。这就是典型的<strong>一请求一应答</strong>通信模型。（书上有源码）</p>
+<p>优点：简单</p>
+<p>缺点：一个连接就对应一个线程，耗资源；线程会阻塞。</p>
+<p><strong>（二）伪异步IO</strong></p>
+<p><img src="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/image-20231203141700188.png" alt="image-20231203141700188"></p>
+<p>当有新的客户端接入时，将客户端的 Socket 封装成一个 Task （该任务实现 java.lang.Runnable 接口）投递到后端的<strong>线程池</strong>中进行处理，JDK 的线程池维护一个消息队列和 N个活跃线程，对消息队列中的任务进行处理。由于线程池可以设置消息队列的大小和最大线程数，因此，它的资源占用是<strong>可控</strong>的，无论多少个客户端并发访问，都不会导致资源的耗尽和宕机。（书上有源码）</p>
+<p>优点：线程资源可控</p>
+<p>缺点：阻塞的本质没变</p>
+<p>Netty 是 基于 <strong>NIO</strong> 的<strong>异步</strong>网络编程框架，基于 Netty 能快速的搭建高性能易扩展的网络应用（包括客户端与服务端）。</p>
+<p>说白了，Netty 就是对 Java NIO 的封装！！！（想知道什么是NIO，就又引向了五种IO模型）</p>
+<p>以前一直不明白，NIO 是 非阻塞同步 IO，那为什么 Netty 是异步的网络框架呢？</p>
+
+      
+       
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2017 王才雨
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
