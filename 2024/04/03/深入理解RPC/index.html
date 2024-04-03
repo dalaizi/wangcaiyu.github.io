@@ -13,21 +13,21 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="深入理解 RPC来源：https:&#x2F;&#x2F;blog.csdn.net&#x2F;fangmeng1997&#x2F;category_10396482.html 第一章 核心原理1. 什么是 RPC？RPC 的全称是 Remote Procedure Call，即远程过程调用。简单解读字面上的意思，远程肯定是指要跨机器而非本机，所以需要用到网络编程才能实现，但是不是只要通过网络通信访问到另一台机器的应用程序，就可以称之为">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmdtZW5nMTk5Nw==,size_16,color_FFFFFF,t_70#pic_left.png">
-<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmdtZW5nMTk5Nw==,size_16,color_FFFFFF,t_70#pic_left-1712122214635-3.png">
-<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmdtZW5nMTk5Nw==,size_16,color_FFFFFF,t_70#pic_left-1712122863505-6.png">
-<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmdtZW5nMTk5Nw==,size_16,color_FFFFFF,t_70#pic_left-1712123212032-9.png">
-<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmdtZW5nMTk5Nw==,size_16,color_FFFFFF,t_70#pic_left-1712123305511-12.png">
-<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmdtZW5nMTk5Nw==,size_16,color_FFFFFF,t_70#pic_left-1712123473444-15.png">
-<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmdtZW5nMTk5Nw==,size_16,color_FFFFFF,t_70#pic_left-1712124244256-18.png">
-<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmdtZW5nMTk5Nw==,size_16,color_FFFFFF,t_70#pic_left-1712124290535-21.png">
-<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmdtZW5nMTk5Nw==,size_16,color_FFFFFF,t_70#pic_left-1712124674603-24.png">
-<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmdtZW5nMTk5Nw==,size_16,color_FFFFFF,t_70#pic_left-1712126275097-27.png">
+<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403144821607.png">
+<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403144847539.png">
+<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403144909908.png">
+<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403144933685.png">
+<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403144947336.png">
+<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403145005073.png">
+<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403145024625.png">
+<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403145040872.png">
+<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403145100790.png">
+<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403145117184.png">
 <meta property="article:published_time" content="2024-04-03T05:06:31.000Z">
-<meta property="article:modified_time" content="2024-04-03T06:39:38.505Z">
+<meta property="article:modified_time" content="2024-04-03T06:51:22.325Z">
 <meta property="article:author" content="王才雨">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmdtZW5nMTk5Nw==,size_16,color_FFFFFF,t_70#pic_left.png">
+<meta name="twitter:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403144821607.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -369,7 +369,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-04-03 14:39:38'>2024-04-03 13:06</time>
+            Created At : <time class="date" title='Updated At: 2024-04-03 14:51:22'>2024-04-03 13:06</time>
         
     </div>
     <div class="article-meta">
@@ -428,7 +428,9 @@
 <p>那我们有什么办法来简化 API，屏蔽掉 RPC 细节，让使用方只需要关注业务接口，像调用本地一样来调用远程呢？</p>
 <p>如果你了解 Spring，一定对其 AOP 技术很佩服，其核心是采用动态代理的技术，通过字节码增强对方法进行拦截增强，以便于增加需要的额外处理逻辑。其实这个技术也可以应用到 RPC 场景来解决我们刚才面临的问题。</p>
 <p><strong>由服务提供者给出业务接口声明，在调用方的程序里面，RPC 框架根据调用的服务接口提前生成动态代理实现类，并通过依赖注入等技术注入到声明了该接口的相关业务逻辑里面。该代理实现类会拦截所有的方法调用，在提供的方法处理逻辑里面完成一整套的远程调用，并把远程调用结果返回给调用方，这样调用方在调用远程方法的时候就获得了像调用本地接口一样的体验</strong>。</p>
-<p>到这里，一个简单版本的 RPC 框架就实现了。上述流程如下图：<img src="/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmdtZW5nMTk5Nw==,size_16,color_FFFFFF,t_70#pic_left.png" style="zoom:67%;"> </p>
+<p>到这里，一个简单版本的 RPC 框架就实现了。上述流程如下图：</p>
+<img src="/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403144821607.png" alt="image-20240403144821607" style="zoom:67%;">  
+
 <h3 id="3-RPC-在架构中的位置"><a href="#3-RPC-在架构中的位置" class="headerlink" title="3. RPC 在架构中的位置"></a>3. RPC 在架构中的位置</h3><p>围绕 RPC 我们讲了这么多，那 RPC 在架构中究竟处于什么位置呢？</p>
 <p>如刚才所讲，RPC 是解决应用间通信的一种方式，而无论是在一个大型的分布式应用系统还是中小型系统中，应用架构最终都会从“单体”演进成“微服务化”，整个应用系统会被拆分为多个不同功能的应用，并将它们部署在不同的服务器中，而应用之间会通过 RPC 进行通信，<strong>可以说 RPC 对应的是整个分布式应用系统，就像是“经络”一样的存在</strong>。</p>
 <p>那么如果没有 RPC，我们现实中的开发过程是怎样的一个体验呢？</p>
@@ -437,7 +439,7 @@
 <p>我们首先都会想到可以采用“分而治之”的思想来进行拆分，但是拆分完的系统怎么保持跟未拆分前的调用方式一样呢？我们总不能因为架构升级，就把所有的代码都推倒重写一遍吧。</p>
 <p><strong>RPC 框架能够帮助我们解决系统拆分后的通信问题，并且能让我们像调用本地一样去调用远程方法</strong>。利用 RPC 我们不仅可以很方便地将应用架构从“单体”演进成“微服务化”，而且还能解决实际开发过程中的效率低下、系统耦合等问题，这样可以使得我们的系统架构整体清晰、健壮，应用可运维度增强。</p>
 <p>当然 RPC 不仅可以用来解决通信问题，它还被用在了很多其他场景，比如：MQ、分布式缓存、数据库等。比如下面的应用架构图：</p>
-<img src="/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmdtZW5nMTk5Nw==,size_16,color_FFFFFF,t_70#pic_left-1712122214635-3.png" style="zoom: 67%;"> 
+<img src="/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403144847539.png" alt="image-20240403144847539" style="zoom:50%;"> 
 
 
 <p>在这个应用中，使用了 MQ 来处理异步流程、Redis 缓存热点数据、MySQL 持久化数据，还有就是在系统中调用另外一个业务系统的接口，对我的应用来说这些都是属于 RPC调用，而 MQ、MySQL 持久化的数据也会存在于一个分布式文件系统中，他们之间的调用也是需要用 RPC 来完成数据交互的。</p>
@@ -452,7 +454,7 @@
 <h2 id="第二章-协议"><a href="#第二章-协议" class="headerlink" title="第二章 协议"></a>第二章 协议</h2><h3 id="1-协议"><a href="#1-协议" class="headerlink" title="1. 协议"></a>1. 协议</h3><p>一提到协议，你最先想到的可能是 TCP 协议、UDP 协议等等，并且这些网络传输协议的实现有点晦涩难懂。虽然在 RPC 中我们也会用到这些协议，但这些协议更多的是对我们上层应用是透明的，我们 RPC 在使用过程中并不太需要关注他们的细节。那 RPC 协议到底是什么呢？</p>
 <p>可能我举个例子，你立马就明白了。HTTP 协议是不是很熟悉（本博客里面所说的 HTTP 默认都是 1.X）， 这应该是我们日常工作中用得最频繁的协议了，每天打开浏览器浏览的网页就是使用的 HTTP 协议。那 HTTP 协议跟 RPC 协议又有什么关系呢？看起来他俩好像不搭边，但他们有一个共性就是都<strong>属于应用层协议</strong>。</p>
 <p>所以我们要讲的 RPC 协议就是围绕应用层协议展开的。我们可以先了解下 HTTP 协议，我们先看看它的协议格式是什么样子的。回想一下我们在浏览器里面输入一个 URL 会发生什么？抛开 DNS 解析暂且不谈，浏览器收到命令后会封装一个请求，并把请求发送到 DNS 解析出来的 IP 上，通过抓包工具我们可以抓到请求的数据包，如下图所示：</p>
-<img src="/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmdtZW5nMTk5Nw==,size_16,color_FFFFFF,t_70#pic_left-1712122863505-6.png" style="zoom:67%;"> 
+<img src="/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403144909908.png" alt="image-20240403144909908" style="zoom:67%;">  
 
 <h3 id="2-协议的作用"><a href="#2-协议的作用" class="headerlink" title="2. 协议的作用"></a>2. 协议的作用</h3><p>看完 HTTP 协议之后，你可能会有一个疑问，我们为什么需要协议这个东西呢？没有协议就不能通信吗？</p>
 <p>我们知道<strong>只有二进制才能在网络中传输，所以 RPC 请求在发送到网络中之前，他需要把方法调用的请求参数转成二进制；转成二进制后，写入本地 Socket 中，然后被网卡发送到网络设备中。</strong></p>
@@ -465,11 +467,11 @@
 <p><strong>那怎么设计一个私有 RPC 协议呢？</strong></p>
 <p>在设计协议前，我们先梳理下要完成 RPC 通信的时候，在协议里面需要放哪些内容。</p>
 <p>首先要想到的就是我们前面说的消息边界了，但 RPC 每次发请求发的大小都是不固定的，所以我们的协议必须能让接收方正确地读出不定长的内容。我们可以先固定一个长度（比如4 个字节）用来保存整个请求数据大小，这样收到数据的时候，我们先读取固定长度的位置里面的值，值的大小就代表协议体的长度，接着再根据值的大小来读取协议体的数据，整个协议可以设计成这样：</p>
-<img src="/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmdtZW5nMTk5Nw==,size_16,color_FFFFFF,t_70#pic_left-1712123212032-9.png" style="zoom: 67%;"> 
+<img src="/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403144933685.png" alt="image-20240403144933685" style="zoom:50%;">  
 
 <p>但上面这种协议，只实现了正确的断句效果，在 RPC 里面还行不通。因为对于服务提供方来说，他是不知道这个协议体里面的二进制数据是通过哪种序列化方式生成的。如果不能知道调用方用的序列化方式，即使服务提供方还原出了正确的语义，也并不能把二进制还原成对象，那服务提供方收到这个数据后也就不能完成调用了。因此我们需要把序列化方式单独拿出来，类似协议长度一样用固定的长度存放，这些需要固定长度存放的参数我们可以统称为“协议头”，这样整个协议就会拆分成两部分：协议头和协议体。</p>
 <p>在协议头里面，我们除了会放协议长度、序列化方式，还会放一些像协议标示、消息 ID、消息类型这样的参数，而协议体一般只放请求接口方法、请求的业务参数值和一些扩展属性。这样一个完整的 RPC 协议大概就出来了，协议头是由一堆固定的长度参数组成，而协议体是根据请求接口和参数构造的，长度属于可变的，具体协议如下图所示：</p>
-<img src="/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmdtZW5nMTk5Nw==,size_16,color_FFFFFF,t_70#pic_left-1712123305511-12.png" style="zoom:80%;"> 
+<img src="/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403144947336.png" alt="image-20240403144947336" style="zoom:67%;">  
 
 <p><strong>可扩展的协议</strong></p>
 <p>刚才讲的协议属于定长协议头，那也就是说往后就不能再往协议头里加新参数了，如果加参数就会导致线上兼容问题。举个具体例子，假设你设计了一个 88Bit 的协议头，其中协议长度占用 32bit，然后你为了加入新功能，在协议头里面加了 2bit，并且放到协议头的最后。升级后的应用，会用新的协议发出请求，然而没有升级的应用收到的请求后，还是按照 88bit 读取协议头，新加的 2 个 bit 会当作协议体前 2 个 bit 数据读出来，但原本的协议体最后 2 个 bit 会被丢弃了，这样就会导致协议体的数据是错的。</p>
@@ -477,7 +479,9 @@
 <p>没错，协议体里面是可以加新的参数，但这里有一个关键点，就是协议体里面的内容都是经过序列化出来的，也就是说你要获取到你参数的值，就必须把整个协议体里面的数据经过反序列化出来。但在某些场景下，这样做的代价有点高啊！</p>
 <p>比如说，服务提供方收到一个过期请求，这个过期是说服务提供方收到的这个请求的时间大于调用方发送的时间和配置的超时时间，既然已经过期，就没有必要接着处理，直接返回一个超时就好了。那要实现这个功能，就要在协议里面传递这个配置的超时时间，那如果之前协议里面没有加超时时间参数的话，我们现在把这个超时时间加到协议体里面是不是就有点重了呢？显然，会加重 CPU 的消耗。</p>
 <p>所以为了保证能平滑地升级改造前后的协议，我们有必要设计一种支持可扩展的协议。其关键在于让协议头支持可扩展，扩展后协议头的长度就不能定长了。那要实现读取不定长的协议头里面的内容，在这之前肯定需要一个固定的地方读取长度，所以我们需要一个固定的写入协议头的长度。整体协议就变成了三部分内容：协议头固定部分、协议头扩展部分、协议体内容，前两部分我们还是可以统称为“协议头”，具体协议如下：</p>
-<p><img src="/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmdtZW5nMTk5Nw==,size_16,color_FFFFFF,t_70#pic_left-1712123473444-15.png"> </p>
+<img src="/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403145005073.png" alt="image-20240403145005073" style="zoom:80%;">  
+
+
 <p>最后，我想说，<strong>设计一个简单的 RPC 协议并不难，难的就是怎么去设计一个可“升级”的协议</strong>。不仅要让我们在扩展新特性的时候能做到向下兼容，而且要尽可能地减少资源损耗，所以我们协议的结构不仅要支持协议体的扩展，还要做到协议头也能扩展。</p>
 <h3 id="4-总结-1"><a href="#4-总结-1" class="headerlink" title="4. 总结"></a>4. 总结</h3><p>我们人类区别于其他动物的一个很大原因，就是我们能够通过语言去沟通，用文字去沉淀文明，从而让我们能站在巨人的肩膀上成长，但为了保证我们记录的文字能够被其他人理解，我们必须通过符号去实现断句，否则就可能导致文字的意义被曲解，甚至闹出笑话。</p>
 <p>在 RPC 里面，协议的作用就类似于文字中的符号，作为应用拆解请求消息的边界，保证二进制数据经过网络传输后，还能被正确地还原语义，避免调用方跟被调用方之间的“鸡同鸭讲”。</p>
@@ -488,11 +492,11 @@
 <p>网络传输的数据必须是二进制数据，但调用方请求的出入参数都是对象。对象是不能直接在网络中传输的，所以我们需要提前把它转成可传输的二进制，并且要求转换算法是可逆的，这个过程我们一般叫做“序列化”。这时，服务提供方就可以正确地从二进制数据中分割出不同的请求，同时根据请求类型和序列化类型，把二进制的消息体逆向还原成请求对象，这个过程我们称之为“反序列化”。</p>
 </blockquote>
 <p>这两个过程如下图所示：</p>
-<img src="/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmdtZW5nMTk5Nw==,size_16,color_FFFFFF,t_70#pic_left-1712124244256-18.png" style="zoom: 50%;"> 
+<img src="/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403145024625.png" alt="image-20240403145024625" style="zoom:50%;">  
 
 <p>总结来说，<strong>序列化就是将对象转换成二进制数据的过程，而反序列就是反过来将二进制转换为对象的过程。</strong></p>
 <p>那么 RPC 框架为什么需要序列化呢？还是请你回想下 RPC 的通信流程：</p>
-<p><img src="/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmdtZW5nMTk5Nw==,size_16,color_FFFFFF,t_70#pic_left-1712124290535-21.png"> </p>
+<p><img src="/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403145040872.png" alt="image-20240403145040872">  </p>
 <p>不妨借用个例子帮助你理解，比如发快递，我们要发一个需要自行组装的物件。发件人发之前，会把物件拆开装箱，这就好比序列化；这时候快递员来了，不能磕碰呀，那就要打包，这就好比将序列化后的数据进行编码，封装成一个固定格式的协议；过了两天，收件人收到包裹了，就会拆箱将物件拼接好，这就好比是协议解码和反序列化。</p>
 <p>所以现在你清楚了吗？<strong>因为网络传输的数据必须是二进制数据，所以在 RPC 调用中，对入参对象与返回值对象进行序列化与反序列化是一个必须的过程。</strong></p>
 <h3 id="2-有哪些常用的序列化？"><a href="#2-有哪些常用的序列化？" class="headerlink" title="2. 有哪些常用的序列化？"></a>2. 有哪些常用的序列化？</h3><p>那这么看来，你会不会觉得这个过程很简单呢？实则不然，很复杂。我们可以先看看都有哪些常用的序列化，下面我来简单地介绍下几种常用的序列化方式。</p>
@@ -501,7 +505,8 @@
 
 <p>我们可以看到，JDK 自带的序列化机制对使用者而言是非常简单的。序列化具体的实现是由 ObjectOutputStream 完成的，而反序列化的具体实现是由 ObjectInputStream 完成的。</p>
 <p>那么 JDK 的序列化过程是怎样完成的呢？我们看下下面这张图：</p>
-<p><img src="/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmdtZW5nMTk5Nw==,size_16,color_FFFFFF,t_70#pic_left-1712124674603-24.png"> </p>
+<img src="/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403145100790.png" alt="image-20240403145100790" style="zoom:67%;">  
+
 <p>序列化过程就是在读取对象数据的时候，不断加入一些特殊分隔符，这些特殊分隔符用于在反序列化过程中截断用。</p>
 <ul>
 <li><p>头部数据用来声明序列化协议、序列化版本，用于高低版本向后兼容</p>
@@ -569,7 +574,7 @@
 <p>没错，就是序列化协议的通用性和兼容性。在 RPC 的运营中，序列化问题恐怕是我碰到的和解答过的最多的问题了，经常有业务会向我反馈这个问题，比如某个类型为集合类的入参服务调用者不能解析了，服务提供方将入参类加一个属性之后服务调用方不能正常调用，升级了 RPC 版本后发起调用时报序列化异常了…</p>
 <p>在序列化的选择上，与序列化协议的效率、性能、序列化协议后的体积相比，其通用性和兼容性的优先级会更高，因为他是会直接关系到服务调用的稳定性和可用率的，对于服务的性能来说，服务的可靠性显然更加重要。我们更加看重这种序列化协议在版本升级后的兼容性是否很好，是否支持更多的对象类型，是否是跨平台、跨语言的，是否有很多人已经用过并且踩过了很多的坑，其次我们才会去考虑性能、效率和空间开销。</p>
 <p>还有一点我要特别强调。除了序列化协议的通用性和兼容性，序列化协议的安全性也是非常重要的一个参考因素，甚至应该放在第一位去考虑。以 JDK 原生序列化为例，它就存在漏洞。如果序列化存在安全漏洞，那么线上的服务就很可能被入侵。</p>
-<p><img src="/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2ZhbmdtZW5nMTk5Nw==,size_16,color_FFFFFF,t_70#pic_left-1712126275097-27.png"> </p>
+<p><img src="/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403145117184.png" alt="image-20240403145117184">  </p>
 <p>综合上面几个参考因素，现在我们再来总结一下这几个序列化协议。</p>
 <p>我们首选的还是 Hessian 与 Protobuf，因为他们在性能、时间开销、空间开销、通用性、兼容性和安全性上，都满足了我们的要求。其中 Hessian 在使用上更加方便，在对象的兼容性上更好；Protobuf 则更加高效，通用性上更有优势。</p>
 <h3 id="4-RPC-框架在使用时要注意哪些问题？"><a href="#4-RPC-框架在使用时要注意哪些问题？" class="headerlink" title="4. RPC 框架在使用时要注意哪些问题？"></a>4. RPC 框架在使用时要注意哪些问题？</h3><p>了解了在 RPC 框架中如何选择序列化，那么我们在使用过程中需要注意哪些序列化上的问题呢？</p>
