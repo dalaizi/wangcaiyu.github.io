@@ -6,28 +6,35 @@
   <meta name="keywords" content="">
   <meta name="description" content="UNIX网络编程 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="深入理解 RPC来源：https:&#x2F;&#x2F;blog.csdn.net&#x2F;fangmeng1997&#x2F;category_10396482.html 第一章 核心原理1. 什么是 RPC？RPC 的全称是 Remote Procedure Call，即远程过程调用。简单解读字面上的意思，远程肯定是指要跨机器而非本机，所以需要用到网络编程才能实现，但是不是只要通过网络通信访问到另一台机器的应用程序，就可以称之为">
+<meta name="description" content="设计模式设计原则（1）封装变化把会变化的部分取出并封装起来，好让其他部分不会受到影响，这样可以导致代码的变化所引起的后果变少，代码更加可控并且不容易出问题。 大多数的模式都着眼于软件变化的主题，允许系统局部改变独立于其他部分。 （2）针对接口编程，而不是针对实现编程这里的接口不一定指的interface关键字，而是说针对超类型编程，即利用多态，动态绑定对应的执行方法。 （3）多用组合，少用继承“有">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深入理解RPC">
-<meta property="og:url" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/index.html">
+<meta property="og:title" content="设计模式">
+<meta property="og:url" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="深入理解 RPC来源：https:&#x2F;&#x2F;blog.csdn.net&#x2F;fangmeng1997&#x2F;category_10396482.html 第一章 核心原理1. 什么是 RPC？RPC 的全称是 Remote Procedure Call，即远程过程调用。简单解读字面上的意思，远程肯定是指要跨机器而非本机，所以需要用到网络编程才能实现，但是不是只要通过网络通信访问到另一台机器的应用程序，就可以称之为">
+<meta property="og:description" content="设计模式设计原则（1）封装变化把会变化的部分取出并封装起来，好让其他部分不会受到影响，这样可以导致代码的变化所引起的后果变少，代码更加可控并且不容易出问题。 大多数的模式都着眼于软件变化的主题，允许系统局部改变独立于其他部分。 （2）针对接口编程，而不是针对实现编程这里的接口不一定指的interface关键字，而是说针对超类型编程，即利用多态，动态绑定对应的执行方法。 （3）多用组合，少用继承“有">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403144821607.png">
-<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403144847539.png">
-<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403144909908.png">
-<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403144933685.png">
-<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403144947336.png">
-<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403145005073.png">
-<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403145024625.png">
-<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403145040872.png">
-<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403145100790.png">
-<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403145117184.png">
-<meta property="article:published_time" content="2024-04-03T05:06:31.000Z">
-<meta property="article:modified_time" content="2024-04-03T06:51:22.325Z">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104248465-63944401.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104317270-396665969.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104346692-775629068.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104418901-669910264.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104448461-445720531.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104623355-395020836.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104734741-460291300.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104804100-330974965.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104906200-389642996.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828105013587-1221184350.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828105112948-636045824.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828105217637-747315886.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828105302840-760912427.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828105452228-722350841.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/state.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828105608720-1043309143.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/mediator_pattern_uml_diagram.jpg">
+<meta property="article:published_time" content="2024-03-29T13:02:25.000Z">
+<meta property="article:modified_time" content="2024-03-29T13:03:08.723Z">
 <meta property="article:author" content="王才雨">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403144821607.png">
+<meta name="twitter:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104248465-63944401.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -126,7 +133,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(15)</small>
+                <small>(16)</small>
             
         </div>
     </li>
@@ -151,7 +158,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="15">
+<input type="hidden" id="yelog_site_posts_number" value="16">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -332,6 +339,15 @@
         
         
         <a  class="All "
+           href="/2022/06/04/Java%E7%9F%A5%E8%AF%86%E7%82%B9/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java知识点">Java知识点</span>
+            <span class="post-date" title="2022-06-04 10:58:21">2022/06/04</span>
+        </a>
+        
+        
+        <a  class="All "
            href="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"
            data-tag=""
            data-author="" >
@@ -369,7 +385,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-04-01 12:43:31'>2024-03-20 15:03</time>
+            Created At : <time class="date" title='Updated At: 2024-04-10 12:25:39'>2024-03-20 15:03</time>
         
     </div>
     <div class="article-meta">
@@ -391,7 +407,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#UNIX-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B-%E4%B8%8E-Netty-%E7%AC%94%E8%AE%B0"><span class="toc-text">UNIX 网络编程 与 Netty 笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B-TCP-%E8%BF%9E%E6%8E%A5%E5%BB%BA%E7%AB%8B-%E7%BB%88%E6%AD%A2-%E7%AB%AF%E5%8F%A3%E5%8F%B7-%E7%BC%93%E5%86%B2%E5%8C%BA%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-text">1. 网络模型 + TCP 连接建立&#x2F;终止 + 端口号&#x2F;缓冲区相关概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#OSI-%E6%A8%A1%E5%9E%8B"><span class="toc-text">OSI 模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82%EF%BC%9ATCP%E8%BF%9E%E6%8E%A5%E5%BB%BA%E7%AB%8B%E4%B8%8E%E7%BB%88%E6%AD%A2"><span class="toc-text">传输层：TCP连接建立与终止</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%8F%B7-%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-text">端口号 缓冲区</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-TCP-%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%EF%BC%8C%E9%85%8D%E5%90%88-TCP-IP-%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3-%E5%AF%B9%E5%BA%95%E5%B1%82%E6%B7%B1%E5%BA%A6%E7%90%86%E8%A7%A3"><span class="toc-text">2. TCP 相关参数，配合 TCP&#x2F;IP 协议理解 对底层深度理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-IO%E6%A8%A1%E5%9E%8B-%E4%B8%8E-select-poll-%E5%87%BD%E6%95%B0"><span class="toc-text">3. IO模型 与 select&#x2F;poll 函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E4%BB%80%E4%B9%88%E6%98%AF%E9%9B%B6%E6%8B%B7%E8%B4%9D"><span class="toc-text">4. 什么是零拷贝</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%9C%89-DMA-%E6%8A%80%E6%9C%AF"><span class="toc-text">为什么要有 DMA 技术?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0%E7%BB%9F%E7%9A%84%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E6%9C%89%E5%A4%9A%E7%B3%9F%E7%B3%95%EF%BC%9F"><span class="toc-text">传统的文件传输有多糟糕？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E7%9A%84%E6%80%A7%E8%83%BD%EF%BC%9F"><span class="toc-text">如何优化文件传输的性能？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E9%9B%B6%E6%8B%B7%E8%B4%9D%EF%BC%9F"><span class="toc-text">如何实现零拷贝？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mmap-write"><span class="toc-text">mmap + write</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sendfile"><span class="toc-text">sendfile</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E9%9B%B6%E6%8B%B7%E8%B4%9D%E6%8A%80%E6%9C%AF%E7%9A%84%E9%A1%B9%E7%9B%AE"><span class="toc-text">使用零拷贝技术的项目</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PageCache-%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="toc-text">PageCache 有什么作用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E7%94%A8%E4%BB%80%E4%B9%88%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0%EF%BC%9F"><span class="toc-text">大文件传输用什么方式实现？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#UNIX-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B-%E4%B8%8E-Netty-%E7%AC%94%E8%AE%B0"><span class="toc-text">UNIX 网络编程 与 Netty 笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B-TCP-%E8%BF%9E%E6%8E%A5%E5%BB%BA%E7%AB%8B-%E7%BB%88%E6%AD%A2-%E7%AB%AF%E5%8F%A3%E5%8F%B7-%E7%BC%93%E5%86%B2%E5%8C%BA%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-text">1. 网络模型 + TCP 连接建立&#x2F;终止 + 端口号&#x2F;缓冲区相关概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#OSI-%E6%A8%A1%E5%9E%8B"><span class="toc-text">OSI 模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82%EF%BC%9ATCP%E8%BF%9E%E6%8E%A5%E5%BB%BA%E7%AB%8B%E4%B8%8E%E7%BB%88%E6%AD%A2"><span class="toc-text">传输层：TCP连接建立与终止</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%8F%B7-%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-text">端口号 缓冲区</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-TCP-%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%EF%BC%8C%E9%85%8D%E5%90%88-TCP-IP-%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3-%E5%AF%B9%E5%BA%95%E5%B1%82%E6%B7%B1%E5%BA%A6%E7%90%86%E8%A7%A3"><span class="toc-text">2. TCP 相关参数，配合 TCP&#x2F;IP 协议理解 对底层深度理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-IO%E6%A8%A1%E5%9E%8B-%E4%B8%8E-select-poll-%E5%87%BD%E6%95%B0"><span class="toc-text">3. IO模型 与 select&#x2F;poll 函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E4%BB%80%E4%B9%88%E6%98%AF%E9%9B%B6%E6%8B%B7%E8%B4%9D"><span class="toc-text">4. 什么是零拷贝</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%9C%89-DMA-%E6%8A%80%E6%9C%AF"><span class="toc-text">为什么要有 DMA 技术?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0%E7%BB%9F%E7%9A%84%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E6%9C%89%E5%A4%9A%E7%B3%9F%E7%B3%95%EF%BC%9F"><span class="toc-text">传统的文件传输有多糟糕？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E7%9A%84%E6%80%A7%E8%83%BD%EF%BC%9F"><span class="toc-text">如何优化文件传输的性能？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E9%9B%B6%E6%8B%B7%E8%B4%9D%EF%BC%9F"><span class="toc-text">如何实现零拷贝？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mmap-write"><span class="toc-text">mmap + write</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sendfile"><span class="toc-text">sendfile</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E9%9B%B6%E6%8B%B7%E8%B4%9D%E6%8A%80%E6%9C%AF%E7%9A%84%E9%A1%B9%E7%9B%AE"><span class="toc-text">使用零拷贝技术的项目</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PageCache-%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="toc-text">PageCache 有什么作用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E7%94%A8%E4%BB%80%E4%B9%88%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0%EF%BC%9F"><span class="toc-text">大文件传输用什么方式实现？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Reactor-%E6%A8%A1%E5%BC%8F"><span class="toc-text">5. Reactor 模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Netty-%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="toc-text">6. Netty 的线程模型</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -474,20 +490,20 @@
 <hr>
 <p><strong>select poll epoll解析</strong></p>
 <p><a target="_blank" rel="noopener" href="https://www.xiaolincoding.com/os/8_network_system/selete_poll_epoll.html#select-poll">https://www.xiaolincoding.com/os/8_network_system/selete_poll_epoll.html#select-poll</a></p>
-<p><strong>epoll克服了select的缺点：</strong></p>
+<p>&#x3D;&#x3D;<strong>epoll克服了select的缺点：</strong>&#x3D;&#x3D;</p>
 <ul>
-<li><p><strong>一个进程打开的 FD &#x2F; socket 描述符 不受限制（仅受限于操作系统的最大句柄数）</strong></p>
-<p>select 最大的缺陷是单个进程所打开的FD有限制，由<code>FD_SETSIZE</code>设置，默认值1024。对于那些需要支持上万个 TCP 连接的大型服务器来说显然太少。</p>
+<li><p>&#x3D;&#x3D;<strong>一个进程打开的 FD &#x2F; socket 描述符 不受限制（仅受限于操作系统的最大句柄数）</strong>&#x3D;&#x3D;</p>
+<p>select 最大的缺陷是<strong>单个进程所打开的FD有限制</strong>，由<code>FD_SETSIZE</code>设置，<strong>默认值1024</strong>。对于那些需要支持上万个 TCP 连接的大型服务器来说显然太少。</p>
 <p>选择多进程的方案（传统的Apache方案）虽然在 Linux 上创建进程的代价较小，但仍不可忽视。另外，进程间的数据交换非常麻烦，对于Java来说，由于没有共享内存，需要通过Socket通信或者其他方式进行数据同步，这带来了额外的性能损耗。</p>
-<p>epoll 并没有这个限制，它所支持的FD上限是操作系统的最大文件句柄数，这个数字远远大于1024。例如，在1GB 内存的机器上大约是10万个句柄左右，具体的值可以通过 cat&#x2F;proc&#x2F;sys&#x2F;fs&#x2F;file- max察看，通常情况下这个值跟系统的内存关系比较大。</p>
+<p><strong>epoll 并没有这个限制，它所支持的FD上限是操作系统的最大文件句柄数，这个数字远远大于1024</strong>。例如，在1GB 内存的机器上大约是10万个句柄左右，具体的值可以通过 cat&#x2F;proc&#x2F;sys&#x2F;fs&#x2F;file- max察看，通常情况下这个值跟系统的内存关系比较大。</p>
 </li>
-<li><p><strong>IO效率不会随着FD数目的增加而线性下降。</strong></p>
-<p>select&#x2F;poll 另一致命弱点，是当有一个很大的 socket 集合时，由于网络延时或者链路空闲，任一时刻只有少部分的 socket 是“活跃”的，但是 <strong>select&#x2F;poll 每次调用都会线性扫描全部的集合，导致效率呈现线性下降</strong>。</p>
-<p>epoll 只会对“活跃”的 socket进行操作——这是因为在内核实现中, epoll  是根据每个fd上面的 <strong>callback 函数</strong>实现的。那么，只有“活跃”的socket才会去主动调用callback函数，其他idle状态的socket则不会。</p>
-<p>在这点上，epoll 实现了一个伪 AIO。针对epoll和 select性能对比：如果所有的socket都处于活跃态——例如一个高速LAN环境，epoll并不比 select&#x2F;poll效率高太多;相反，如果过多使用epoll_ctl，效率相比还有稍微地降低。但是一旦使用idle connections模拟WAN环境，epoll的效率就远在 select&#x2F;poll之上了。</p>
+<li><p>&#x3D;&#x3D;<strong>IO效率不会随着FD数目的增加而线性下降。</strong>&#x3D;&#x3D;</p>
+<p>select&#x2F;poll 另一致命弱点，是当有一个很大的 socket 集合时，由于网络延时或者链路空闲，任一时刻只有少部分的 socket 是“活跃”的，但是 <strong>select&#x2F;poll 每次调用都会线性扫描全部的集合，导致效率呈现线性下降</strong>。（主动扫描）</p>
+<p>epoll 只会对“活跃”的 socket进行操作——这是因为在内核实现中, epoll  是根据每个fd上面的 <strong>callback 函数</strong>实现的。那么，只有“活跃”的socket才会去主动调用callback函数，其他idle状态的socket则不会。（事件驱动）</p>
+<p>在这点上，epoll 实现了一个伪 AIO。针对epoll和 select性能对比：如果所有的socket都处于活跃态——例如一个高速LAN环境，epoll并不比 select&#x2F;poll效率高太多;相反，如果过多使用epoll_ctl，效率相比还有稍微地降低。但是一旦使用idle connections模拟WAN环境，epoll的效率就远在 select&#x2F;poll之上了。（少部分 socket 活跃，适合用 epoll）</p>
 </li>
-<li><p><strong>使用 mmap 加速内核与用户空间的消息传递。</strong></p>
-<p>无论是select、poll还是epoll 都需要内核把FD消息通知给用户空间，如何避免不必要的内存复制就显得非常重要，epoll是通过内核和用户空间mmap 同一块内存来实现的。</p>
+<li><p>&#x3D;&#x3D;<strong>使用 mmap 加速内核与用户空间的消息传递。</strong>&#x3D;&#x3D;</p>
+<p>无论是select、poll还是 epoll 都需要内核把FD消息通知给用户空间，如何避免不必要的内存复制就显得非常重要，epoll是通过内核和用户空间 mmap 同一块内存来实现的。（这是零拷贝的一种方法）</p>
 </li>
 <li><p>epoll 的 API 更简单</p>
 </li>
@@ -723,6 +739,8 @@
 <p>需要注意的是，零拷贝技术是不允许进程对文件内容作进一步的加工的，比如压缩数据再发送。</p>
 <p>另外，当传输大文件时，不能使用零拷贝，因为可能由于 PageCache 被大文件占据，而导致「热点」小文件无法利用到 PageCache，并且大文件的缓存命中率不高，这时就需要使用「异步 IO + 直接 IO 」的方式。</p>
 <p>在 Nginx 里，可以通过配置，设定一个文件大小阈值，针对大文件使用异步 IO 和直接 IO，而对小文件使用零拷贝。</p>
+<h2 id="5-Reactor-模式"><a href="#5-Reactor-模式" class="headerlink" title="5. Reactor 模式"></a>5. Reactor 模式</h2><p><a target="_blank" rel="noopener" href="https://www.xiaolincoding.com/os/8_network_system/reactor.html">https://www.xiaolincoding.com/os/8_network_system/reactor.html</a></p>
+<h2 id="6-Netty-的线程模型"><a href="#6-Netty-的线程模型" class="headerlink" title="6. Netty 的线程模型"></a>6. Netty 的线程模型</h2><p>Netty 可以同时支持 <strong>单 Reactor 单线程模型</strong>、<strong>单 Reactor 多线程模型</strong>、<strong>主从 Reactor多线程模型</strong></p>
 
       
        

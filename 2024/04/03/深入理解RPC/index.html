@@ -6,28 +6,35 @@
   <meta name="keywords" content="">
   <meta name="description" content="深入理解RPC | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="深入理解 RPC来源：https:&#x2F;&#x2F;blog.csdn.net&#x2F;fangmeng1997&#x2F;category_10396482.html 第一章 核心原理1. 什么是 RPC？RPC 的全称是 Remote Procedure Call，即远程过程调用。简单解读字面上的意思，远程肯定是指要跨机器而非本机，所以需要用到网络编程才能实现，但是不是只要通过网络通信访问到另一台机器的应用程序，就可以称之为">
+<meta name="description" content="设计模式设计原则（1）封装变化把会变化的部分取出并封装起来，好让其他部分不会受到影响，这样可以导致代码的变化所引起的后果变少，代码更加可控并且不容易出问题。 大多数的模式都着眼于软件变化的主题，允许系统局部改变独立于其他部分。 （2）针对接口编程，而不是针对实现编程这里的接口不一定指的interface关键字，而是说针对超类型编程，即利用多态，动态绑定对应的执行方法。 （3）多用组合，少用继承“有">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深入理解RPC">
-<meta property="og:url" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/index.html">
+<meta property="og:title" content="设计模式">
+<meta property="og:url" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="深入理解 RPC来源：https:&#x2F;&#x2F;blog.csdn.net&#x2F;fangmeng1997&#x2F;category_10396482.html 第一章 核心原理1. 什么是 RPC？RPC 的全称是 Remote Procedure Call，即远程过程调用。简单解读字面上的意思，远程肯定是指要跨机器而非本机，所以需要用到网络编程才能实现，但是不是只要通过网络通信访问到另一台机器的应用程序，就可以称之为">
+<meta property="og:description" content="设计模式设计原则（1）封装变化把会变化的部分取出并封装起来，好让其他部分不会受到影响，这样可以导致代码的变化所引起的后果变少，代码更加可控并且不容易出问题。 大多数的模式都着眼于软件变化的主题，允许系统局部改变独立于其他部分。 （2）针对接口编程，而不是针对实现编程这里的接口不一定指的interface关键字，而是说针对超类型编程，即利用多态，动态绑定对应的执行方法。 （3）多用组合，少用继承“有">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403144821607.png">
-<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403144847539.png">
-<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403144909908.png">
-<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403144933685.png">
-<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403144947336.png">
-<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403145005073.png">
-<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403145024625.png">
-<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403145040872.png">
-<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403145100790.png">
-<meta property="og:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403145117184.png">
-<meta property="article:published_time" content="2024-04-03T05:06:31.000Z">
-<meta property="article:modified_time" content="2024-04-03T06:51:22.325Z">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104248465-63944401.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104317270-396665969.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104346692-775629068.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104418901-669910264.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104448461-445720531.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104623355-395020836.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104734741-460291300.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104804100-330974965.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104906200-389642996.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828105013587-1221184350.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828105112948-636045824.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828105217637-747315886.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828105302840-760912427.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828105452228-722350841.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/state.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828105608720-1043309143.png">
+<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/mediator_pattern_uml_diagram.jpg">
+<meta property="article:published_time" content="2024-03-29T13:02:25.000Z">
+<meta property="article:modified_time" content="2024-03-29T13:03:08.723Z">
 <meta property="article:author" content="王才雨">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240403144821607.png">
+<meta name="twitter:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104248465-63944401.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -126,7 +133,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(15)</small>
+                <small>(16)</small>
             
         </div>
     </li>
@@ -151,7 +158,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="15">
+<input type="hidden" id="yelog_site_posts_number" value="16">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -332,6 +339,15 @@
         
         
         <a  class="All "
+           href="/2022/06/04/Java%E7%9F%A5%E8%AF%86%E7%82%B9/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Java知识点">Java知识点</span>
+            <span class="post-date" title="2022-06-04 10:58:21">2022/06/04</span>
+        </a>
+        
+        
+        <a  class="All "
            href="/2022/02/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"
            data-tag=""
            data-author="" >
@@ -369,7 +385,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-04-03 14:51:22'>2024-04-03 13:06</time>
+            Created At : <time class="date" title='Updated At: 2024-04-09 11:00:04'>2024-04-03 13:06</time>
         
     </div>
     <div class="article-meta">
@@ -391,7 +407,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-RPC"><span class="toc-text">深入理解 RPC</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86"><span class="toc-text">第一章 核心原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF-RPC%EF%BC%9F"><span class="toc-text">1. 什么是 RPC？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-RPC-%E9%80%9A%E4%BF%A1%E6%B5%81%E7%A8%8B"><span class="toc-text">2. RPC 通信流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-RPC-%E5%9C%A8%E6%9E%B6%E6%9E%84%E4%B8%AD%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="toc-text">3. RPC 在架构中的位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%80%BB%E7%BB%93"><span class="toc-text">4. 总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%8D%8F%E8%AE%AE"><span class="toc-text">第二章 协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8D%8F%E8%AE%AE"><span class="toc-text">1. 协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">2. 协议的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E5%8D%8F%E8%AE%AE%EF%BC%9F"><span class="toc-text">3. 如何设计协议？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%80%BB%E7%BB%93-1"><span class="toc-text">4. 总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">第三章 序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%BA%8F%E5%88%97%E5%8C%96%EF%BC%9F"><span class="toc-text">1. 为什么需要序列化？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%B8%B8%E7%94%A8%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%EF%BC%9F"><span class="toc-text">2. 有哪些常用的序列化？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JDK-%E5%8E%9F%E7%94%9F%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">JDK 原生序列化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JSON-%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">JSON 序列化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Hessian-%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">Hessian 序列化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Protobuf-%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">Protobuf 序列化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-RPC-%E6%A1%86%E6%9E%B6%E4%B8%AD%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%E5%BA%8F%E5%88%97%E5%8C%96%EF%BC%9F"><span class="toc-text">3. RPC 框架中如何选择序列化？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-RPC-%E6%A1%86%E6%9E%B6%E5%9C%A8%E4%BD%BF%E7%94%A8%E6%97%B6%E8%A6%81%E6%B3%A8%E6%84%8F%E5%93%AA%E4%BA%9B%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-text">4. RPC 框架在使用时要注意哪些问题？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%80%BB%E7%BB%93"><span class="toc-text">5. 总结</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-RPC"><span class="toc-text">深入理解 RPC</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86"><span class="toc-text">第一章 核心原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF-RPC%EF%BC%9F"><span class="toc-text">1. 什么是 RPC？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-RPC-%E9%80%9A%E4%BF%A1%E6%B5%81%E7%A8%8B"><span class="toc-text">2. RPC 通信流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-RPC-%E5%9C%A8%E6%9E%B6%E6%9E%84%E4%B8%AD%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="toc-text">3. RPC 在架构中的位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%80%BB%E7%BB%93"><span class="toc-text">4. 总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E5%8D%8F%E8%AE%AE"><span class="toc-text">第二章 协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8D%8F%E8%AE%AE"><span class="toc-text">1. 协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">2. 协议的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E5%8D%8F%E8%AE%AE%EF%BC%9F"><span class="toc-text">3. 如何设计协议？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%80%BB%E7%BB%93-1"><span class="toc-text">4. 总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">第三章 序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%BA%8F%E5%88%97%E5%8C%96%EF%BC%9F"><span class="toc-text">1. 为什么需要序列化？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%B8%B8%E7%94%A8%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%EF%BC%9F"><span class="toc-text">2. 有哪些常用的序列化？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JDK-%E5%8E%9F%E7%94%9F%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">JDK 原生序列化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JSON-%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">JSON 序列化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Hessian-%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">Hessian 序列化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Protobuf-%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">Protobuf 序列化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-RPC-%E6%A1%86%E6%9E%B6%E4%B8%AD%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%E5%BA%8F%E5%88%97%E5%8C%96%EF%BC%9F"><span class="toc-text">3. RPC 框架中如何选择序列化？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-RPC-%E6%A1%86%E6%9E%B6%E5%9C%A8%E4%BD%BF%E7%94%A8%E6%97%B6%E8%A6%81%E6%B3%A8%E6%84%8F%E5%93%AA%E4%BA%9B%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-text">4. RPC 框架在使用时要注意哪些问题？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%80%BB%E7%BB%93"><span class="toc-text">5. 总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86"><span class="toc-text">第四章 动态代理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86"><span class="toc-text">1. 动态代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8%E7%9A%84%E9%AD%94%E6%B3%95"><span class="toc-text">2. 远程调用的魔法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-text">3. 实现原理</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -589,6 +605,22 @@
 <p>这归根结底还是因为服务调用的稳定性与可靠性，要比服务的性能与响应耗时更加重要。另外对于 RPC 调用来说，整体调用上，最为耗时、最消耗性能的操作大多都是服务提供者执行业务逻辑的操作，这时序列化的开销对于服务整体的开销来说影响相对较小。</p>
 <p>在使用 RPC 框架的过程中，我们构造入参、返回值对象，主要记住以下几点：</p>
 <p>对象要尽量简单，没有太多的依赖关系，属性不要太多，尽量高内聚；<br>入参对象与返回值对象体积不要太大，更不要传太大的集合；<br>尽量使用简单的、常用的、开发语言原生的对象，尤其是集合类；<br>对象不要有复杂的继承关系，最好不要有父子类的情况。<br>实际上，虽然 RPC 框架可以让我们发起全程调用就像调用本地，但在 RPC 框架的传输过程中，入参与返回值的根本作用就是用来传递信息的，为了提高 RPC 调用整体的性能和稳定性，我们的入参与返回值对象要构造得尽量简单，这很重要。</p>
+<h2 id="第四章-动态代理"><a href="#第四章-动态代理" class="headerlink" title="第四章 动态代理"></a>第四章 动态代理</h2><h3 id="1-动态代理"><a href="#1-动态代理" class="headerlink" title="1. 动态代理"></a>1. 动态代理</h3><p>如果我问你，你知道动态代理吗？ 你可能会如数家珍般地告诉我动态代理的作用以及好处。那我现在接着问你，你在项目中用过动态代理吗？这时候可能有些人就会犹豫了。那我再换一个方式问你，你在项目中有实现过统一拦截的功能吗？比如授权认证、性能统计等等。你可能立马就会想到，我实现过呀，并且我知道可以用 Spring 的 AOP 功能来实现。</p>
+<p>没错，进一步再想，在 Spring AOP 里面我们是怎么实现统一拦截的效果呢？并且是在我们不需要改动原有代码的前提下，还能实现非业务逻辑跟业务逻辑的解耦。这里的核心就是采用动态代理技术，通过对字节码进行增强，在方法调用的时候进行拦截，以便于在方法调用前后，增加我们需要的额外处理逻辑。</p>
+<p>那话说回来，动态代理跟 RPC 又有什么关系呢？</p>
+<h3 id="2-远程调用的魔法"><a href="#2-远程调用的魔法" class="headerlink" title="2. 远程调用的魔法"></a>2. 远程调用的魔法</h3><p>我说个具体的场景，你可能就明白了。</p>
+<p>在项目中，当我们要使用 RPC 的时候，我们一般的做法是先找服务提供方要接口，通过 Maven 或者其他的工具把接口依赖到我们项目中。我们在编写业务逻辑的时候，如果要调用提供方的接口，我们就只需要通过依赖注入的方式把接口注入到项目中就行了，然后在代码里面直接调用接口的方法 。</p>
+<p>我们都知道，接口里并不会包含真实的业务逻辑，业务逻辑都在服务提供方应用里，但我们通过调用接口方法，确实拿到了想要的结果，是不是感觉有点神奇呢？想一下，在 RPC 里面，我们是怎么完成这个魔术的。</p>
+<p>这里面用到的核心技术就是前面说的动态代理。RPC 会自动给接口生成一个代理类，当我们在项目中注入接口的时候，运行过程中实际绑定的是这个接口生成的代理类。这样在接口方法被调用的时候，它实际上是被生成代理类拦截到了，这样我们就可以在生成的代理类里面，加入远程调用逻辑。</p>
+<p>通过这种“偷梁换柱”的手法，就可以帮用户屏蔽远程调用的细节，实现像调用本地一样地调用远程的体验，整体流程如下图所示：</p>
+<img src="/2024/04/03/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RPC/image-20240409094428787.png" alt="image-20240409094428787" style="zoom: 33%;"> 
+
+<h3 id="3-实现原理"><a href="#3-实现原理" class="headerlink" title="3. 实现原理"></a>3. 实现原理</h3><p>动态代理在 RPC 里面的作用，就像是个魔术。我们以 Java 为例，看一个具体例子，代码如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 要代理的接口</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Hello</span> &#123;</span><br><span class="line">	String <span class="title function_">say</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 真实调用对象</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RealHello</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> String <span class="title function_">invoke</span><span class="params">()</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;i&#x27;m proxy&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* JDK代理类生成</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JDKProxy</span> <span class="keyword">implements</span> <span class="title class_">InvocationHandler</span> &#123;</span><br><span class="line">	<span class="keyword">private</span> Object target;</span><br><span class="line">	JDKProxy(Object target) &#123;</span><br><span class="line">		<span class="built_in">this</span>.target = target;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> Object <span class="title function_">invoke</span><span class="params">(Object proxy, Method method, Object[] paramValues)</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> ((RealHello)target).invoke();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 测试例子</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestProxy</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">		<span class="comment">// 构建代理器</span></span><br><span class="line">		<span class="type">JDKProxy</span> <span class="variable">proxy</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JDKProxy</span>(<span class="keyword">new</span> <span class="title class_">RealHello</span>());</span><br><span class="line">		<span class="type">ClassLoader</span> <span class="variable">classLoader</span> <span class="operator">=</span> ClassLoaderUtils.getCurrentClassLoader();</span><br><span class="line">		<span class="comment">// 把生成的代理类保存到文件</span></span><br><span class="line">		System.setProperty(<span class="string">&quot;sun.misc.ProxyGenerator.saveGeneratedFiles&quot;</span>,<span class="string">&quot;true&quot;</span>);</span><br><span class="line">		<span class="comment">// 生成代理类</span></span><br><span class="line">		<span class="type">Hello</span> <span class="variable">test</span> <span class="operator">=</span> (Hello) Proxy.newProxyInstance(classLoader, <span class="keyword">new</span> <span class="title class_">Class</span>[]&#123;Hello.class&#125;);</span><br><span class="line">		<span class="comment">// 方法调用</span></span><br><span class="line">		System.out.println(test.say());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这段代码想表达的意思就是：给 Hello 接口生成一个动态代理类，并调用接口 say() 方法，但真实返回的值居然是来自 RealHello 里面的 invoke() 方法返回值。你看，短短 50 行的代码，就完成了这个功能，是不是还挺有意思的？</p>
+<p>那既然重点是代理类的生成，那我们就去看下 Proxy.newProxyInstance 里面究竟发生了什么？</p>
+<p>一起看下下面的流程图，具体代码细节你可以对照着 JDK 的源码看（上文中有类和方法，可以直接定位），我是按照 1.7.X 版本梳理的。</p>
 
       
        
