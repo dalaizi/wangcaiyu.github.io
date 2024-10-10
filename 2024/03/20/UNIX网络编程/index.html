@@ -6,35 +6,38 @@
   <meta name="keywords" content="">
   <meta name="description" content="UNIX网络编程 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="设计模式设计原则（1）封装变化把会变化的部分取出并封装起来，好让其他部分不会受到影响，这样可以导致代码的变化所引起的后果变少，代码更加可控并且不容易出问题。 大多数的模式都着眼于软件变化的主题，允许系统局部改变独立于其他部分。 （2）针对接口编程，而不是针对实现编程这里的接口不一定指的interface关键字，而是说针对超类型编程，即利用多态，动态绑定对应的执行方法。 （3）多用组合，少用继承“有">
+<meta name="description" content="IELTS WritingTask 1Introduction -&gt; Overview -&gt; Detail -&gt; Detail (No Conclusion and opinions!) Notes: 时态不要错！！  PS: 看 便便 的两个 pdf 小作文模板  上升： v rise - rose - risen - rising	n rise v increase - in">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式">
-<meta property="og:url" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:title" content="IELTS Writing">
+<meta property="og:url" content="http://example.com/2024/10/10/IELTS-Writing/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="设计模式设计原则（1）封装变化把会变化的部分取出并封装起来，好让其他部分不会受到影响，这样可以导致代码的变化所引起的后果变少，代码更加可控并且不容易出问题。 大多数的模式都着眼于软件变化的主题，允许系统局部改变独立于其他部分。 （2）针对接口编程，而不是针对实现编程这里的接口不一定指的interface关键字，而是说针对超类型编程，即利用多态，动态绑定对应的执行方法。 （3）多用组合，少用继承“有">
+<meta property="og:description" content="IELTS WritingTask 1Introduction -&gt; Overview -&gt; Detail -&gt; Detail (No Conclusion and opinions!) Notes: 时态不要错！！  PS: 看 便便 的两个 pdf 小作文模板  上升： v rise - rose - risen - rising	n rise v increase - in">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104248465-63944401.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104317270-396665969.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104346692-775629068.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104418901-669910264.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104448461-445720531.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104623355-395020836.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104734741-460291300.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104804100-330974965.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104906200-389642996.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828105013587-1221184350.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828105112948-636045824.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828105217637-747315886.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828105302840-760912427.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828105452228-722350841.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/state.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828105608720-1043309143.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/mediator_pattern_uml_diagram.jpg">
-<meta property="article:published_time" content="2024-03-29T13:02:25.000Z">
-<meta property="article:modified_time" content="2024-03-29T13:03:08.723Z">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20240903143929000.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20240912122709201.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20240903154014772.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20240903170338309.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241008162149573.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20240903221950372.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20240908183744208.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20240909115534553.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241006134635925.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/36195076c5bf4f8798d6a3a1a7e8b009.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241004223753876.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241003185429807.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241003190448385.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241004194259889.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241004222854805.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241004222634264.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241004222706508.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241004223109519.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241004222732028.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241004222806949.png">
+<meta property="article:published_time" content="2024-10-10T07:06:24.000Z">
+<meta property="article:modified_time" content="2024-10-10T07:07:10.746Z">
 <meta property="article:author" content="王才雨">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104248465-63944401.png">
+<meta name="twitter:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20240903143929000.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -133,7 +136,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(16)</small>
+                <small>(18)</small>
             
         </div>
     </li>
@@ -158,7 +161,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="16">
+<input type="hidden" id="yelog_site_posts_number" value="18">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -210,6 +213,24 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2024/10/10/IELTS-Writing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IELTS Writing">IELTS Writing</span>
+            <span class="post-date" title="2024-10-10 15:06:24">2024/10/10</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/04/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="操作系统">操作系统</span>
+            <span class="post-date" title="2024-04-18 11:20:09">2024/04/18</span>
+        </a>
         
         
         <a  class="All "
@@ -385,7 +406,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-04-10 12:25:39'>2024-03-20 15:03</time>
+            Created At : <time class="date" title='Updated At: 2024-04-17 15:17:39'>2024-03-20 15:03</time>
         
     </div>
     <div class="article-meta">
@@ -407,7 +428,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#UNIX-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B-%E4%B8%8E-Netty-%E7%AC%94%E8%AE%B0"><span class="toc-text">UNIX 网络编程 与 Netty 笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B-TCP-%E8%BF%9E%E6%8E%A5%E5%BB%BA%E7%AB%8B-%E7%BB%88%E6%AD%A2-%E7%AB%AF%E5%8F%A3%E5%8F%B7-%E7%BC%93%E5%86%B2%E5%8C%BA%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-text">1. 网络模型 + TCP 连接建立&#x2F;终止 + 端口号&#x2F;缓冲区相关概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#OSI-%E6%A8%A1%E5%9E%8B"><span class="toc-text">OSI 模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82%EF%BC%9ATCP%E8%BF%9E%E6%8E%A5%E5%BB%BA%E7%AB%8B%E4%B8%8E%E7%BB%88%E6%AD%A2"><span class="toc-text">传输层：TCP连接建立与终止</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%8F%B7-%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-text">端口号 缓冲区</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-TCP-%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%EF%BC%8C%E9%85%8D%E5%90%88-TCP-IP-%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3-%E5%AF%B9%E5%BA%95%E5%B1%82%E6%B7%B1%E5%BA%A6%E7%90%86%E8%A7%A3"><span class="toc-text">2. TCP 相关参数，配合 TCP&#x2F;IP 协议理解 对底层深度理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-IO%E6%A8%A1%E5%9E%8B-%E4%B8%8E-select-poll-%E5%87%BD%E6%95%B0"><span class="toc-text">3. IO模型 与 select&#x2F;poll 函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E4%BB%80%E4%B9%88%E6%98%AF%E9%9B%B6%E6%8B%B7%E8%B4%9D"><span class="toc-text">4. 什么是零拷贝</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%9C%89-DMA-%E6%8A%80%E6%9C%AF"><span class="toc-text">为什么要有 DMA 技术?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0%E7%BB%9F%E7%9A%84%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E6%9C%89%E5%A4%9A%E7%B3%9F%E7%B3%95%EF%BC%9F"><span class="toc-text">传统的文件传输有多糟糕？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E7%9A%84%E6%80%A7%E8%83%BD%EF%BC%9F"><span class="toc-text">如何优化文件传输的性能？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E9%9B%B6%E6%8B%B7%E8%B4%9D%EF%BC%9F"><span class="toc-text">如何实现零拷贝？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mmap-write"><span class="toc-text">mmap + write</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sendfile"><span class="toc-text">sendfile</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E9%9B%B6%E6%8B%B7%E8%B4%9D%E6%8A%80%E6%9C%AF%E7%9A%84%E9%A1%B9%E7%9B%AE"><span class="toc-text">使用零拷贝技术的项目</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PageCache-%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="toc-text">PageCache 有什么作用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E7%94%A8%E4%BB%80%E4%B9%88%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0%EF%BC%9F"><span class="toc-text">大文件传输用什么方式实现？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Reactor-%E6%A8%A1%E5%BC%8F"><span class="toc-text">5. Reactor 模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Netty-%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="toc-text">6. Netty 的线程模型</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#UNIX-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B-%E4%B8%8E-Netty-%E7%AC%94%E8%AE%B0"><span class="toc-text">UNIX 网络编程 与 Netty 笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B-TCP-%E8%BF%9E%E6%8E%A5%E5%BB%BA%E7%AB%8B-%E7%BB%88%E6%AD%A2-%E7%AB%AF%E5%8F%A3%E5%8F%B7-%E7%BC%93%E5%86%B2%E5%8C%BA%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-text">1. 网络模型 + TCP 连接建立&#x2F;终止 + 端口号&#x2F;缓冲区相关概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#OSI-%E6%A8%A1%E5%9E%8B"><span class="toc-text">OSI 模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82%EF%BC%9ATCP%E8%BF%9E%E6%8E%A5%E5%BB%BA%E7%AB%8B%E4%B8%8E%E7%BB%88%E6%AD%A2"><span class="toc-text">传输层：TCP连接建立与终止</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%8F%B7-%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-text">端口号 缓冲区</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-TCP-%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%EF%BC%8C%E9%85%8D%E5%90%88-TCP-IP-%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3-%E5%AF%B9%E5%BA%95%E5%B1%82%E6%B7%B1%E5%BA%A6%E7%90%86%E8%A7%A3"><span class="toc-text">2. TCP 相关参数，配合 TCP&#x2F;IP 协议理解 对底层深度理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-IO%E6%A8%A1%E5%9E%8B-%E4%B8%8E-select-poll-%E5%87%BD%E6%95%B0"><span class="toc-text">3. IO模型 与 select&#x2F;poll 函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E4%BB%80%E4%B9%88%E6%98%AF%E9%9B%B6%E6%8B%B7%E8%B4%9D"><span class="toc-text">4. 什么是零拷贝</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%9C%89-DMA-%E6%8A%80%E6%9C%AF"><span class="toc-text">为什么要有 DMA 技术?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0%E7%BB%9F%E7%9A%84%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E6%9C%89%E5%A4%9A%E7%B3%9F%E7%B3%95%EF%BC%9F"><span class="toc-text">传统的文件传输有多糟糕？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E7%9A%84%E6%80%A7%E8%83%BD%EF%BC%9F"><span class="toc-text">如何优化文件传输的性能？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E9%9B%B6%E6%8B%B7%E8%B4%9D%EF%BC%9F"><span class="toc-text">如何实现零拷贝？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mmap-write"><span class="toc-text">mmap + write</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sendfile"><span class="toc-text">sendfile</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E9%9B%B6%E6%8B%B7%E8%B4%9D%E6%8A%80%E6%9C%AF%E7%9A%84%E9%A1%B9%E7%9B%AE"><span class="toc-text">使用零拷贝技术的项目</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PageCache-%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="toc-text">PageCache 有什么作用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E7%94%A8%E4%BB%80%E4%B9%88%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0%EF%BC%9F"><span class="toc-text">大文件传输用什么方式实现？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Reactor-%E6%A8%A1%E5%BC%8F"><span class="toc-text">5. Reactor 模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%94%E8%BF%9B"><span class="toc-text">演进</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95-Reactor-%E5%8D%95%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B"><span class="toc-text">单 Reactor 单进程 &#x2F; 线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95-Reactor-%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%A4%9A%E8%BF%9B%E7%A8%8B"><span class="toc-text">单 Reactor 多线程 &#x2F; 多进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A-Reactor-%E5%A4%9A%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B"><span class="toc-text">多 Reactor 多进程 &#x2F; 线程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Proactor-%E6%A8%A1%E5%BC%8F"><span class="toc-text">6. Proactor 模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-Netty-%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="toc-text">7. Netty 的线程模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Netty%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="toc-text">Netty线程模型</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -426,12 +447,12 @@
         <h1 id="UNIX-网络编程-与-Netty-笔记"><a href="#UNIX-网络编程-与-Netty-笔记" class="headerlink" title="UNIX 网络编程 与 Netty 笔记"></a>UNIX 网络编程 与 Netty 笔记</h1><blockquote>
 <p>该笔记以模块为单位，记录重点知识。学习详情可参考《UNIX 网络编程》《Netty 权威指南》图书</p>
 </blockquote>
-<h2 id="1-网络模型-TCP-连接建立-终止-端口号-缓冲区相关概念"><a href="#1-网络模型-TCP-连接建立-终止-端口号-缓冲区相关概念" class="headerlink" title="1. 网络模型 + TCP 连接建立&#x2F;终止 + 端口号&#x2F;缓冲区相关概念"></a>1. 网络模型 + TCP 连接建立&#x2F;终止 + 端口号&#x2F;缓冲区相关概念</h2><h3 id="OSI-模型"><a href="#OSI-模型" class="headerlink" title="OSI 模型"></a>OSI 模型</h3><p>国际标准化组织（ISO）制定的开放互联（OSI）模型，是七层模型，概念模型。</p>
+<h2 id="1-网络模型-TCP-连接建立-终止-端口号-缓冲区相关概念"><a href="#1-网络模型-TCP-连接建立-终止-端口号-缓冲区相关概念" class="headerlink" title="1. 网络模型 + TCP 连接建立&#x2F;终止 + 端口号&#x2F;缓冲区相关概念"></a>1. 网络模型 + TCP 连接建立&#x2F;终止 + 端口号&#x2F;缓冲区相关概念</h2><h3 id="OSI-模型"><a href="#OSI-模型" class="headerlink" title="OSI 模型"></a>OSI 模型</h3><p>国际标准化组织（<strong>ISO</strong>）制定的开放互联（<strong>OSI</strong>）模型，是七层模型，概念模型。</p>
 <img src="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/image-20231129194826170.png" alt="image-20231129194826170" style="zoom:67%;">
 
-<p>我们关注的套接字编程接口是顶上三层（网际协议的应用层）进入传输层的接口，为什么接口选在这个地方呢？原因有两个：</p>
+<p>我们关注的<strong>套接字编程接口</strong>是顶上三层（网际协议的<strong>应用层</strong>）进入<strong>传输层</strong>的接口，为什么接口选在这个地方呢？原因有两个：</p>
 <ol>
-<li><p>应用层处理具体<strong>网络应用</strong>（如FTP、Telnet或HTTP）的细节，却对通信细节了解很少;底下四层对具体网络应用了解不多，却处理所有的<strong>通信细节</strong>（发送数据，等待确认，给无序到达的数据排序，计算并验证校验和）</p>
+<li><p>应用层处理具体<strong>网络应用</strong>（如FTP、Telnet或HTTP）的细节，却对通信细节了解很少；底下四层对具体网络应用了解不多，却处理所有的<strong>通信细节</strong>（发送数据，等待确认，给无序到达的数据排序，计算并验证校验和）</p>
 </li>
 <li><p>应用层通常构成所谓的<strong>用户进程</strong>(user process)，底下四层却通常作为<strong>操作系统内核</strong>的一部分提供。Unix与其他现代操作系统都提供分隔用户进程与内核的机制。</p>
 <p>由此可见，第4层和第5层之间的接口是构建API的自然位置。</p>
@@ -444,14 +465,14 @@
 
 <img src="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/image-20231129195917970.png" alt="image-20231129195917970" style="zoom:50%;">
 
-<h3 id="端口号-缓冲区"><a href="#端口号-缓冲区" class="headerlink" title="端口号 缓冲区"></a>端口号 缓冲区</h3><h2 id="2-TCP-相关参数，配合-TCP-IP-协议理解-对底层深度理解"><a href="#2-TCP-相关参数，配合-TCP-IP-协议理解-对底层深度理解" class="headerlink" title="2. TCP 相关参数，配合 TCP&#x2F;IP 协议理解 对底层深度理解"></a>2. TCP 相关参数，配合 TCP&#x2F;IP 协议理解 对底层深度理解</h2><h2 id="3-IO模型-与-select-poll-函数"><a href="#3-IO模型-与-select-poll-函数" class="headerlink" title="3. IO模型 与 select&#x2F;poll 函数"></a>3. IO模型 与 select&#x2F;poll 函数</h2><p>重要！！五种IO模型</p>
+<h3 id="端口号-缓冲区"><a href="#端口号-缓冲区" class="headerlink" title="端口号 缓冲区"></a>端口号 缓冲区</h3><h2 id="2-TCP-相关参数，配合-TCP-IP-协议理解-对底层深度理解"><a href="#2-TCP-相关参数，配合-TCP-IP-协议理解-对底层深度理解" class="headerlink" title="2. TCP 相关参数，配合 TCP&#x2F;IP 协议理解 对底层深度理解"></a>2. TCP 相关参数，配合 TCP&#x2F;IP 协议理解 对底层深度理解</h2><h2 id="3-IO模型-与-select-poll-函数"><a href="#3-IO模型-与-select-poll-函数" class="headerlink" title="3. IO模型 与 select&#x2F;poll 函数"></a>3. IO模型 与 select&#x2F;poll 函数</h2><p>重要！！五种IO模型（注意，这是操作系统层面的IO模型，不是Java NIO AIO）</p>
 <p>搭配<a target="_blank" rel="noopener" href="https://chat.openai.com/share/30ca95a2-dfea-43bf-8592-593f30fc545a%E9%93%BE%E6%8E%A5%E5%AD%A6%E4%B9%A0">https://chat.openai.com/share/30ca95a2-dfea-43bf-8592-593f30fc545a链接学习</a></p>
 <p>（技巧：其他模型都和BIO对比）</p>
 <hr>
 <p><strong>BIO</strong></p>
 <img src="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/image-20231129205423452.png" alt="image-20231129205423452" style="zoom: 67%;">
 
-<p>在进程空间中调用 recvfrom ，其系统调用直到 数据报到达 且被复制到应用进程缓冲区 或 发生错误时才返回。</p>
+<p>在进程空间中调用 <code>recvfrom()</code>，发生上下文切换，用户进程进入阻塞状态 。该系统调用直到 数据报到达且被复制到应用进程缓冲区 或 发生错误时才返回，然后用户进程退出阻塞状态，继续执行后续操作。</p>
 <hr>
 <p><strong>NIO &#x3D; BIO + 轮询</strong></p>
 <img src="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/image-20231129210148822.png" alt="image-20231129210148822" style="zoom: 50%;">
@@ -479,6 +500,10 @@
 <p>异步IO就是，告诉内核执行某个操作，并让内核在整个操作（包括将数据从内核复制到用户缓冲区）完成后通知我们。</p>
 <p>与信号驱动模型的区别：信号驱动式IO是由内核通知我们<strong>何时可以启动一个IO操作（数据复制）</strong>，而异步IO模型是由内核通知我们<strong>I&#x2F;O操作何时完成</strong>。</p>
 <p>与前面模型的<strong>根本区别</strong>：数据复制（内核-&gt;用户）都省的做了！</p>
+<p><strong>！！！一定要了解异步IO的底层操作系统原理！！<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/1181464">https://developer.aliyun.com/article/1181464</a></strong></p>
+<p><strong><a target="_blank" rel="noopener" href="https://www.xiaolincoding.com/os/8_network_system/selete_poll_epoll.html#%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%84-socket-%E6%A8%A1%E5%9E%8B">select&#x2F;poll&#x2F;epoll</a></strong></p>
+<p><a target="_blank" rel="noopener" href="https://chat.openai.com/share/38ff3c25-620f-42f8-890a-2ca0d634fd41"><strong>异步IO原理探究</strong></a></p>
+<p><strong>！！！讲一下netty中怎么用异步IO，怎么实现异步通信（区别NIO 和 异步通信），你的项目怎么实现的异步非阻塞通信？？</strong></p>
 <blockquote>
 <p>我们调用 aio_read 函数(POSIX异步IO函数以aio_或lio_开头)，给内核传递描述符、缓冲区指针、缓冲区大小(与read相同的三个参数）和文件偏移（与lseek类似)，并告诉内核当整个操作完成时如何通知我们。该系统调用立即返回，而且在等待IO完成期间，我们的进程不被阻塞。本例子中我们假设要求内核在操作完成时产生某个信号。该信号直到数据已复制到应用进程缓冲区才产生，这一点不同于信号驱动式I&#x2F;O模型。</p>
 </blockquote>
@@ -490,6 +515,7 @@
 <hr>
 <p><strong>select poll epoll解析</strong></p>
 <p><a target="_blank" rel="noopener" href="https://www.xiaolincoding.com/os/8_network_system/selete_poll_epoll.html#select-poll">https://www.xiaolincoding.com/os/8_network_system/selete_poll_epoll.html#select-poll</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Qpa0qXxuIM8jrBqDaXmVNA">https://mp.weixin.qq.com/s/Qpa0qXxuIM8jrBqDaXmVNA</a></p>
 <p>&#x3D;&#x3D;<strong>epoll克服了select的缺点：</strong>&#x3D;&#x3D;</p>
 <ul>
 <li><p>&#x3D;&#x3D;<strong>一个进程打开的 FD &#x2F; socket 描述符 不受限制（仅受限于操作系统的最大句柄数）</strong>&#x3D;&#x3D;</p>
@@ -526,6 +552,12 @@
 <p>Netty 是 基于 <strong>NIO</strong> 的<strong>异步</strong>网络编程框架，基于 Netty 能快速的搭建高性能易扩展的网络应用（包括客户端与服务端）。</p>
 <p>说白了，Netty 就是对 Java NIO 的封装！！！（想知道什么是NIO，就又引向了五种IO模型）</p>
 <p>以前一直不明白，NIO 是 非阻塞同步 IO，那为什么 Netty 是异步的网络框架呢？</p>
+<hr>
+<p><em><strong>问题：感觉 Netty 的 NIO 和 5 中 IO模型的 非阻塞 IO模型 不一样，为什么？</strong></em></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/df1d6d8c3f9d">https://www.jianshu.com/p/df1d6d8c3f9d</a></p>
+<p>区分好UNIX IO模型，Java NIO，Netty NIO。我的理解是，（1）UNIX IO模型更像是一种范式、思想，一种操作系统上的实现；</p>
+<p>（2）Java NIO是在Java高级语言层面实现的同步非阻塞IO，会调用底层操作系统的NIO，同时也弥补了传统阻塞IO、非阻塞IO模型的缺点。<strong>如果下一次面试官问你Java NIO和NIO的区别是什么？你要意识到他更希望你说出IO多路复用的细节和Java NIO中的Buffer， Channel和Selector以及他们的工作流程。</strong>（<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/169589455%EF%BC%89%EF%BC%9B">https://zhuanlan.zhihu.com/p/169589455）；</a></p>
+<p>（3）Netty NIO是基于Java NIO的框架。</p>
 <h2 id="4-什么是零拷贝"><a href="#4-什么是零拷贝" class="headerlink" title="4. 什么是零拷贝"></a>4. 什么是零拷贝</h2><p>来源：<a target="_blank" rel="noopener" href="https://www.xiaolincoding.com/os/8_network_system/zero_copy.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%9C%89-dma-%E6%8A%80%E6%9C%AF">https://www.xiaolincoding.com/os/8_network_system/zero_copy.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%9C%89-dma-%E6%8A%80%E6%9C%AF</a></p>
 <p>磁盘可以说是计算机系统最慢的硬件之一，读写速度相差内存 10 倍以上，所以针对优化磁盘的技术非常的多，比如零拷贝、直接 I&#x2F;O、异步 I&#x2F;O 等等，这些优化的目的就是为了提高系统的吞吐量，另外操作系统内核中的磁盘高速缓存区，可以有效的减少磁盘的访问次数。</p>
 <p>这次，我们就以「文件传输」作为切入点，来分析 I&#x2F;O 工作方式，以及如何优化传输文件的性能。</p>
@@ -739,8 +771,126 @@
 <p>需要注意的是，零拷贝技术是不允许进程对文件内容作进一步的加工的，比如压缩数据再发送。</p>
 <p>另外，当传输大文件时，不能使用零拷贝，因为可能由于 PageCache 被大文件占据，而导致「热点」小文件无法利用到 PageCache，并且大文件的缓存命中率不高，这时就需要使用「异步 IO + 直接 IO 」的方式。</p>
 <p>在 Nginx 里，可以通过配置，设定一个文件大小阈值，针对大文件使用异步 IO 和直接 IO，而对小文件使用零拷贝。</p>
-<h2 id="5-Reactor-模式"><a href="#5-Reactor-模式" class="headerlink" title="5. Reactor 模式"></a>5. Reactor 模式</h2><p><a target="_blank" rel="noopener" href="https://www.xiaolincoding.com/os/8_network_system/reactor.html">https://www.xiaolincoding.com/os/8_network_system/reactor.html</a></p>
-<h2 id="6-Netty-的线程模型"><a href="#6-Netty-的线程模型" class="headerlink" title="6. Netty 的线程模型"></a>6. Netty 的线程模型</h2><p>Netty 可以同时支持 <strong>单 Reactor 单线程模型</strong>、<strong>单 Reactor 多线程模型</strong>、<strong>主从 Reactor多线程模型</strong></p>
+<h2 id="5-Reactor-模式"><a href="#5-Reactor-模式" class="headerlink" title="5. Reactor 模式"></a>5. Reactor 模式</h2><p><strong>好文章：</strong><a target="_blank" rel="noopener" href="https://www.xiaolincoding.com/os/8_network_system/reactor.html">9.3 高性能网络模式：Reactor 和 Proactor</a></p>
+<h3 id="演进"><a href="#演进" class="headerlink" title="演进"></a>演进</h3><p>如果要让服务器服务多个客户端，那么最直接的方式就是为每一条连接创建线程。处理完业务逻辑后，随着连接关闭后线程也同样要销毁了，但是这样不停地创建和销毁线程，不仅会带来性能开销，也会造成浪费资源，而且如果要连接几万条连接，创建几万个线程去应对也是不现实的。</p>
+<p>要这么解决这个问题呢？我们可以使用「资源复用」的方式。也就是不用再为每个连接创建线程，而是创建一个「线程池」，将连接分配给线程，然后一个线程可以处理多个连接的业务。</p>
+<p>不过，这样又引来一个新的问题，线程怎样才能高效地处理多个连接的业务？</p>
+<p>当一个连接对应一个线程时，线程一般采用「read -&gt; 业务处理 -&gt; send」的处理流程，如果当前连接没有数据可读，那么线程会阻塞在 <code>read</code> 操作上（ socket 默认情况是阻塞 I&#x2F;O），不过这种阻塞方式并不影响其他线程。</p>
+<p>但是引入了线程池，那么一个线程要处理多个连接的业务，线程在处理某个连接的 <code>read</code> 操作时，如果遇到没有数据可读，就会发生阻塞，那么线程就没办法继续处理其他连接的业务。</p>
+<p>要解决这一个问题，最简单的方式就是将 socket 改成非阻塞，然后线程不断地轮询调用 <code>read</code> 操作来判断是否有数据，这种方式虽然该能够解决阻塞的问题，但是解决的方式比较粗暴，因为轮询是要消耗 CPU 的，而且随着一个 线程处理的连接越多，轮询的效率就会越低。</p>
+<p>上面的问题在于，线程并不知道当前连接是否有数据可读，从而需要每次通过 <code>read</code> 去试探。</p>
+<p>那有没有办法在只有当连接上有数据的时候，线程才去发起读请求呢？答案是有的，实现这一技术的就是 I&#x2F;O 多路复用。I&#x2F;O 多路复用技术会用一个系统调用函数来监听我们所有关心的连接，也就说可以在一个监控线程里面监控很多的连接。</p>
+<img src="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/image-20240411102416527.png" alt="image-20240411102416527" style="zoom:50%;"> 
+
+<p>我们熟悉的 <strong>select&#x2F;poll&#x2F;epoll 就是内核提供给用户态的多路复用 <em>系统调用</em></strong>，线程可以通过一个系统调用函数从内核中获取多个事件。</p>
+<blockquote>
+<p>PS：如果想知道 select&#x2F;poll&#x2F;epoll 的区别，可以看看小林之前写的这篇文章：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/Qpa0qXxuIM8jrBqDaXmVNA">这次答应我，一举拿下 I&#x2F;O 多路复用！(opens new window)</a></p>
+</blockquote>
+<p>select&#x2F;poll&#x2F;epoll 是如何获取网络事件的呢？</p>
+<p>在获取事件时，先把我们要关心的连接传给内核，再由内核检测：</p>
+<ul>
+<li>如果没有事件发生，线程只需阻塞在这个 select&#x2F;poll&#x2F;epoll 系统调用，而无需像前面的线程池方案那样轮训调用 read 操作来判断是否有数据。</li>
+<li>如果有事件发生，内核会返回产生了事件的连接，线程就会从阻塞状态返回，然后在用户态中再处理这些连接对应的业务即可。</li>
+</ul>
+<p>当下开源软件能做到网络高性能的原因就是 I&#x2F;O 多路复用吗？</p>
+<p>是的，基本是基于 I&#x2F;O 多路复用，用过 I&#x2F;O 多路复用接口写网络程序的同学，肯定知道是面向过程的方式写代码的，这样的开发的效率不高。</p>
+<p>于是，大佬们基于面向对象的思想，对 I&#x2F;O 多路复用作了一层封装，让使用者不用考虑底层网络 API 的细节，只需要关注应用代码的编写。</p>
+<p>大佬们还为这种模式取了个让人第一时间难以理解的名字：<strong>Reactor 模式</strong>。</p>
+<p>Reactor 翻译过来的意思是「反应堆」，可能大家会联想到物理学里的核反应堆，实际上并不是的这个意思。</p>
+<p>这里的反应指的是「<strong>对事件反应</strong>」，也就是<strong>来了一个事件，Reactor 就有相对应的反应&#x2F;响应</strong>。</p>
+<p>事实上，Reactor 模式也叫 <code>Dispatcher</code> 模式，我觉得这个名字更贴合该模式的含义，即 <strong>I&#x2F;O 多路复用监听事件，收到事件后，根据事件类型分配（Dispatch）给某个进程 &#x2F; 线程</strong>。</p>
+<p>Reactor 模式主要由 <em>Reactor</em> 和 <em>处理资源池</em> 这两个核心部分组成，它俩负责的事情如下：</p>
+<ul>
+<li>&#x3D;&#x3D;Reactor 负责 <em>监听</em> 和 <em>分发</em> 事件，事件类型包含连接事件、读写事件；&#x3D;&#x3D;</li>
+<li>&#x3D;&#x3D;处理资源池负责 <em>处理</em> 事件，如 read -&gt; 业务逻辑 -&gt; send；&#x3D;&#x3D;</li>
+</ul>
+<p>Reactor 模式是灵活多变的，可以应对不同的业务场景，灵活在于：</p>
+<ul>
+<li>Reactor 的数量可以只有一个，也可以有多个；</li>
+<li>处理资源池可以是单个进程 &#x2F; 线程，也可以是多个进程 &#x2F;线程；</li>
+</ul>
+<p>接下来，分别介绍三个经典的 Reactor 方案。</p>
+<h3 id="单-Reactor-单进程-线程"><a href="#单-Reactor-单进程-线程" class="headerlink" title="#单 Reactor 单进程 &#x2F; 线程"></a><a target="_blank" rel="noopener" href="https://www.xiaolincoding.com/os/8_network_system/reactor.html#%E5%8D%95-reactor-%E5%8D%95%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B">#</a>单 Reactor 单进程 &#x2F; 线程</h3><blockquote>
+<p>与 IO 多路复用相比：监听分发、建立连接、业务处理 模块化</p>
+</blockquote>
+<p> Java 语言实现的是「<strong>单 Reactor <em>单线程</em></strong>」的方案，因为 Java 程序是跑在 Java 虚拟机这个进程上面的，虚拟机中有很多线程，我们写的 Java 程序只是其中的一个线程而已。</p>
+<img src="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/image-20240411103507325.png" alt="image-20240411103507325" style="zoom:60%;"> 
+
+<p>可以看到进程里有 <strong>Reactor、Acceptor、Handler</strong> 这三个对象：</p>
+<ul>
+<li>Reactor 对象的作用是<strong>监听</strong>和<strong>分发</strong>事件；</li>
+<li>Acceptor 对象的作用是<strong>获取连接</strong>；</li>
+<li>Handler 对象的作用是<strong>处理业务</strong>；</li>
+</ul>
+<p>对象里的 select、accept、read、send 是系统调用函数，dispatch 和 「业务处理」是需要完成的操作，其中 dispatch 是分发事件操作。</p>
+<p>接下来，介绍下「单 Reactor 单线程」这个方案：</p>
+<ul>
+<li>Reactor 对象通过 select （IO 多路复用接口） 监听事件，收到事件后通过 dispatch 进行分发，具体分发给 Acceptor 对象还是 Handler 对象，还要看收到的事件类型；</li>
+<li>如果是连接建立的事件，则交由 Acceptor 对象进行处理，Acceptor 对象会通过 accept 方法 获取连接，并创建一个 Handler 对象来处理后续的响应事件；</li>
+<li>如果不是连接建立事件， 则交由当前连接对应的 Handler 对象来进行响应；</li>
+<li>Handler 对象通过 <code>read -&gt; 业务处理 -&gt; send</code> 的流程来完成完整的业务流程。</li>
+</ul>
+<p>单 Reactor 单线程的方案因为全部工作都在同一个线程内完成，所以实现起来比较简单，不需要考虑进程间通信，也不用担心多进程竞争。</p>
+<p>但是，这种方案存在 2 个缺点：</p>
+<ul>
+<li>第一个缺点，因为只有一个线程，<strong>无法充分利用 多核 CPU 的性能</strong>；</li>
+<li>第二个缺点，Handler 对象在业务处理时，整个线程是无法处理其他连接的事件的，<strong>如果业务处理耗时比较长，那么就造成响应的延迟</strong>；</li>
+</ul>
+<p>所以，单 Reactor 单进程的方案<strong>不适用计算机密集型的场景，只适用于业务处理非常快速的场景</strong>。</p>
+<p>Redis 是由 C 语言实现的，在 Redis 6.0 版本之前采用的正是「单 Reactor 单进程」的方案，因为 Redis 业务处理主要是在内存中完成，操作的速度是很快的，性能瓶颈不在 CPU 上，所以 Redis 对于命令的处理是单进程的方案。</p>
+<h3 id="单-Reactor-多线程-多进程"><a href="#单-Reactor-多线程-多进程" class="headerlink" title="#单 Reactor 多线程 &#x2F; 多进程"></a><a target="_blank" rel="noopener" href="https://www.xiaolincoding.com/os/8_network_system/reactor.html#%E5%8D%95-reactor-%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%A4%9A%E8%BF%9B%E7%A8%8B">#</a>单 Reactor 多线程 &#x2F; 多进程</h3><blockquote>
+<p>与 单 Reactor 单线程比：把业务处理放入新线程</p>
+</blockquote>
+<p>如果要克服「单 Reactor 单线程 &#x2F; 进程」方案的缺点，那么就需要引入多线程 &#x2F; 多进程，这样就产生了<strong>单 Reactor 多线程 &#x2F; 多进程</strong>的方案。</p>
+<p>闻其名不如看其图，先来看看「单 Reactor 多线程」方案的示意图如下：</p>
+<img src="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/image-20240411103851286.png" alt="image-20240411103851286" style="zoom:60%;"> 
+
+<p>详细说一下这个方案：</p>
+<ul>
+<li>Reactor 对象通过 select （IO 多路复用接口） 监听事件，收到事件后通过 dispatch 进行分发，具体分发给 Acceptor 对象还是 Handler 对象，还要看收到的事件类型；</li>
+<li>如果是连接建立的事件，则交由 Acceptor 对象进行处理，Acceptor 对象会通过 accept 方法 获取连接，并创建一个 Handler 对象来处理后续的响应事件；</li>
+<li>如果不是连接建立事件， 则交由当前连接对应的 Handler 对象来进行响应；</li>
+</ul>
+<p>上面的三个步骤和单 Reactor 单线程方案是一样的，接下来的步骤就开始不一样了：</p>
+<ul>
+<li>Handler 对象不再负责业务处理，只负责数据的接收和发送，Handler 对象通过 read 读取到数据后，会将数据发给子线程里的 Processor 对象进行业务处理；</li>
+<li>子线程里的 Processor 对象就进行业务处理，处理完后，将结果发给主线程中的 Handler 对象，接着由 Handler 通过 send 方法将响应结果发送给 client；</li>
+</ul>
+<p>单 Reator 多线程的方案优势在于<strong>能够充分利用多核 CPU 的能</strong>，那既然引入多线程，那么自然就带来了多线程竞争资源的问题。</p>
+<p>例如，子线程完成业务处理后，要把结果传递给主线程的 Handler 进行发送，这里涉及共享数据的竞争。</p>
+<p>要避免多线程由于竞争共享资源而导致数据错乱的问题，就需要在操作共享资源前加上互斥锁，以保证任意时间里只有一个线程在操作共享资源，待该线程操作完释放互斥锁后，其他线程才有机会操作共享数据。</p>
+<p>另外，「单 Reactor」的模式还有个问题，<strong>因为一个 Reactor 对象承担所有事件的监听和响应，而且只在主线程中运行，在面对瞬间高并发的场景时，容易成为性能的瓶颈的地方</strong>。</p>
+<h3 id="多-Reactor-多进程-线程"><a href="#多-Reactor-多进程-线程" class="headerlink" title="#多 Reactor 多进程 &#x2F; 线程"></a><a target="_blank" rel="noopener" href="https://www.xiaolincoding.com/os/8_network_system/reactor.html#%E5%A4%9A-reactor-%E5%A4%9A%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B">#</a>多 Reactor 多进程 &#x2F; 线程</h3><blockquote>
+<p>与 单 Reactor 多线程比：主线程只负责接收新连接</p>
+</blockquote>
+<p>要解决「单 Reactor」的问题，就是将「单 Reactor」实现成「多 Reactor」，这样就产生了第 <strong>多 Reactor 多进程 &#x2F; 线程</strong>的方案。</p>
+<p>老规矩，闻其名不如看其图。多 Reactor 多进程 &#x2F; 线程方案的示意图如下（以线程为例）：</p>
+<img src="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/image-20240411104316755.png" alt="image-20240411104316755" style="zoom:60%;"> 
+
+<p>方案详细说明如下：</p>
+<ul>
+<li>主线程中的 MainReactor 对象通过 select 监控连接建立事件，收到事件后通过 Acceptor 对象中的 accept 获取连接，将新的连接分配给某个子线程；</li>
+<li>子线程中的 SubReactor 对象将 MainReactor 对象分配的连接加入 select 继续进行监听，并创建一个 Handler 用于处理连接的响应事件。</li>
+<li>如果有新的事件发生时，SubReactor 对象会调用当前连接对应的 Handler 对象来进行响应。</li>
+<li>Handler 对象通过 read -&gt; 业务处理 -&gt; send 的流程来完成完整的业务流程。</li>
+</ul>
+<p>多 Reactor 多线程的方案虽然看起来复杂的，但是实际实现时比单 Reactor 多线程的方案要简单的多，原因如下：</p>
+<ul>
+<li>主线程和子线程分工明确，<strong>主线程只负责接收新连接</strong>，子线程负责完成后续的业务处理。</li>
+<li>主线程和子线程的交互很简单，主线程只需要把新连接传给子线程，<strong>子线程无须返回数据</strong>，直接就可以在子线程将处理结果发送给客户端。</li>
+</ul>
+<p>大名鼎鼎的两个开源软件 Netty 和 Memcache 都采用了「多 Reactor 多线程」的方案。</p>
+<p>采用了「多 Reactor 多进程」方案的开源软件是 Nginx，不过方案与标准的多 Reactor 多进程有些差异。</p>
+<p>具体差异表现在主进程中仅仅用来初始化 socket，并没有创建 mainReactor 来 accept 连接，而是由子进程的 Reactor 来 accept 连接，通过锁来控制一次只有一个子进程进行 accept（防止出现惊群现象），子进程 accept 新连接后就放到自己的 Reactor 进行处理，不会再分配给其他子进程。</p>
+<h2 id="6-Proactor-模式"><a href="#6-Proactor-模式" class="headerlink" title="6. Proactor 模式"></a>6. Proactor 模式</h2><h2 id="7-Netty-的线程模型"><a href="#7-Netty-的线程模型" class="headerlink" title="7. Netty 的线程模型"></a>7. Netty 的线程模型</h2><p>Netty 可以同时支持 <strong>单 Reactor 单线程模型</strong>、<strong>单 Reactor 多线程模型</strong>、<strong>主从 Reactor多线程模型</strong></p>
+<h3 id="Netty线程模型"><a href="#Netty线程模型" class="headerlink" title="Netty线程模型"></a>Netty线程模型</h3><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903712435994631">https://juejin.cn/post/6844903712435994631</a></p>
+<p>Netty主要<strong>基于主从Reactors多线程模型</strong>（如下图）做了一定的修改，其中主从Reactor多线程模型有多个Reactor：MainReactor和SubReactor：</p>
+<ul>
+<li>MainReactor负责客户端的连接请求，并将请求转交给SubReactor</li>
+<li>SubReactor负责相应通道的IO读写请求</li>
+<li>非IO请求（具体逻辑处理）的任务则会直接写入队列，等待worker threads进行处理</li>
+</ul>
+<img src="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/image-20240411121004653.png" alt="image-20240411121004653" style="zoom:50%;"> 
 
       
        

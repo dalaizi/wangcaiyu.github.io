@@ -6,35 +6,38 @@
   <meta name="keywords" content="">
   <meta name="description" content="Java知识点 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="设计模式设计原则（1）封装变化把会变化的部分取出并封装起来，好让其他部分不会受到影响，这样可以导致代码的变化所引起的后果变少，代码更加可控并且不容易出问题。 大多数的模式都着眼于软件变化的主题，允许系统局部改变独立于其他部分。 （2）针对接口编程，而不是针对实现编程这里的接口不一定指的interface关键字，而是说针对超类型编程，即利用多态，动态绑定对应的执行方法。 （3）多用组合，少用继承“有">
+<meta name="description" content="IELTS WritingTask 1Introduction -&gt; Overview -&gt; Detail -&gt; Detail (No Conclusion and opinions!) Notes: 时态不要错！！  PS: 看 便便 的两个 pdf 小作文模板  上升： v rise - rose - risen - rising	n rise v increase - in">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式">
-<meta property="og:url" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:title" content="IELTS Writing">
+<meta property="og:url" content="http://example.com/2024/10/10/IELTS-Writing/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="设计模式设计原则（1）封装变化把会变化的部分取出并封装起来，好让其他部分不会受到影响，这样可以导致代码的变化所引起的后果变少，代码更加可控并且不容易出问题。 大多数的模式都着眼于软件变化的主题，允许系统局部改变独立于其他部分。 （2）针对接口编程，而不是针对实现编程这里的接口不一定指的interface关键字，而是说针对超类型编程，即利用多态，动态绑定对应的执行方法。 （3）多用组合，少用继承“有">
+<meta property="og:description" content="IELTS WritingTask 1Introduction -&gt; Overview -&gt; Detail -&gt; Detail (No Conclusion and opinions!) Notes: 时态不要错！！  PS: 看 便便 的两个 pdf 小作文模板  上升： v rise - rose - risen - rising	n rise v increase - in">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104248465-63944401.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104317270-396665969.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104346692-775629068.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104418901-669910264.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104448461-445720531.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104623355-395020836.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104734741-460291300.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104804100-330974965.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104906200-389642996.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828105013587-1221184350.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828105112948-636045824.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828105217637-747315886.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828105302840-760912427.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828105452228-722350841.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/state.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828105608720-1043309143.png">
-<meta property="og:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/mediator_pattern_uml_diagram.jpg">
-<meta property="article:published_time" content="2024-03-29T13:02:25.000Z">
-<meta property="article:modified_time" content="2024-03-29T13:03:08.723Z">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20240903143929000.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20240912122709201.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20240903154014772.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20240903170338309.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241008162149573.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20240903221950372.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20240908183744208.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20240909115534553.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241006134635925.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/36195076c5bf4f8798d6a3a1a7e8b009.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241004223753876.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241003185429807.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241003190448385.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241004194259889.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241004222854805.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241004222634264.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241004222706508.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241004223109519.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241004222732028.png">
+<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241004222806949.png">
+<meta property="article:published_time" content="2024-10-10T07:06:24.000Z">
+<meta property="article:modified_time" content="2024-10-10T07:07:10.746Z">
 <meta property="article:author" content="王才雨">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2024/03/29/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1566782-20190828104248465-63944401.png">
+<meta name="twitter:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20240903143929000.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -133,7 +136,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(16)</small>
+                <small>(18)</small>
             
         </div>
     </li>
@@ -158,7 +161,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="16">
+<input type="hidden" id="yelog_site_posts_number" value="18">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -210,6 +213,24 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2024/10/10/IELTS-Writing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IELTS Writing">IELTS Writing</span>
+            <span class="post-date" title="2024-10-10 15:06:24">2024/10/10</span>
+        </a>
+        
+        
+        <a  class="All "
+           href="/2024/04/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="操作系统">操作系统</span>
+            <span class="post-date" title="2024-04-18 11:20:09">2024/04/18</span>
+        </a>
         
         
         <a  class="All "
@@ -385,7 +406,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-04-04 11:19:36'>2022-06-04 10:58</time>
+            Created At : <time class="date" title='Updated At: 2024-04-14 13:04:13'>2022-06-04 10:58</time>
         
     </div>
     <div class="article-meta">
@@ -407,7 +428,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%A6%E8%A7%A3-HashMap"><span class="toc-text">详解 HashMap</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8-HashTable"><span class="toc-text">哈希表 HashTable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HashMap"><span class="toc-text">HashMap</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HashSet-TreeSet"><span class="toc-text">HashSet&#x2F;TreeSet</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LinkedHashMap"><span class="toc-text">LinkedHashMap</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HashTable"><span class="toc-text">HashTable</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Comparable%E5%92%8CComparator"><span class="toc-text">Comparable和Comparator</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#java-util-ArrayList-E-LinkedList"><span class="toc-text">java.util.ArrayList&lt; E&gt;  LinkedList</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Integer-%E5%AD%98%E5%82%A8"><span class="toc-text">Integer 存储</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#java-stack-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E6%8E%A8%E8%8D%90%E7%94%A8"><span class="toc-text">java stack 为什么不推荐用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A%E5%99%A8%E4%B8%8E%E7%BC%96%E8%AF%91%E5%99%A8"><span class="toc-text">解释器与编译器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ThreadLocal"><span class="toc-text">ThreadLocal</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84"><span class="toc-text">内部结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0"><span class="toc-text">底层实现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%AD%98%E6%94%BE"><span class="toc-text">数据类型存放</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#equals-%E5%92%8C-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">equals 和 &#x3D;&#x3D; 的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JDK-JRE"><span class="toc-text">JDK JRE</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E6%80%81"><span class="toc-text">多态</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#String-StringBuilder-StringBuffer"><span class="toc-text">String StringBuilder StringBuffer</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#string%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E8%A2%AB%E7%BB%A7%E6%89%BF"><span class="toc-text">string为什么不能被继承</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E9%81%8D%E5%8E%86"><span class="toc-text">迭代遍历</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IO-NIO"><span class="toc-text">IO NIO</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%B2%E8%AE%B2-Lambda-%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">讲讲 Lambda 表达式</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%A6%E8%A7%A3-HashMap%EF%BC%88%E8%A1%A5%E5%8E%9F%E7%90%86%EF%BC%89"><span class="toc-text">详解 HashMap（补原理）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Hashmap%E7%9A%84put%E6%B5%81%E7%A8%8B%EF%BC%9F"><span class="toc-text">1. &#x3D;&#x3D;Hashmap的put流程？&#x3D;&#x3D;</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E6%80%8E%E4%B9%88%E9%80%9A%E8%BF%87%E5%93%88%E5%B8%8C%E7%A0%81%E6%89%BE%E5%88%B0%E5%9C%A8%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E4%BD%8D%E7%BD%AE%EF%BC%9F"><span class="toc-text">1.1.&#x3D;&#x3D;怎么通过哈希码找到在数组中的位置？&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-JDK8-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8A%8A%E5%A4%B4%E6%8F%92%E6%B3%95%E6%94%B9%E6%88%90%E5%B0%BE%E6%8F%92%E6%B3%95%EF%BC%9F"><span class="toc-text">1.2 &#x3D;&#x3D;JDK8 为什么把头插法改成尾插法？&#x3D;&#x3D;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8-HashTable"><span class="toc-text">哈希表 HashTable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HashMap"><span class="toc-text">HashMap</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HashSet-TreeSet"><span class="toc-text">HashSet&#x2F;TreeSet</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HashSet-%E5%92%8C-HashMap%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%EF%BC%9F"><span class="toc-text">&#x3D;&#x3D;HashSet 和 HashMap的区别和实现原理？&#x3D;&#x3D;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LinkedHashMap"><span class="toc-text">LinkedHashMap</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HashTable"><span class="toc-text">HashTable</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Comparable%E5%92%8CComparator"><span class="toc-text">Comparable和Comparator</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#java-util-ArrayList-E-LinkedList"><span class="toc-text">java.util.ArrayList&lt; E&gt;  LinkedList</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Integer-%E5%AD%98%E5%82%A8"><span class="toc-text">Integer 存储</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#java-stack-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E6%8E%A8%E8%8D%90%E7%94%A8"><span class="toc-text">java stack 为什么不推荐用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%A3%E9%87%8A%E5%99%A8%E4%B8%8E%E7%BC%96%E8%AF%91%E5%99%A8"><span class="toc-text">解释器与编译器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ThreadLocal"><span class="toc-text">ThreadLocal</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84"><span class="toc-text">内部结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0"><span class="toc-text">底层实现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%AD%98%E6%94%BE"><span class="toc-text">数据类型存放</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#equals-%E5%92%8C-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">equals 和 &#x3D;&#x3D; 的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JDK-JRE"><span class="toc-text">JDK JRE</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E6%80%81"><span class="toc-text">多态</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#String-StringBuilder-StringBuffer"><span class="toc-text">String StringBuilder StringBuffer</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#string%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E8%A2%AB%E7%BB%A7%E6%89%BF"><span class="toc-text">string为什么不能被继承</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E9%81%8D%E5%8E%86"><span class="toc-text">迭代遍历</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IO-NIO"><span class="toc-text">IO NIO</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%B2%E8%AE%B2-Lambda-%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">讲讲 Lambda 表达式</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -423,7 +444,73 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="详解-HashMap"><a href="#详解-HashMap" class="headerlink" title="详解 HashMap"></a>详解 HashMap</h1><h2 id="哈希表-HashTable"><a href="#哈希表-HashTable" class="headerlink" title="哈希表 HashTable"></a>哈希表 HashTable</h2><img src="/2022/06/04/Java%E7%9F%A5%E8%AF%86%E7%82%B9/image-20221116225656777.png" alt="image-20221116225656777" style="zoom:50%;">
+        <h1 id="详解-HashMap（补原理）"><a href="#详解-HashMap（补原理）" class="headerlink" title="详解 HashMap（补原理）"></a>详解 HashMap（补原理）</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/chengxiao/p/6059914.html">https://www.cnblogs.com/chengxiao/p/6059914.html</a></p>
+<p>&#x3D;&#x3D;先讲讲大概结构，再讲讲怎么put，怎么扩容。然后说一下多线程下的缺点引出concurrentHashmap&#x3D;&#x3D;</p>
+<p>put操作看这个：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/bygsszqpqCuWdC0yxd4jMA">https://mp.weixin.qq.com/s/bygsszqpqCuWdC0yxd4jMA</a></p>
+<h2 id="1-Hashmap的put流程？"><a href="#1-Hashmap的put流程？" class="headerlink" title="1. &#x3D;&#x3D;Hashmap的put流程？&#x3D;&#x3D;"></a>1. &#x3D;&#x3D;Hashmap的put流程？&#x3D;&#x3D;</h2><p><img src="/2022/06/04/Java%E7%9F%A5%E8%AF%86%E7%82%B9/image-20240414121145373.png" alt="image-20240414121145373" style="zoom:67%;">H</p>
+<p>&#x3D;&#x3D;HashMap的<code>put()</code>方法用于向HashMap中添加键值对。当调用HashMap的<code>put()</code>方法时，会按照以下详细流程执行：&#x3D;&#x3D;</p>
+<blockquote>
+<p>第一步：根据要添加的键的<strong>哈希码</strong>计算在数组中的位置（<strong>索引</strong>）。</p>
+</blockquote>
+<blockquote>
+<p>第二步：检查该位置是否为空（即没有键值对存在）</p>
+</blockquote>
+<ul>
+<li>如果为空，则直接在该位置创建一个新的 Entry 对象来存储键值对。将要添加的键值对作为该 Entry 的键和值，并保存在数组的对应位置。将HashMap的修改次数（modCount）加1，以便在进行迭代时发现并发修改。</li>
+</ul>
+<blockquote>
+<p>第三步：如果该位置已经存在其他键值对，检查该位置的第一个键值对的哈希码和键是否与要添加的键值对相同？</p>
+</blockquote>
+<ul>
+<li>如果相同，则表示找到了相同的键，直接将新的值替换旧的值，完成更新操作。</li>
+</ul>
+<blockquote>
+<p>第四步：如果第一个键值对的哈希码和键不相同，则需要遍历链表或红黑树来查找是否有相同的键：</p>
+</blockquote>
+<p>如果键值对集合是链表结构：</p>
+<ul>
+<li>从链表的头部开始逐个比较键的哈希码和equals()方法，直到找到相同的键或达到链表末尾。</li>
+<li>如果找到了相同的键，则使用新的值取代旧的值，即更新键对应的值。</li>
+<li>如果没有找到相同的键，则将新的键值对添加到链表的头部。</li>
+</ul>
+<p>如果键值对集合是红黑树结构：</p>
+<ul>
+<li>在红黑树中使用哈希码和equals()方法进行查找。根据键的哈希码，定位到红黑树中的某个节点，然后逐个比较键，直到找到相同的键或达到红黑树末尾。</li>
+<li>如果找到了相同的键，则使用新的值取代旧的值，即更新键对应的值。</li>
+<li>如果没有找到相同的键，则将新的键值对添加到红黑树中。</li>
+</ul>
+<blockquote>
+<p>第五步：检查链表长度是否达到阈值（默认为8）：</p>
+</blockquote>
+<ul>
+<li>如果链表长度超过阈值（默认为8），且HashMap的数组长度大于等于64，则会将链表转换为红黑树，以提高查询效率。</li>
+</ul>
+<blockquote>
+<p>第六步：检查负载因子是否超过阈值（默认为0.75）：</p>
+</blockquote>
+<ul>
+<li>如果键值对的数量（size）超过数组的长度 x 阈值，则需要进行扩容操作。</li>
+</ul>
+<blockquote>
+<p>第七步：扩容操作：</p>
+</blockquote>
+<ul>
+<li>创建一个新的两倍大小的数组。</li>
+<li>将旧数组中的键值对重新计算哈希码并分配到新数组中的位置。</li>
+<li>更新HashMap的数组引用和阈值参数。</li>
+</ul>
+<blockquote>
+<p>第八步：完成添加操作。</p>
+</blockquote>
+<p>需要注意的是，<strong>HashMap中的键和值都可以为null</strong>。</p>
+<p>此外，HashMap是非线程安全的，如果在多线程环境下使用，需要采取额外的同步措施或使用线程安全的ConcurrentHashMap。</p>
+<h3 id="1-1-怎么通过哈希码找到在数组中的位置？"><a href="#1-1-怎么通过哈希码找到在数组中的位置？" class="headerlink" title="1.1.&#x3D;&#x3D;怎么通过哈希码找到在数组中的位置？&#x3D;&#x3D;"></a>1.1.&#x3D;&#x3D;怎么通过哈希码找到在数组中的位置？&#x3D;&#x3D;</h3><p>通过对 key hash 然后与 数组长度-1 进行与运算 <code>(n-1) &amp; hash</code>，都是2的次幂所以等同于取模，但是位运算的效率更高。</p>
+<p>详细看这个：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zjy15203167987/article/details/125543956">https://blog.csdn.net/zjy15203167987/article/details/125543956</a></p>
+<h3 id="1-2-JDK8-为什么把头插法改成尾插法？"><a href="#1-2-JDK8-为什么把头插法改成尾插法？" class="headerlink" title="1.2 &#x3D;&#x3D;JDK8 为什么把头插法改成尾插法？&#x3D;&#x3D;"></a>1.2 &#x3D;&#x3D;JDK8 为什么把头插法改成尾插法？&#x3D;&#x3D;</h3><p>（1）介绍 put 和 扩容的时候，哈希冲突会使用头插或尾插</p>
+<p>（2）说头插法的优点，和致命的缺点</p>
+<p>（3）说换成尾插法的优点：避免了环形链表问题的发生</p>
+<p>看这个：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/crazymakercircle/p/18060176%EF%BC%88%E4%BB%94%E7%BB%86%E7%9C%8B%EF%BC%89">https://www.cnblogs.com/crazymakercircle/p/18060176（仔细看）</a></p>
+<h2 id="哈希表-HashTable"><a href="#哈希表-HashTable" class="headerlink" title="哈希表 HashTable"></a>哈希表 HashTable</h2><img src="/2022/06/04/Java%E7%9F%A5%E8%AF%86%E7%82%B9/image-20221116225656777.png" alt="image-20221116225656777" style="zoom:50%;">
 
 <p><strong>哈希表的主干就是数组</strong>，比如我们要新增或查找某个元素，我们通过把当前元素的关键字 通过某个函数映射到数组中的某个位置，通过数组下标一次定位就可完成操作</p>
 <p><strong>存储位置 &#x3D; f(关键字)</strong></p>
@@ -437,9 +524,9 @@
 <p>​	再散列函数法</p>
 <p>​	链地址法（HashMap即是采用了链地址法，也就是<strong>数组+链表</strong>的方式）</p>
 <h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><p>&#x3D;&#x3D;什么时候会使用HashMap？他有什么特点？&#x3D;&#x3D;</p>
-<p>是基于Map接口的实现，存储键值对时，它可以接收null的键值，是非同步的，HashMap存储着Entry(hash, key, value, next)对象。</p>
+<p>是基于Map接口的实现，存储键值对时，它可以接收 null 的键值，是非同步的，HashMap存储着 Entry(hash, key, value, next) 对象。</p>
 <p>&#x3D;&#x3D;HashMap的工作原理&#x3D;&#x3D;</p>
-<p>通过hash的方法，通过put和get存储和获取对象。存储对象时，我们将K&#x2F;V传给put方法时，它调用hashCode计算hash从而得到bucket位置，进一步存储，HashMap会根据当前bucket的占用情况自动调整容量(超过Load Facotr则resize为原来的2倍)。获取对象时，我们将K传给get，它调用hashCode计算hash从而得到bucket位置，并进一步调用equals()方法确定键值对。如果发生碰撞的时候，Hashmap通过链表将产生碰撞冲突的元素组织起来，在<a target="_blank" rel="noopener" href="http://lib.csdn.net/base/java">Java </a>8中，如果一个bucket中碰撞冲突的元素超过某个限制(默认是8)，则使用红黑树来替换链表，从而提高速度。</p>
+<p>通过 hash 的方法，通过put和get存储和获取对象。存储对象时，我们将 K&#x2F;V 传给 put 方法时，它调用 hashCode 计算 hash 从而得到bucket 位置，进一步存储，HashMap会根据当前bucket的占用情况自动调整容量 (超过Load Facotr 则 resize 为原来的2倍)。获取对象时，我们将K传给get，它调用 hashCode 计算hash从而得到bucket位置，并进一步调用equals()方法确定键值对。如果发生碰撞的时候，Hashmap通过链表将产生碰撞冲突的元素组织起来，在 Java 8中，如果一个 bucket 中碰撞冲突的元素超过某个限制(默认是8)，则使用红黑树来替换链表，从而提高速度。</p>
 <p>&#x3D;&#x3D;你知道get和put的原理吗？equals()和hashCode()的都有什么作用&#x3D;&#x3D;</p>
 <blockquote>
 <p>通过对key的hashCode()进行hashing，并计算下标( n-1 &amp; hash)，从而获得buckets的位置。如果产生碰撞，则利用key.equals()方法去链表或树中去查找对应的节点</p>
@@ -481,6 +568,11 @@
 <li><p><code>TreeSet</code>内部是一个<code>TreeMap</code>，只使用了 key，value 也是同样的 object</p>
 <p><code>private static final Object PRESENT = new Object();</code></p>
 </li>
+</ul>
+<h1 id="HashSet-和-HashMap的区别和实现原理？"><a href="#HashSet-和-HashMap的区别和实现原理？" class="headerlink" title="&#x3D;&#x3D;HashSet 和 HashMap的区别和实现原理？&#x3D;&#x3D;"></a>&#x3D;&#x3D;HashSet 和 HashMap的区别和实现原理？&#x3D;&#x3D;</h1><p>HashSet 和 HashMap 的区别在于 HashSet 是基于 HashMap 实现的，HashSet 中的元素实际上是存储在 HashMap 的 key 上的，而HashMap 则是键值对的存储结构。</p>
+<ul>
+<li>HashSet 是一种基于哈希表的 Set 接口的实现，<strong>内部通过一个 HashMap 来存储元素，只存储 key 而不存储 value</strong>，key即为元素值。HashSet通过调用HashMap的put方法来向HashMap中存储元素，key为元素值，value为一个固定的Object对象。</li>
+<li>HashMap是一种键值对的存储结构，通过哈希表实现。它包括一个数组和链表结合的数据结构，数组中存储的是链表的头节点。当发生哈希冲突时，即不同的key通过哈希算法得到的下标位置相同，此时会以链表的形式存储在数组对应位置，JDK8中还引入了红黑树来优化链表，提高查询效率。</li>
 </ul>
 <h1 id="LinkedHashMap"><a href="#LinkedHashMap" class="headerlink" title="LinkedHashMap"></a>LinkedHashMap</h1><p><code>LinkedHashMap</code>是<code>HashMap</code>的子类，与<code>HashMap</code>有着同样的存储结构，但它加入了一个双向链表的头结点（有<code>head</code>和<code>tail</code>指针），将所有<code>put</code>到<code>LinkedHashmap</code>的节点一一串成了一个双向循环链表，因此它保留了节点插入的顺序，可以使节点的输出顺序与输入顺序相同。</p>
 <p><code>LinkedHashMap</code> 非线程安全的，只在单线程环境下使用</p>
