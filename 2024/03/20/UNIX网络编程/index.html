@@ -6,38 +6,27 @@
   <meta name="keywords" content="">
   <meta name="description" content="UNIX网络编程 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="IELTS WritingTask 1Introduction -&gt; Overview -&gt; Detail -&gt; Detail (No Conclusion and opinions!) Notes: 时态不要错！！  PS: 看 便便 的两个 pdf 小作文模板  上升： v rise - rose - risen - rising	n rise v increase - in">
+<meta name="description" content="OS 基础线程和进程的区别？    本质区别：进程是操作系统【资源分配的最小单位】，而线程是【任务调度和执行的基本单位】  在开销方面：每个进程都有独立的代码和数据空间（程序上下文），程序之间的切换会有较大的开销；线程可以看做轻量级的进程，同一类线程共享代码和数据空间，每个线程都有自己独立的运行栈和程序计数器（PC），线程之间切换的开销小  稳定性方面：进程中某个线程如果崩溃了，可能会导致整个进程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="IELTS Writing">
-<meta property="og:url" content="http://example.com/2024/10/10/IELTS-Writing/index.html">
+<meta property="og:title" content="操作系统">
+<meta property="og:url" content="http://example.com/2024/04/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="IELTS WritingTask 1Introduction -&gt; Overview -&gt; Detail -&gt; Detail (No Conclusion and opinions!) Notes: 时态不要错！！  PS: 看 便便 的两个 pdf 小作文模板  上升： v rise - rose - risen - rising	n rise v increase - in">
+<meta property="og:description" content="OS 基础线程和进程的区别？    本质区别：进程是操作系统【资源分配的最小单位】，而线程是【任务调度和执行的基本单位】  在开销方面：每个进程都有独立的代码和数据空间（程序上下文），程序之间的切换会有较大的开销；线程可以看做轻量级的进程，同一类线程共享代码和数据空间，每个线程都有自己独立的运行栈和程序计数器（PC），线程之间切换的开销小  稳定性方面：进程中某个线程如果崩溃了，可能会导致整个进程">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20240903143929000.png">
-<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20240912122709201.png">
-<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20240903154014772.png">
-<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20240903170338309.png">
-<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241008162149573.png">
-<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20240903221950372.png">
-<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20240908183744208.png">
-<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20240909115534553.png">
-<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241006134635925.png">
-<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/36195076c5bf4f8798d6a3a1a7e8b009.png">
-<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241004223753876.png">
-<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241003185429807.png">
-<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241003190448385.png">
-<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241004194259889.png">
-<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241004222854805.png">
-<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241004222634264.png">
-<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241004222706508.png">
-<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241004223109519.png">
-<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241004222732028.png">
-<meta property="og:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20241004222806949.png">
-<meta property="article:published_time" content="2024-10-10T07:06:24.000Z">
-<meta property="article:modified_time" content="2024-10-10T07:07:10.746Z">
+<meta property="og:image" content="http://example.com/2024/04/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/image-20240414120211582.png">
+<meta property="og:image" content="http://example.com/2024/04/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/image-20221110210513731.png">
+<meta property="og:image" content="http://example.com/2024/04/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/image-20221110211848521.png">
+<meta property="og:image" content="http://example.com/2024/04/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/image-20221110212114732.png">
+<meta property="og:image" content="http://example.com/2024/04/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/image-20240302145818766.png">
+<meta property="og:image" content="http://example.com/2024/04/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/image-20230314115015972.png">
+<meta property="og:image" content="http://example.com/2024/04/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/image-20230314115038448.png">
+<meta property="og:image" content="http://example.com/2024/04/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/image-20221102202943166.png">
+<meta property="og:image" content="http://example.com/2024/04/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/image-20221102203546452.png">
+<meta property="article:published_time" content="2024-04-18T03:20:09.000Z">
+<meta property="article:modified_time" content="2024-04-18T04:12:44.490Z">
 <meta property="article:author" content="王才雨">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2024/10/10/IELTS-Writing/image-20240903143929000.png">
+<meta name="twitter:image" content="http://example.com/2024/04/18/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/image-20240414120211582.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -136,7 +125,7 @@
     <li>
         <div class="all active" data-rel="All">All
             
-                <small>(18)</small>
+                <small>(19)</small>
             
         </div>
     </li>
@@ -161,7 +150,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="18">
+<input type="hidden" id="yelog_site_posts_number" value="19">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -213,6 +202,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="All "
+           href="/2024/11/18/Netty/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Netty">Netty</span>
+            <span class="post-date" title="2024-11-18 09:00:27">2024/11/18</span>
+        </a>
         
         
         <a  class="All "
@@ -406,7 +404,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2024-04-17 15:17:39'>2024-03-20 15:03</time>
+            Created At : <time class="date" title='Updated At: 2024-11-18 13:18:39'>2024-03-20 15:03</time>
         
     </div>
     <div class="article-meta">
@@ -428,7 +426,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#UNIX-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B-%E4%B8%8E-Netty-%E7%AC%94%E8%AE%B0"><span class="toc-text">UNIX 网络编程 与 Netty 笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B-TCP-%E8%BF%9E%E6%8E%A5%E5%BB%BA%E7%AB%8B-%E7%BB%88%E6%AD%A2-%E7%AB%AF%E5%8F%A3%E5%8F%B7-%E7%BC%93%E5%86%B2%E5%8C%BA%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-text">1. 网络模型 + TCP 连接建立&#x2F;终止 + 端口号&#x2F;缓冲区相关概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#OSI-%E6%A8%A1%E5%9E%8B"><span class="toc-text">OSI 模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82%EF%BC%9ATCP%E8%BF%9E%E6%8E%A5%E5%BB%BA%E7%AB%8B%E4%B8%8E%E7%BB%88%E6%AD%A2"><span class="toc-text">传输层：TCP连接建立与终止</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%8F%B7-%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-text">端口号 缓冲区</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-TCP-%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%EF%BC%8C%E9%85%8D%E5%90%88-TCP-IP-%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3-%E5%AF%B9%E5%BA%95%E5%B1%82%E6%B7%B1%E5%BA%A6%E7%90%86%E8%A7%A3"><span class="toc-text">2. TCP 相关参数，配合 TCP&#x2F;IP 协议理解 对底层深度理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-IO%E6%A8%A1%E5%9E%8B-%E4%B8%8E-select-poll-%E5%87%BD%E6%95%B0"><span class="toc-text">3. IO模型 与 select&#x2F;poll 函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E4%BB%80%E4%B9%88%E6%98%AF%E9%9B%B6%E6%8B%B7%E8%B4%9D"><span class="toc-text">4. 什么是零拷贝</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%9C%89-DMA-%E6%8A%80%E6%9C%AF"><span class="toc-text">为什么要有 DMA 技术?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0%E7%BB%9F%E7%9A%84%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E6%9C%89%E5%A4%9A%E7%B3%9F%E7%B3%95%EF%BC%9F"><span class="toc-text">传统的文件传输有多糟糕？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E7%9A%84%E6%80%A7%E8%83%BD%EF%BC%9F"><span class="toc-text">如何优化文件传输的性能？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E9%9B%B6%E6%8B%B7%E8%B4%9D%EF%BC%9F"><span class="toc-text">如何实现零拷贝？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mmap-write"><span class="toc-text">mmap + write</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sendfile"><span class="toc-text">sendfile</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E9%9B%B6%E6%8B%B7%E8%B4%9D%E6%8A%80%E6%9C%AF%E7%9A%84%E9%A1%B9%E7%9B%AE"><span class="toc-text">使用零拷贝技术的项目</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PageCache-%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="toc-text">PageCache 有什么作用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E7%94%A8%E4%BB%80%E4%B9%88%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0%EF%BC%9F"><span class="toc-text">大文件传输用什么方式实现？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Reactor-%E6%A8%A1%E5%BC%8F"><span class="toc-text">5. Reactor 模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%94%E8%BF%9B"><span class="toc-text">演进</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95-Reactor-%E5%8D%95%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B"><span class="toc-text">单 Reactor 单进程 &#x2F; 线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95-Reactor-%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%A4%9A%E8%BF%9B%E7%A8%8B"><span class="toc-text">单 Reactor 多线程 &#x2F; 多进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A-Reactor-%E5%A4%9A%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B"><span class="toc-text">多 Reactor 多进程 &#x2F; 线程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Proactor-%E6%A8%A1%E5%BC%8F"><span class="toc-text">6. Proactor 模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-Netty-%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="toc-text">7. Netty 的线程模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Netty%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="toc-text">Netty线程模型</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#UNIX-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B-%E4%B8%8E-Netty-%E7%AC%94%E8%AE%B0"><span class="toc-text">UNIX 网络编程 与 Netty 笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B-TCP-%E8%BF%9E%E6%8E%A5%E5%BB%BA%E7%AB%8B-%E7%BB%88%E6%AD%A2-%E7%AB%AF%E5%8F%A3%E5%8F%B7-%E7%BC%93%E5%86%B2%E5%8C%BA%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5"><span class="toc-text">1. 网络模型 + TCP 连接建立&#x2F;终止 + 端口号&#x2F;缓冲区相关概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#OSI-%E6%A8%A1%E5%9E%8B"><span class="toc-text">OSI 模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82%EF%BC%9ATCP%E8%BF%9E%E6%8E%A5%E5%BB%BA%E7%AB%8B%E4%B8%8E%E7%BB%88%E6%AD%A2"><span class="toc-text">传输层：TCP连接建立与终止</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%8F%B7-%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-text">端口号 缓冲区</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-TCP-%E7%9B%B8%E5%85%B3%E5%8F%82%E6%95%B0%EF%BC%8C%E9%85%8D%E5%90%88-TCP-IP-%E5%8D%8F%E8%AE%AE%E7%90%86%E8%A7%A3-%E5%AF%B9%E5%BA%95%E5%B1%82%E6%B7%B1%E5%BA%A6%E7%90%86%E8%A7%A3"><span class="toc-text">2. TCP 相关参数，配合 TCP&#x2F;IP 协议理解 对底层深度理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Linux-%E7%BD%91%E7%BB%9C-I-O-%E6%A8%A1%E5%9E%8B-select-poll-%E5%87%BD%E6%95%B0"><span class="toc-text">3. Linux 网络 I&#x2F;O 模型 &amp; select&#x2F;poll 函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BIO"><span class="toc-text">BIO</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NIO-BIO-%E8%BD%AE%E8%AF%A2"><span class="toc-text">NIO &#x3D; BIO + 轮询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IO%E5%A4%8D%E7%94%A8-BIO-BIO-BIO-%E2%80%A6%E2%80%A6-%E9%98%BB%E5%A1%9E%E5%9C%A8%E5%A4%9A%E4%B8%AAsocket"><span class="toc-text">IO复用 &#x3D; BIO + BIO + BIO …….(阻塞在多个socket)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E4%BB%80%E4%B9%88%E6%98%AF%E9%9B%B6%E6%8B%B7%E8%B4%9D"><span class="toc-text">4. 什么是零拷贝</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%9C%89-DMA-%E6%8A%80%E6%9C%AF"><span class="toc-text">为什么要有 DMA 技术?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%A0%E7%BB%9F%E7%9A%84%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E6%9C%89%E5%A4%9A%E7%B3%9F%E7%B3%95%EF%BC%9F"><span class="toc-text">传统的文件传输有多糟糕？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E7%9A%84%E6%80%A7%E8%83%BD%EF%BC%9F"><span class="toc-text">如何优化文件传输的性能？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E9%9B%B6%E6%8B%B7%E8%B4%9D%EF%BC%9F"><span class="toc-text">如何实现零拷贝？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mmap-write"><span class="toc-text">mmap + write</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sendfile"><span class="toc-text">sendfile</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E9%9B%B6%E6%8B%B7%E8%B4%9D%E6%8A%80%E6%9C%AF%E7%9A%84%E9%A1%B9%E7%9B%AE"><span class="toc-text">使用零拷贝技术的项目</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PageCache-%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="toc-text">PageCache 有什么作用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E7%94%A8%E4%BB%80%E4%B9%88%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B0%EF%BC%9F"><span class="toc-text">大文件传输用什么方式实现？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Reactor-%E6%A8%A1%E5%BC%8F"><span class="toc-text">5. Reactor 模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%94%E8%BF%9B"><span class="toc-text">演进</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95-Reactor-%E5%8D%95%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B"><span class="toc-text">单 Reactor 单进程 &#x2F; 线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95-Reactor-%E5%A4%9A%E7%BA%BF%E7%A8%8B-%E5%A4%9A%E8%BF%9B%E7%A8%8B"><span class="toc-text">单 Reactor 多线程 &#x2F; 多进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A-Reactor-%E5%A4%9A%E8%BF%9B%E7%A8%8B-%E7%BA%BF%E7%A8%8B"><span class="toc-text">多 Reactor 多进程 &#x2F; 线程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Proactor-%E6%A8%A1%E5%BC%8F"><span class="toc-text">6. Proactor 模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-Netty-%E7%9A%84%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="toc-text">7. Netty 的线程模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Netty%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B"><span class="toc-text">Netty线程模型</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -465,26 +463,27 @@
 
 <img src="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/image-20231129195917970.png" alt="image-20231129195917970" style="zoom:50%;">
 
-<h3 id="端口号-缓冲区"><a href="#端口号-缓冲区" class="headerlink" title="端口号 缓冲区"></a>端口号 缓冲区</h3><h2 id="2-TCP-相关参数，配合-TCP-IP-协议理解-对底层深度理解"><a href="#2-TCP-相关参数，配合-TCP-IP-协议理解-对底层深度理解" class="headerlink" title="2. TCP 相关参数，配合 TCP&#x2F;IP 协议理解 对底层深度理解"></a>2. TCP 相关参数，配合 TCP&#x2F;IP 协议理解 对底层深度理解</h2><h2 id="3-IO模型-与-select-poll-函数"><a href="#3-IO模型-与-select-poll-函数" class="headerlink" title="3. IO模型 与 select&#x2F;poll 函数"></a>3. IO模型 与 select&#x2F;poll 函数</h2><p>重要！！五种IO模型（注意，这是操作系统层面的IO模型，不是Java NIO AIO）</p>
-<p>搭配<a target="_blank" rel="noopener" href="https://chat.openai.com/share/30ca95a2-dfea-43bf-8592-593f30fc545a%E9%93%BE%E6%8E%A5%E5%AD%A6%E4%B9%A0">https://chat.openai.com/share/30ca95a2-dfea-43bf-8592-593f30fc545a链接学习</a></p>
+<h3 id="端口号-缓冲区"><a href="#端口号-缓冲区" class="headerlink" title="端口号 缓冲区"></a>端口号 缓冲区</h3><h2 id="2-TCP-相关参数，配合-TCP-IP-协议理解-对底层深度理解"><a href="#2-TCP-相关参数，配合-TCP-IP-协议理解-对底层深度理解" class="headerlink" title="2. TCP 相关参数，配合 TCP&#x2F;IP 协议理解 对底层深度理解"></a>2. TCP 相关参数，配合 TCP&#x2F;IP 协议理解 对底层深度理解</h2><h2 id="3-Linux-网络-I-O-模型-select-poll-函数"><a href="#3-Linux-网络-I-O-模型-select-poll-函数" class="headerlink" title="3. Linux 网络 I&#x2F;O 模型 &amp; select&#x2F;poll 函数"></a>3. Linux 网络 I&#x2F;O 模型 &amp; select&#x2F;poll 函数</h2><p>重要！！5 种网络 IO 模型（注意，这是操作系统层面的IO模型，不是 Java NIO AIO）</p>
+<p>搭配 <a target="_blank" rel="noopener" href="https://chat.openai.com/share/30ca95a2-dfea-43bf-8592-593f30fc545a">https://chat.openai.com/share/30ca95a2-dfea-43bf-8592-593f30fc545a</a> 链接学习</p>
 <p>（技巧：其他模型都和BIO对比）</p>
 <hr>
-<p><strong>BIO</strong></p>
-<img src="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/image-20231129205423452.png" alt="image-20231129205423452" style="zoom: 67%;">
+<h3 id="BIO"><a href="#BIO" class="headerlink" title="BIO"></a><strong>BIO</strong></h3><img src="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/image-20231129205423452.png" style="zoom: 67%;">
 
 <p>在进程空间中调用 <code>recvfrom()</code>，发生上下文切换，用户进程进入阻塞状态 。该系统调用直到 数据报到达且被复制到应用进程缓冲区 或 发生错误时才返回，然后用户进程退出阻塞状态，继续执行后续操作。</p>
-<hr>
-<p><strong>NIO &#x3D; BIO + 轮询</strong></p>
-<img src="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/image-20231129210148822.png" alt="image-20231129210148822" style="zoom: 50%;">
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> buffer[<span class="number">1024</span>];</span><br><span class="line"><span class="type">int</span> n = read(fd, buffer, <span class="keyword">sizeof</span>(buffer)); <span class="comment">// 如果没有数据，进程被挂起</span></span><br></pre></td></tr></table></figure>
 
-<p>和BIO区别就是应用进程<strong>反复调用recvfrom，轮询内核</strong>，问“数据准备好了吗？？”，没准备好就返回EWOULDBLOCK错误，准备好就正常数据复制内核-&gt;用户，返回成功！</p>
+<hr>
+<h3 id="NIO-BIO-轮询"><a href="#NIO-BIO-轮询" class="headerlink" title="NIO &#x3D; BIO + 轮询"></a><strong>NIO &#x3D; BIO + 轮询</strong></h3><img src="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/image-20231129210148822.png" style="zoom: 50%;">
+
+<p>和BIO区别就是应用进程<strong>反复调用 recvfrom，轮询内核</strong>，问“数据准备好了吗？？”，没准备好就返回<code>EWOULDBLOCK</code>错误，准备好就正常数据复制内核-&gt;用户，返回成功！</p>
 <p>说白了，就是 用户进程 不是在<strong>等</strong>（阻塞），而是在<strong>问</strong>（非阻塞）</p>
-<p>之前一直不理解非阻塞IO的优势（轮询等待不也是等待吗，而且还占用cpu，不像BIO，虽然进程阻塞，但是能挂起乖乖交出cpu），后来看到这句话：</p>
+<p>之前一直不理解非阻塞IO的优势（轮询等待不也是等待吗，而且还占用cpu，不像BIO，虽然进程阻塞，但是能挂起乖乖交出cpu），后来看到这句话：轮询的时候，用户线程可以执行其他任务而不是阻塞（轮询操作是应用程序在用户态手动实现的，而不是操作系统实现的）</p>
 <img src="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/image-20231129211632148.png" alt="image-20231129211632148" style="zoom:50%;">
 
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> buffer[<span class="number">1024</span>];</span><br><span class="line"><span class="type">int</span> flags = fcntl(sockfd, F_GETFL, <span class="number">0</span>);       <span class="comment">// 获取当前文件描述符的标志</span></span><br><span class="line">fcntl(sockfd, F_SETFL, flags | O_NONBLOCK); <span class="comment">// 设置非阻塞模式</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="type">ssize_t</span> n = recvfrom(sockfd, buffer, <span class="keyword">sizeof</span>(buffer), <span class="number">0</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (errno == EAGAIN || errno == EWOULDBLOCK) &#123;</span><br><span class="line">            <span class="comment">// 数据未准备好，执行其他任务</span></span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;Data not ready. Performing other tasks...\n&quot;</span>);</span><br><span class="line">            perform_other_tasks(); <span class="comment">// 调用其他任务的函数</span></span><br><span class="line">            <span class="keyword">continue</span>;              <span class="comment">// 回到循环，继续检查数据</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 处理其他错误</span></span><br><span class="line">            perror(<span class="string">&quot;recvfrom&quot;</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 数据已准备好，处理接收到的数据</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Received %zd bytes: %s\n&quot;</span>, n, buffer);</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <hr>
-<p><strong>IO复用 &#x3D; BIO + BIO + BIO …….(阻塞在多个socket)</strong></p>
-<img src="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/image-20231129211910184.png" alt="image-20231129211910184" style="zoom:50%;">
+<h3 id="IO复用-BIO-BIO-BIO-……-阻塞在多个socket"><a href="#IO复用-BIO-BIO-BIO-……-阻塞在多个socket" class="headerlink" title="IO复用 &#x3D; BIO + BIO + BIO …….(阻塞在多个socket)"></a><strong>IO复用 &#x3D; BIO + BIO + BIO …….(阻塞在多个socket)</strong></h3><img src="/2024/03/20/UNIX%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/image-20231129211910184.png" alt="image-20231129211910184" style="zoom:50%;">
 
 <p><strong>IO复用模型，本质是从阻塞在一个套接字上，变成阻塞在多个套接字上</strong>（阻塞在select调用上，select关联多个socket，只要有一个socket可读，就返回可读条件，这时候再去执行recvfrom调用，无需进行数据等待，直接复制数据到用户空间并成功返回！）</p>
 <p>Linux 提供 select&#x2F;poll，进程通过一个或多个 fd 传递给 select 或 poll 系统调用，阻塞在 select 操作上，这样 select&#x2F;poll 可以帮我们侦测多个 fd 是否处于就绪状态。</p>
